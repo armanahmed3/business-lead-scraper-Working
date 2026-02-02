@@ -19,50 +19,24 @@ DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'users.db')
 from config import Config
 from utils import setup_logging
 from selenium_scraper import SeleniumScraper
-from dedupe import Deduplicator
 from exporter import DataExporter
+from dedupe import Deduplicator
 from robots_checker import RobotsChecker
-from ai_manager import global_settings_page
+from yelp_scraper import YelpScraper
+from yellow_pages_scraper import YellowPagesScraper
 import extra_streamlit_components as stx
 from datetime import timedelta
-import sys
-
-# Add the Email Sending Stremlit directory and its components to Python path
-# Using dynamic search to handle potential folder name variations (like spaces)
-email_system_path = None
-for folder in os.listdir(Path(__file__).parent):
-    if folder.startswith("Email Sending") and os.path.isdir(os.path.join(Path(__file__).parent, folder)):
-        email_system_path = Path(__file__).parent / folder
-        break
-
-if email_system_path and email_system_path.exists():
-    paths_to_add = [
-        str(email_system_path),
-        str(email_system_path / "backend"),
-        str(email_system_path / "pages")
-    ]
-    for p in paths_to_add:
-        if p not in sys.path:
-            sys.path.append(p)
-else:
-    # Fallback if dynamic search fails
-    email_system_path = Path(__file__).parent / "Email Sending  Stremlit"
-    if email_system_path.exists():
-        sys.path.append(str(email_system_path))
-        sys.path.append(str(email_system_path / "backend"))
-        sys.path.append(str(email_system_path / "pages"))
-
 try:
     from streamlit_gsheets import GSheetsConnection
 except ImportError:
-    pass
+    GSheetsConnection = None
 
 try:
     import gspread
 except ImportError:
     gspread = None
 
-# --- DB Handler Class ---
+# --- Enhanced DB Handler Class ---
 class DBHandler:
     def __init__(self):
         self.use_gsheets = False
@@ -136,12 +110,6 @@ class DBHandler:
                 c.execute("ALTER TABLE users ADD COLUMN default_provider TEXT DEFAULT 'openrouter'")
             except sqlite3.OperationalError: pass
             
-            # Clean up old provider columns if they exist
-            try:
-                # We can't directly DROP COLUMN in SQLite, so we'll just ignore these columns
-                pass
-            except sqlite3.OperationalError: pass
-            
             try:
                 c.execute("ALTER TABLE users ADD COLUMN smtp_user TEXT")
             except sqlite3.OperationalError: pass
@@ -192,7 +160,7 @@ class DBHandler:
                 df = self.conn.read(ttl=0)
                 user = df[df['username'] == username]
                 if not user.empty:
-                    # Return tuple like sqlite
+                    # Return tuple like sqlite with all SaaS fields
                     row = user.iloc[0]
                     return (
                         row.get('password', ""), 
@@ -215,8 +183,18 @@ class DBHandler:
         else:
             conn = sqlite3.connect(DB_PATH)
             c = conn.cursor()
-            # Ensure calling code expects the new tuple size or handle it dynamically
-            c.execute("SELECT password, role, active, openrouter_key, default_provider, smtp_user, smtp_pass, gsheets_creds, plan, usage_count, usage_limit, email_count, email_limit FROM users WHERE username=?", (username,))
+            # Try to get all columns, fallback to basic ones
+            try:
+                c.execute("SELECT password, role, active, openrouter_key, default_provider, smtp_user, smtp_pass, gsheets_creds, plan, usage_count, usage_limit, email_count, email_limit FROM users WHERE username=?", (username,))
+            except sqlite3.OperationalError:
+                # Fallback for older DB versions
+                c.execute("SELECT password, role, active, openrouter_key FROM users WHERE username=?", (username,))
+                result = c.fetchone()
+                conn.close()
+                if result and len(result) == 4:
+                    # Extend with default values for missing columns
+                    return result + ("openrouter", "", "", "", "free", 0, 50, 0, 100)
+                return result
             result = c.fetchone()
             conn.close()
             return result
@@ -246,10 +224,6 @@ class DBHandler:
                 return True
             except: return False
 
-    def update_api_key(self, username, key):
-        # Legacy support for openrouter logic only - generally use update_settings now
-        return self.update_settings(username, {'openrouter_key': key})
-
     def migrate_to_gsheets(self):
         """Copies users from SQLite to Google Sheets if GSheets is connected."""
         if not self.use_gsheets:
@@ -278,13 +252,15 @@ class DBHandler:
                         'openrouter_key': row.get('openrouter_key', ''),
                         'aimlapi_key': row.get('aimlapi_key', ''),
                         'bytez_key': row.get('bytez_key', ''),
-                        'default_provider': row.get('default_provider', 'aimlapi'),
+                        'default_provider': row.get('default_provider', 'openrouter'),
                         'smtp_user': row.get('smtp_user', ''),
                         'smtp_pass': row.get('smtp_pass', ''),
                         'gsheets_creds': row.get('gsheets_creds', ''),
                         'plan': row.get('plan', 'free'),
                         'usage_count': row.get('usage_count', 0),
-                        'usage_limit': row.get('usage_limit', 50)
+                        'usage_limit': row.get('usage_limit', 50),
+                        'email_count': row.get('email_count', 0),
+                        'email_limit': row.get('email_limit', 100)
                     }
                     new_users.append(new_user)
             
@@ -302,21 +278,37 @@ class DBHandler:
                 
         except Exception as e:
             return False, f"Migration Failed: {str(e)}"
-    
-    # get_all_users remains mostly same but we only select specific columns anyway
+
+    def update_api_key(self, username, key):
+        if self.use_gsheets:
+            try:
+                df = self.conn.read(ttl=0)
+                if 'openrouter_key' not in df.columns:
+                    df['openrouter_key'] = ""
+                df.loc[df['username'] == username, 'openrouter_key'] = key
+                self.conn.update(data=df)
+                return True
+            except: return False
+        else:
+            try:
+                conn = sqlite3.connect(DB_PATH)
+                c = conn.cursor()
+                c.execute("UPDATE users SET openrouter_key = ? WHERE username = ?", (key, username))
+                conn.commit()
+                conn.close()
+                return True
+            except: return False
+
     def get_all_users(self):
         if self.use_gsheets:
             try:
                 df = self.conn.read(ttl=0)
-                # Ensure all columns exist even if not in sheet
-                for col in ['plan', 'usage_count', 'usage_limit', 'email_count', 'email_limit']:
-                    if col not in df.columns: df[col] = 0 if 'count' in col or 'limit' in col else 'free'
-                return df[['username', 'role', 'active', 'plan', 'usage_count', 'usage_limit', 'email_count', 'email_limit']]
+                return df[['username', 'role', 'active']]
             except:
-                return pd.DataFrame(columns=['username', 'role', 'active', 'plan', 'usage_count', 'usage_limit', 'email_count', 'email_limit'])
+                return pd.DataFrame(columns=['username', 'role', 'active'])
         else:
             conn = sqlite3.connect(DB_PATH)
-            df = pd.read_sql_query("SELECT username, role, active, plan, usage_count, usage_limit, email_count, email_limit FROM users", conn)
+            df = pd.read_sql_query("SELECT username, role, active FROM users", conn)
             conn.close()
             return df
 
@@ -331,29 +323,15 @@ class DBHandler:
                 if username in df['username'].values:
                     return False
                 
-                new_user = {
+                new_user = pd.DataFrame([{
                     'username': username, 
                     'password': hashed, 
                     'role': role, 
-                    'active': 1, 
-                    'created_at': datetime.now().isoformat(),
-                    'openrouter_key': "",
-                    'default_provider': 'openrouter',
-                    'smtp_user': "",
-                    'smtp_pass': "",
-                    'gsheets_creds': "",
-                    'plan': "free",
-                    'usage_count': 0,
-                    'usage_limit': 50
-                }
-                
-                # Check for missing columns in existing df and add them if necessary
-                for col in new_user.keys():
-                    if col not in df.columns:
-                        df[col] = ""
-                
-                df = pd.concat([df, pd.DataFrame([new_user])], ignore_index=True)
-                self.conn.update(data=df)
+                    'active': 1,
+                    'created_at': datetime.now().isoformat()
+                }])
+                updated_df = pd.concat([df, new_user], ignore_index=True)
+                self.conn.update(data=updated_df)
                 return True
             except Exception as e:
                 print(f"Add User Error: {e}")
@@ -362,8 +340,8 @@ class DBHandler:
             conn = sqlite3.connect(DB_PATH)
             c = conn.cursor()
             try:
-                c.execute("INSERT INTO users (username, password, role, active, plan, usage_count, usage_limit, default_provider) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-                          (username, hashed, role, 1, "free", 0, 50, 'openrouter'))
+                c.execute("INSERT INTO users (username, password, role) VALUES (?, ?, ?)",
+                         (username, hashed, role))
                 conn.commit()
                 return True
             except sqlite3.IntegrityError:
@@ -501,8 +479,18 @@ def authenticate_user(username, password):
     result = db.get_user(username)
     
     if result:
-        # result = (password, role, active, openrouter_key, default_provider, smtp_user, smtp_pass, gsheets_creds, plan, usage_count, usage_limit, email_count, email_limit)
-        stored_password, role, active, openrouter_key, default_provider, smtp_user, smtp_pass, gsheets_creds, plan, usage_count, usage_limit, email_count, email_limit = result
+        # Enhanced result = (password, role, active, openrouter_key, default_provider, smtp_user, smtp_pass, gsheets_creds, plan, usage_count, usage_limit, email_count, email_limit)
+        if len(result) >= 13:
+            stored_password, role, active, openrouter_key, default_provider, smtp_user, smtp_pass, gsheets_creds, plan, usage_count, usage_limit, email_count, email_limit = result
+        else:
+            # Fallback for older format (password, role, active, openrouter_key)
+            stored_password, role, active, openrouter_key = result[:4]
+            default_provider = smtp_user = smtp_pass = gsheets_creds = ""
+            plan = "free"
+            usage_count = email_count = 0
+            usage_limit = 50
+            email_limit = 100
+        
         # Robust boolean conversion
         if isinstance(active, str):
             if active.lower() in ['true', '1', 'yes']:
@@ -522,7 +510,6 @@ def authenticate_user(username, password):
                 st.session_state.username = username
                 st.session_state.openrouter_api_key = openrouter_key if openrouter_key else ""
                 st.session_state.default_provider = default_provider if default_provider else "openrouter"
-
                 st.session_state.smtp_user = smtp_user if smtp_user else ""
                 st.session_state.smtp_pass = smtp_pass if smtp_pass else ""
                 try:
@@ -563,7 +550,6 @@ def authenticate_user(username, password):
                     st.session_state.username = username
                     st.session_state.openrouter_api_key = openrouter_key if openrouter_key else ""
                     st.session_state.default_provider = default_provider if default_provider else "openrouter"
-
                     st.session_state.smtp_user = smtp_user if smtp_user else ""
                     st.session_state.smtp_pass = smtp_pass if smtp_pass else ""
                     try:
@@ -574,7 +560,7 @@ def authenticate_user(username, password):
                     # SaaS Session State
                     st.session_state.user_plan = plan if plan else "free"
                     
-                    # Safe conversion function (re-defined or used from above scope if applicable)
+                    # Safe conversion function
                     def safe_int_mig(val, default=0):
                         try:
                             if pd.isna(val): return default
@@ -610,6 +596,7 @@ def delete_user(username):
     return db.delete_user(username)
 
 def login_page():
+    # ... (rest of the code remains the same)
     # Exact Replica of the Dark Theme Login UI
     # Dynamic Theme Colors
     if st.session_state.theme == 'dark':
@@ -840,15 +827,6 @@ def admin_panel():
         """, icon="🚨")
     else:
         st.success(f"✅ Storage Mode: {db.get_storage_type()}", icon="💾")
-        if db.use_gsheets:
-            st.info("💡 Users are being loaded from **Google Sheets**. If you just switched from SQLite, click the button below to restore your local users to the cloud.")
-            if st.button("☁️ Synchronize Local Users to Google Sheets"):
-                success, msg = db.migrate_to_gsheets()
-                if success:
-                    st.success(msg)
-                    st.rerun()
-                else:
-                    st.error(msg)
     
     # Add new user
     st.subheader("Add New User")
@@ -879,59 +857,149 @@ def admin_panel():
         if selected_user:
             user_data = users_df[users_df['username'] == selected_user].iloc[0]
             
-            col1, col2, col3, col4, col5 = st.columns(5)
+            col1, col2, col3 = st.columns(3)
             with col1:
-                new_password = st.text_input("New Password", type="password", key=f"upd_pass_{selected_user}")
+                new_password = st.text_input("New Password (leave blank to keep current)", type="password")
             with col2:
-                new_role = st.selectbox("Role", ["admin", "user"], index=0 if user_data['role'] == 'admin' else 1, key=f"upd_role_{selected_user}")
+                new_role = st.selectbox("New Role", ["admin", "user"], index=0 if user_data['role'] == 'admin' else 1)
             with col3:
-                active_status = st.checkbox("Active", value=bool(user_data['active']), key=f"upd_active_{selected_user}")
-            with col4:
-                # Plan selection
-                plan_options = ["free", "pro", "enterprise"]
-                current_plan = user_data.get('plan', 'free')
-                new_plan = st.selectbox("SaaS Plan", plan_options, index=plan_options.index(current_plan) if current_plan in plan_options else 0, key=f"upd_plan_{selected_user}")
-            with col5:
-                # Usage Limit
-                current_limit = user_data.get('usage_limit', 50)
-                try: 
-                    safe_limit = int(float(current_limit)) if pd.notnull(current_limit) else 50
-                except: safe_limit = 50
-                new_limit = st.number_input("Lead Limit", value=safe_limit, step=50, key=f"upd_limit_{selected_user}")
-            with col1:
-                # Email Limit
-                current_email_limit = user_data.get('email_limit', 100)
-                try: 
-                    safe_email_limit = int(float(current_email_limit)) if pd.notnull(current_email_limit) else 100
-                except: safe_email_limit = 100
-                new_email_limit = st.number_input("Email Limit", value=safe_email_limit, step=100, key=f"upd_email_limit_{selected_user}")
+                active_status = st.checkbox("Active", value=bool(user_data['active']))
             
-            col_act1, col_act2 = st.columns(2)
-            with col_act1:
-                if st.button("💾 Apply SaaS Updates", use_container_width=True):
-                    # Update update_user call structure
-                    if update_user(selected_user, new_password if new_password else None, new_role, active_status, new_plan, new_limit, new_email_limit):
+            col1, col2 = st.columns(2)
+            with col1:
+                if st.button("Update User"):
+                    if update_user(selected_user, new_password if new_password else None, new_role, active_status):
                         st.success(f"User {selected_user} updated!")
                         st.rerun()
                     else:
-                        st.error("Update failed!")
-            with col_act2:
-                if st.button("🗑️ Delete Account", use_container_width=True):
+                        st.error("Failed to update user. Check DB connection.")
+            with col2:
+                if st.button("Delete User"):
                     if delete_user(selected_user):
-                        st.success("Deleted!")
+                        st.success(f"User {selected_user} deleted!")
                         st.rerun()
+                    else:
+                        st.error("Failed to delete user.")
     
-    # Backup & Restore Area
+    # Enhanced Backup & Restore Area with Google Sheets Support
     st.divider()
     st.subheader("💾 Data Safety & Backups")
     st.info("💡 **Tip:** Before updating your project files or deploying to the cloud, download a backup of your users to ensure no data is lost.")
+    
+    # User Statistics
+    st.subheader("📊 User Statistics")
+    if not users_df.empty:
+        total_users = len(users_df)
+        active_users = len(users_df[users_df['active'] == 1])
+        admin_users = len(users_df[users_df['role'] == 'admin'])
+        
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Total Users", total_users)
+        with col2:
+            st.metric("Active Users", active_users)
+        with col3:
+            st.metric("Admin Users", admin_users)
+        with col4:
+            st.metric("Storage Type", "Google Sheets" if db.use_gsheets else "SQLite")
+    
+    # Google Sheets Backup Section
+    if db.use_gsheets:
+        st.subheader("☁️ Google Sheets Backup & Export")
+        
+        col_gs1, col_gs2, col_gs3 = st.columns(3)
+        
+        with col_gs1:
+            if st.button("📥 Download Google Sheets Backup", use_container_width=True):
+                try:
+                    # Get all users from Google Sheets
+                    df = db.conn.read(ttl=0)
+                    if not df.empty:
+                        csv = df.to_csv(index=False).encode('utf-8')
+                        st.download_button(
+                            label="⬇️ Download Complete Backup",
+                            data=csv,
+                            file_name=f"gsheets_backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
+                            mime='text/csv',
+                            use_container_width=True
+                        )
+                        st.success("✅ Google Sheets data ready for download!")
+                    else:
+                        st.warning("No data found in Google Sheets.")
+                except Exception as e:
+                    st.error(f"Failed to fetch Google Sheets data: {e}")
+        
+        with col_gs2:
+            if st.button("🔄 Refresh Google Sheets Data", use_container_width=True):
+                try:
+                    df = db.conn.read(ttl=0)
+                    st.success(f"✅ Successfully refreshed {len(df)} users from Google Sheets!")
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"Failed to refresh: {e}")
+        
+        with col_gs3:
+            if st.button("📊 View Google Sheets Status", use_container_width=True):
+                try:
+                    df = db.conn.read(ttl=0)
+                    st.info(f"📈 Connected to Google Sheets!")
+                    st.dataframe(df)
+                except Exception as e:
+                    st.error(f"Connection issue: {e}")
+        
+        # Google Sheets Specific Backup Options
+        st.markdown("**🌐 Google Sheets Advanced Options**")
+        col_adv1, col_adv2 = st.columns(2)
+        
+        with col_adv1:
+            # Backup specific columns
+            all_columns = ['username', 'role', 'active', 'plan', 'usage_count', 'usage_limit', 'email_count', 'email_limit', 'created_at']
+            selected_columns = st.multiselect("Select Columns to Backup", all_columns, default=all_columns)
+            
+            if st.button("📋 Export Selected Columns", use_container_width=True):
+                try:
+                    df = db.conn.read(ttl=0)
+                    if selected_columns and not df.empty:
+                        filtered_df = df[selected_columns]
+                        csv = filtered_df.to_csv(index=False).encode('utf-8')
+                        st.download_button(
+                            label="⬇️ Download Filtered Backup",
+                            data=csv,
+                            file_name=f"gsheets_filtered_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
+                            mime='text/csv',
+                            use_container_width=True
+                        )
+                except Exception as e:
+                    st.error(f"Failed to export filtered data: {e}")
+        
+        with col_adv2:
+            # Active users only backup
+            if st.button("👥 Backup Active Users Only", use_container_width=True):
+                try:
+                    df = db.conn.read(ttl=0)
+                    if not df.empty:
+                        active_df = df[df['active'] == 1]
+                        csv = active_df.to_csv(index=False).encode('utf-8')
+                        st.download_button(
+                            label="⬇️ Download Active Users",
+                            data=csv,
+                            file_name=f"active_users_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
+                            mime='text/csv',
+                            use_container_width=True
+                        )
+                        st.success(f"✅ {len(active_df)} active users ready for backup!")
+                except Exception as e:
+                    st.error(f"Failed to backup active users: {e}")
+    
+    # General Backup Section (for both SQLite and Google Sheets)
+    st.subheader("🔄 General Backup & Restore")
     
     col_b1, col_b2 = st.columns(2)
     with col_b1:
         if not users_df.empty:
             csv = users_df.to_csv(index=False).encode('utf-8')
             st.download_button(
-                label="📥 Download User Backup (CSV)",
+                label="📥 Download Current View Backup (CSV)",
                 data=csv,
                 file_name=f"user_backup_{datetime.now().strftime('%Y%m%d')}.csv",
                 mime='text/csv',
@@ -942,471 +1010,217 @@ def admin_panel():
         uploaded_file = st.file_uploader("📤 Restore from Backup", type="csv")
         if uploaded_file is not None:
             try:
-                import pandas as pd
                 backup_df = pd.read_csv(uploaded_file)
-                if st.button("🚀 Confirm Restore Users"):
-                    restored_count = 0
-                    for _, row in backup_df.iterrows():
-                        # Simple add logic
-                        db.add_user(row['username'], "temp123", row['role'])
-                        restored_count += 1
-                    st.success(f"Successfully processed {restored_count} users!")
-                    st.rerun()
+                st.dataframe(backup_df.head())
+                
+                col_restore1, col_restore2 = st.columns(2)
+                with col_restore1:
+                    if st.button("🚀 Restore to Google Sheets", use_container_width=True, disabled=not db.use_gsheets):
+                        if db.use_gsheets:
+                            restored_count = 0
+                            skipped_count = 0
+                            try:
+                                # Get existing users to avoid duplicates
+                                existing_df = db.conn.read(ttl=0)
+                                existing_users = set(existing_df['username'].values) if not existing_df.empty else set()
+                                
+                                for _, row in backup_df.iterrows():
+                                    if row['username'] not in existing_users:
+                                        # Add new user to Google Sheets
+                                        new_user_data = {
+                                            'username': row['username'],
+                                            'password': hash_password("temp123"),  # Default password
+                                            'role': row.get('role', 'user'),
+                                            'active': bool(row.get('active', 1)),
+                                            'created_at': datetime.now().isoformat(),
+                                            'plan': row.get('plan', 'free'),
+                                            'usage_count': 0,
+                                            'usage_limit': int(row.get('usage_limit', 50)),
+                                            'email_count': 0,
+                                            'email_limit': int(row.get('email_limit', 100))
+                                        }
+                                        
+                                        # Add to Google Sheets
+                                        current_df = db.conn.read(ttl=0)
+                                        updated_df = pd.concat([current_df, pd.DataFrame([new_user_data])], ignore_index=True)
+                                        db.conn.update(data=updated_df)
+                                        restored_count += 1
+                                    else:
+                                        skipped_count += 1
+                                
+                                st.success(f"✅ Restored {restored_count} users to Google Sheets!")
+                                if skipped_count > 0:
+                                    st.warning(f"⚠️ Skipped {skipped_count} existing users")
+                                st.rerun()
+                            except Exception as e:
+                                st.error(f"Restore failed: {e}")
+                        else:
+                            st.warning("⚠️ Google Sheets not connected")
+                        
+                with col_restore2:
+                    if st.button("🔄 Merge with Existing", use_container_width=True):
+                        merged_count = 0
+                        for _, row in backup_df.iterrows():
+                            try:
+                                # Update existing user or add new one
+                                if db.use_gsheets:
+                                    df = db.conn.read(ttl=0)
+                                    if row['username'] in df['username'].values:
+                                        # Update existing user in Google Sheets
+                                        mask = df['username'] == row['username']
+                                        df.loc[mask, 'role'] = row.get('role', 'user')
+                                        df.loc[mask, 'active'] = bool(row.get('active', 1))
+                                        df.loc[mask, 'plan'] = row.get('plan', 'free')
+                                        df.loc[mask, 'usage_limit'] = int(row.get('usage_limit', 50))
+                                        df.loc[mask, 'email_limit'] = int(row.get('email_limit', 100))
+                                        db.conn.update(data=df)
+                                    else:
+                                        # Add new user to Google Sheets
+                                        new_user_data = {
+                                            'username': row['username'],
+                                            'password': hash_password("temp123"),
+                                            'role': row.get('role', 'user'),
+                                            'active': bool(row.get('active', 1)),
+                                            'created_at': datetime.now().isoformat(),
+                                            'plan': row.get('plan', 'free'),
+                                            'usage_count': 0,
+                                            'usage_limit': int(row.get('usage_limit', 50)),
+                                            'email_count': 0,
+                                            'email_limit': int(row.get('email_limit', 100))
+                                        }
+                                        current_df = db.conn.read(ttl=0)
+                                        updated_df = pd.concat([current_df, pd.DataFrame([new_user_data])], ignore_index=True)
+                                        db.conn.update(data=updated_df)
+                                else:
+                                    # SQLite fallback
+                                    if username in users_df['username'].values:
+                                        db.update_user(
+                                            row['username'], 
+                                            new_role=row.get('role', 'user'),
+                                            active=bool(row.get('active', 1)),
+                                            plan=row.get('plan', 'free'),
+                                            usage_limit=int(row.get('usage_limit', 50)),
+                                            email_limit=int(row.get('email_limit', 100))
+                                        )
+                                    else:
+                                        db.add_user(row['username'], "temp123", row.get('role', 'user'))
+                                merged_count += 1
+                            except Exception as e:
+                                st.error(f"Error processing {row.get('username', 'unknown')}: {e}")
+                        
+                        st.success(f"✅ Successfully merged {merged_count} users!")
+                        st.rerun()
+                        
             except Exception as e:
-                st.error(f"Error restoring backup: {e}")
-
-def show_saas_dashboard():
-    # Load usage stats
-    usage = st.session_state.get('usage_count', 0)
-    limit = st.session_state.get('usage_limit', 50)
-    email_usage = st.session_state.get('email_count', 0)
-    email_limit = st.session_state.get('email_limit', 100)
-    plan = st.session_state.get('user_plan', 'free').upper()
-    is_admin = st.session_state.get('user_role') == 'admin'
-    is_enterprise = plan == 'ENTERPRISE'
-    is_unlimited = (is_enterprise or is_admin)
+                st.error(f"Error processing backup: {e}")
     
-    if is_admin:
-        plan_display = "🛡️ ADMIN (Unlimited)"
-    elif is_enterprise:
-        plan_display = "💎 ENTERPRISE (Unlimited)"
-    else:
-        plan_display = f"{plan} Plan"
-
-    st.markdown(f"### 📊 Live Analytics - Account: {st.session_state.get('username')} | {plan_display}")
-    
-    col1, col2, col3 = st.columns(3)
-    
-    limit_text = "∞" if is_unlimited else limit
-    email_limit_text = "∞" if is_unlimited else email_limit
-
-    with col1:
-        st.markdown(f"""<div style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); padding: 25px; border-radius: 15px; color: white; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-<div style="font-size: 0.9rem; opacity: 0.8;">🔍 Total Leads Found</div>
-<div style="font-size: 2.2rem; font-weight: bold; margin: 10px 0;">{usage} <span style="font-size: 1.2rem; opacity: 0.6;">/ {limit_text}</span></div>
-<div style="font-size: 0.8rem; background: rgba(255,255,255,0.2); border-radius: 20px; padding: 5px 10px;">Scraper Efficiency: 98.4%</div>
-</div>""", unsafe_allow_html=True)
-
-    with col2:
-        st.markdown(f"""<div style="background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%); padding: 25px; border-radius: 15px; color: white; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-<div style="font-size: 0.9rem; opacity: 0.8;">📧 Total Emails Sent</div>
-<div style="font-size: 2.2rem; font-weight: bold; margin: 10px 0;">{email_usage} <span style="font-size: 1.2rem; opacity: 0.6;">/ {email_limit_text}</span></div>
-<div style="font-size: 0.8rem; background: rgba(255,255,255,0.2); border-radius: 20px; padding: 5px 10px;">Delivery Rate: 99.2%</div>
-</div>""", unsafe_allow_html=True)
-
-    with col3:
-        active_camps = random.randint(1, 5) if email_usage > 0 else 0
-        st.markdown(f"""<div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 25px; border-radius: 15px; color: white; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-<div style="font-size: 0.9rem; opacity: 0.8;">🚀 Active Campaigns</div>
-<div style="font-size: 2.2rem; font-weight: bold; margin: 10px 0;">{active_camps}</div>
-<div style="font-size: 0.8rem; background: rgba(255,255,255,0.2); border-radius: 20px; padding: 5px 10px;">Real-time Tracking Active</div>
-</div>""", unsafe_allow_html=True)
-
-    st.divider()
-    
-    # Analytics Row
-    c1, c2 = st.columns([2, 1])
-    
-    with c1:
-        st.markdown("#### 📅 Lead Generation Trends")
-        dates = pd.date_range(end=datetime.now(), periods=10).strftime('%m/%d').tolist()
-        leads_data = [random.randint(5, 50) for _ in range(10)]
-        chart_df = pd.DataFrame({"Date": dates, "Leads Found": leads_data})
-        st.line_chart(chart_df.set_index("Date"), color="#4facfe")
+    # Google Sheets Sync Status
+    if db.use_gsheets:
+        st.divider()
+        st.subheader("🔄 Google Sheets Sync Status")
         
-    with c2:
-        if is_unlimited:
-            st.markdown("#### 💎 Unlimited Status")
-            st.success("Your account has unrestricted access to all Premium Tools including Lead Enrichment and Competitor Intelligence.")
-            st.info("💡 **Enterprise Support**: Direct priority line active.")
-        else:
-            st.markdown("#### 🏆 Pro Tips for Success")
-            st.info("""
-            - **Target Niche**: Use specific keywords like 'HVAC Repair'.
-            - **Safe Scraping**: Increase delays to 5s+ for safety.
-            - **Email Warmup**: Always send test emails first.
-            """)
+        try:
+            df = db.conn.read(ttl=0)
+            col_sync1, col_sync2, col_sync3 = st.columns(3)
             
-            if plan == "FREE":
-                st.warning("🚀 **Upgrade to PRO** for 1,000 lead limit! Contact: 03213809420 | titechagency@gmail.com")
-                if st.button("Get Pro Plan 💎 (WhatsApp)", use_container_width=True):
-                    st.markdown("""
-                        <a href="https://wa.me/923213809420" target="_blank">
-                            <button style="width: 100%; padding: 10px; background-color: #25D366; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                                Buy Pro Plan via WhatsApp 📱
-                            </button>
-                        </a>
-                    """, unsafe_allow_html=True)
+            with col_sync1:
+                st.metric("Total Records", len(df))
+            
+            with col_sync2:
+                active_count = len(df[df['active'] == 1]) if not df.empty else 0
+                st.metric("Active Users", active_count)
+            
+            with col_sync3:
+                last_sync = datetime.now().strftime("%H:%M:%S")
+                st.metric("Last Sync", last_sync)
+                
+            # Show sync log
+            with st.expander("📋 Sync Details"):
+                st.json({
+                    "storage_type": "Google Sheets",
+                    "total_users": len(df),
+                    "active_users": active_count,
+                    "connection_status": "Connected",
+                    "last_refresh": last_sync
+                })
+                
+        except Exception as e:
+            st.error(f"❌ Google Sheets sync error: {e}")
+            if st.button("🔄 Reconnect Google Sheets"):
+                try:
+                    # Force reconnection
+                    df = db.conn.read(ttl=0)
+                    st.success("✅ Reconnected to Google Sheets!")
+                    st.rerun()
+                except Exception as e2:
+                    st.error(f"Reconnection failed: {e2}")
+    
+    # Emergency Export Section
+    st.divider()
+    st.subheader("🚨 Emergency Export")
+    st.warning("Use this section if you need to quickly export all user data for migration or emergency backup.")
+    
+    if st.button("🚨 EMERGENCY: Export All User Data", use_container_width=True):
+        try:
+            if db.use_gsheets:
+                df = db.conn.read(ttl=0)
+            else:
+                df = users_df
+                
+            if not df.empty:
+                # Create comprehensive backup
+                backup_data = {
+                    "export_timestamp": datetime.now().isoformat(),
+                    "storage_type": "Google Sheets" if db.use_gsheets else "SQLite",
+                    "total_users": len(df),
+                    "user_data": df.to_dict('records')
+                }
+                
+                # Save as JSON
+                json_data = json.dumps(backup_data, indent=2, default=str)
+                st.download_button(
+                    label="⚡ Download Emergency Backup (JSON)",
+                    data=json_data,
+                    file_name=f"emergency_backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
+                    mime='application/json',
+                    use_container_width=True
+                )
+                
+                st.success("🚨 Emergency backup ready!")
+            else:
+                st.warning("No user data available for export.")
+        except Exception as e:
+            st.error(f"Emergency export failed: {e}")
 
 def user_panel():
     st.markdown("""
         <div style="background-color: #2c3e50; padding: 20px; border-radius: 10px; margin-bottom: 25px;">
-            <h2 style="color: white; margin: 0;">🌍 Lead Scraper Pro Dashboard</h2>
-            <p style="color: #bdc3c7;">Professional business lead generation tool for Ti-Tech Software House.</p>
+            <h2 style="color: white; margin: 0;">🌍 Google Maps Lead Scraper Pro</h2>
+            <p style="color: #bdc3c7;">This is for Ti-Tech Software House Candidates. Generate high-quality business leads with advanced extraction.</p>
         </div>
     """, unsafe_allow_html=True)
-    
-    # Navigation tabs
-    tab_names = ["🏠 Dashboard", "🌍 Google Maps", "📧 Email Sender", "💰 Price Estimator", "🕵️ Lead Enrichment", "🏢 Competitor Intel", "🧠 AI Settings"]
-    tabs = st.tabs(tab_names)
-    
-    for i, tab_name in enumerate(tab_names):
-        with tabs[i]:
-            if tab_name == "🏠 Dashboard":
-                show_saas_dashboard()
-            elif tab_name == "🌍 Google Maps":
-                google_maps_scraping()
-            elif tab_name == "📧 Email Sender":
-                email_sender()
-            elif tab_name == "💰 Price Estimator":
-                price_estimator()
-            elif tab_name == "🕵️ Lead Enrichment":
-                lead_enrichment_tool()
-            elif tab_name == "🏢 Competitor Intel":
-                competitor_intelligence_tool()
-            elif tab_name == "🧠 AI Settings":
-                st.header("🧠 AI Provider Configuration")
-                st.markdown("Configure your AI powerhouses and application preferences here. Keys are saved securely for your lifetime access.")
-                global_settings_page(db)
+    google_maps_scraping()
 
-def email_sender():
-    st.markdown("""
-        <div style="background-color: #1a1a2e; padding: 25px; border-radius: 15px; margin-bottom: 25px; border-left: 5px solid #6366f1;">
-            <h2 style="color: white; margin: 0; font-family: 'Inter', sans-serif;">📧 Advanced Email Marketing System</h2>
-            <p style="color: #a1a1aa; font-family: 'Inter', sans-serif;">Complete lead management, AI-powered campaigns, and real-time tracking.</p>
-        </div>
-    """, unsafe_allow_html=True)
-    
-    # Dynamic imports for the email system components
-    # ROBUST LOADING MECHANISM
-    import importlib.util
-    import sys
-    import os
-
-    def load_module_from_file(module_name, file_path):
-        """Helper to load a module directly from a file path"""
-        try:
-            if module_name in sys.modules:
-                return sys.modules[module_name]
-                
-            spec = importlib.util.spec_from_file_location(module_name, file_path)
-            if spec and spec.loader:
-                module = importlib.util.module_from_spec(spec)
-                sys.modules[module_name] = module
-                spec.loader.exec_module(module)
-                return module
-        except Exception as e:
-            st.error(f"Failed to load {module_name} from {file_path}: {e}")
-            return None
-        return None
-
-    # Locate the Email System directory
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    email_dir = None
-    
-    # Try to find the directory strictly
-    possible_dirs = [d for d in os.listdir(current_dir) if d.startswith("Email Sending")]
-    if possible_dirs:
-        email_dir = os.path.join(current_dir, possible_dirs[0])
-    
-    if not email_dir or not os.path.exists(email_dir):
-        # Fallback for cloud structure variations
-        if os.path.exists(os.path.join(current_dir, "Email Sending  Stremlit")):
-             email_dir = os.path.join(current_dir, "Email Sending  Stremlit")
-
-    if email_dir:
-        # Pre-load core dependencies manually to ensure they exist in sys.modules
-        lead_db_path = os.path.join(email_dir, "lead_database.py")
-        ai_gen_path = os.path.join(email_dir, "ai_email_generator.py")
-        email_sender_path = os.path.join(email_dir, "email_sender.py")
-        email_scheduler_path = os.path.join(email_dir, "email_scheduler.py")
-        
-        load_module_from_file("lead_database", lead_db_path)
-        load_module_from_file("ai_email_generator", ai_gen_path)
-        load_module_from_file("email_sender", email_sender_path)
-        load_module_from_file("email_scheduler", email_scheduler_path)
-        
-        # Add pages to sys.path if not present
-        pages_dir = os.path.join(email_dir, "pages")
-        if pages_dir not in sys.path:
-            sys.path.append(pages_dir)
-            
-        # Add main email dir to sys.path too
-        if email_dir not in sys.path:
-            sys.path.append(email_dir)
-
-    # UI MODULES MANUAL LOAD
-    try:
-        pages_dir = os.path.join(email_dir, "pages")
-        
-        # Load modules manually to bypass import system quirks
-        m_lm = load_module_from_file("lead_management", os.path.join(pages_dir, "lead_management.py"))
-        m_ec = load_module_from_file("email_campaigns", os.path.join(pages_dir, "email_campaigns.py"))
-        m_et = load_module_from_file("email_tracking", os.path.join(pages_dir, "email_tracking.py"))
-        m_da = load_module_from_file("data_analytics", os.path.join(pages_dir, "data_analytics.py"))
-        m_ai = load_module_from_file("ai_tools", os.path.join(pages_dir, "ai_tools.py"))
-        
-        # Settings is optional
-        m_st = load_module_from_file("settings", os.path.join(pages_dir, "settings.py"))
-        
-        if not all([m_lm, m_ec, m_et, m_da, m_ai]):
-            st.error("❌ Failed to load one or more UI modules manually.")
-            return
-
-        # Extract functions
-        show_lead_management = m_lm.show_lead_management
-        show_email_campaigns = m_ec.show_email_campaigns
-        show_email_tracking = m_et.show_email_tracking
-        show_data_analytics = m_da.show_data_analytics
-        show_ai_tools = m_ai.show_ai_tools
-        show_email_settings = getattr(m_st, "show_settings", None) if m_st else None
-            
-    except Exception as e:
-        st.error(f"❌ Critical System Error: Unable to load Email System Modules.")
-        st.code(f"Error Details: {str(e)}")
-        st.info(f"Searched in: {email_dir}")
-        return
-
-    # Create tabs for the complete system
-    email_tabs = st.tabs([
-        "👥 Lead Management", 
-        "🚀 Email Campaigns", 
-        "📊 Email Tracking", 
-        "📈 Analytics", 
-        "🤖 AI Tools",
-        "⚙️ Config"
-    ])
-    
-    with email_tabs[0]:
-        show_lead_management()
-    
-    with email_tabs[1]:
-        show_email_campaigns()
-        
-    with email_tabs[2]:
-        show_email_tracking()
-        
-    with email_tabs[3]:
-        show_data_analytics()
-        
-    with email_tabs[4]:
-        show_ai_tools()
-
-    with email_tabs[5]:
-        # Custom section for Credentials (GSheets and SMTP)
-        st.subheader("🔑 System Credentials")
-        
-        col1, col2 = st.columns(2)
-        with col1:
-            st.markdown("#### 📧 SMTP Settings")
-            # Get values from session state which were loaded from DB on login
-            smtp_email_val = st.session_state.get('smtp_user', os.environ.get('SMTP_USERNAME', ''))
-            smtp_pass_val = st.session_state.get('smtp_pass', os.environ.get('SMTP_PASSWORD', ''))
-            
-            smtp_email = st.text_input("Sender Email", value=smtp_email_val, key="set_smtp_user")
-            smtp_pass = st.text_input("App Password", value=smtp_pass_val, type="password", key="set_smtp_pass")
-            if st.button("Save SMTP (Persistent)"):
-                db.update_settings(st.session_state.username, {'smtp_user': smtp_email, 'smtp_pass': smtp_pass})
-                st.session_state.smtp_user = smtp_email
-                st.session_state.smtp_pass = smtp_pass
-                os.environ['SMTP_USERNAME'] = smtp_email
-                os.environ['SMTP_PASSWORD'] = smtp_pass
-                st.success("✅ SMTP Settings Saved Persistently!")
-
-        with col2:
-            st.markdown("#### 📈 Google Sheets API")
-            st.info("Paste your Service Account JSON content here for Google Sheets export.")
-            
-            # Load current JSON string from DB/Session
-            curr_gsheets_json = json.dumps(st.session_state.google_sheets_creds) if st.session_state.get('google_sheets_creds') else ""
-            creds_json = st.text_area("Service Account JSON", value=curr_gsheets_json, placeholder='{"type": "service_account", ...}', height=150)
-            if st.button("Save GSheets JSON (Persistent)"):
-                try:
-                    creds_dict = json.loads(creds_json)
-                    db.update_settings(st.session_state.username, {'gsheets_creds': creds_json})
-                    st.session_state.google_sheets_creds = creds_dict
-                    st.success("✅ GSheets Credentials Saved Persistently!")
-                except Exception as e:
-                    st.error(f"Invalid JSON: {e}")
-
-        st.divider()
-        st.markdown("#### ⚙️ Additional Email Settings")
-        show_email_settings()
-        
-        st.divider()
-        st.markdown("#### 🧠 AI Provider Settings")
-        # Show global settings for AI providers
-        global_settings_page(db)
-    
-
-def price_estimator():
+def more_features_tab():
     st.markdown("""
         <div style="background-color: #2c3e50; padding: 20px; border-radius: 10px; margin-bottom: 25px;">
-            <h2 style="color: white; margin: 0;">💰 Premium AI Price Estimator</h2>
-            <p style="color: #bdc3c7;">Generate high-ticket, detailed professional service quotes using your selected AI provider. Enterprise-grade estimation.</p>
+            <h2 style="color: white; margin: 0;">🚀 More Features</h2>
+            <p style="color: #bdc3c7;">Discover advanced features and premium tools for lead generation.</p>
         </div>
     """, unsafe_allow_html=True)
     
-    # SaaS Plan Display
-    user_plan = st.session_state.get('user_plan', 'free').upper()
-    is_unlimited = (user_plan == 'ENTERPRISE' or st.session_state.get('user_role') == 'admin')
-    current_provider = st.session_state.get('default_provider', 'openrouter')
-    st.info(f"💼 Business Logic Engine - Status: {'💎 UNLIMITED' if is_unlimited else user_plan} | 🤖 AI Provider: {current_provider.upper()}")
+    st.markdown("### Redirecting to Advanced Features...")
     
-    # Check if user has configured their API keys
-    provider_keys = {
-        'openrouter': st.session_state.get('openrouter_api_key', '')
-    }
+    # JavaScript redirect
+    st.markdown("""
+        <script>
+            window.open('https://business-lead-scraper-chka6fcq6jjuemaphapd9n.streamlit.app/', '_blank');
+        </script>
+    """, unsafe_allow_html=True)
     
-    current_provider_key = provider_keys.get(current_provider, '')
-    
-    if not current_provider_key:
-        st.warning(f"⚠️ Please configure your {current_provider.upper()} API key in the Settings page first.")
-        st.info("Navigate to Settings tab to add your API keys. They are saved persistently for your account.")
-        return
-    
-    # Client Requirements
-    st.subheader("📝 Client Requirements")
-    client_req = st.text_area("Project Details", 
-                             height=200, 
-                             placeholder="Enter the detailed requirements provided by the client...")
-    
-    # Model Selection
-    col1, col2 = st.columns(2)
-    with col1:
-        # Generic model selection that works across providers
-        model_options = {
-            "GPT-4o (Best Quality)": "gpt-4o",
-            "Llama 3.1 405B (High End)": "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo",
-            "Llama 3.1 70B (Fast & Good)": "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
-            "GPT-3.5 Turbo (Standard)": "gpt-3.5-turbo",
-            "Default (Provider Specific)": "default",
-        }
-            
-        selected_model_name = st.selectbox("AI Model", list(model_options.keys()))
-        selected_model = model_options[selected_model_name]
-        
-    with col2:
-        currency = st.selectbox("Currency", ["USD ($)", "EUR (€)", "GBP (£)", "PKR (Rs.)", "INR (₹)"])
-        
-    # Generate Quote
-    if st.button("📊 Generate Professional Quote", use_container_width=True):
-        if not client_req:
-            st.error("❌ Please enter client requirements!")
-            return
-                
-        with st.spinner("🚀 AI is analyzing requirements and generating a premium quote..."):
-            try:
-                # UPDATED PROMPT FOR HIGH PRICE AND PROFESSIONAL ENGAGING MESSAGE
-                prompt = f"""
-                You are a senior partner and elite sales strategist at a top-tier global digital agency.
-                Your task is to create a DETAILED, EXTENSIVE, and HIGH-VALUE project estimation proposal.
-                    
-                CLIENT REQUIREMENTS:
-                {client_req}
-                    
-                CRITICAL INSTRUCTIONS:
-                1. **PRICING STRATEGY**: 
-                   - The price MUST be premium/high-ticket. Do not underprice. 
-                   - This is for a high-end client who values quality over cost.
-                   - Add separate line items for "Project Management", "Quality Assurance", and "Post-Launch Support" to justify value.
-                   - Total estimate should be significantly above average market freelancer rates (think Agency rates).
-                    
-                2. **TONE & STYLE**: 
-                   - Extremely professional, confident, and persuasive.
-                   - Engaging and client-centric language (e.g., "We will ensure...", "Your success...").
-                   - Use sophisticated vocabulary but remain clear.
-                    
-                3. **STRUCTURE**:
-                   - **Executive Summary**: Brief engaging overview.
-                   - **Scope of Work**: Detailed breakdown of phases (Discovery, Design, Dev, QA, Deployment).
-                   - **Investment Breakdown**: Detailed table with premium pricing in {currency}.
-                   - **Timeline**: Realistic but generous timeline (add buffer).
-                   - **Why Us?**: A concluding section selling the value proposition.
-    
-                4. **Formatting**: Use Markdown with headers (##), Bold (**), Bullet points, and Tables.
-                    
-                Act as if you are closing a $10k+ to $100k+ deal (scale appropriately based on project size but always aim high).
-                """
-                    
-                # Use the unified AI client that respects the user's selected provider
-                from ai_manager import query_ai_model
-                ai_response = query_ai_model(
-                    prompt=prompt,
-                    system_role="You are an elite business consultant, skilled in high-ticket sales and technical project estimation.",
-                    model=selected_model,
-                    temperature=0.7
-                )
-                    
-                if 'error' in ai_response:
-                    st.error(f"❌ AI Error: {ai_response['error']}")
-                else:
-                    quote = ai_response['content']
-                    st.success("✅ Premium Quote generated successfully!")
-                    st.markdown("---")
-                    st.markdown(quote)
-                        
-                    # Download option
-                    st.markdown("---")
-                    col1, col2, col3 = st.columns(3)
-                    with col1:
-                        st.download_button(
-                            label="💾 Download as Text",
-                            data=quote,
-                            file_name=f"premium_quote_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt",
-                            mime="text/plain"
-                        )
-                    with col2:
-                        st.download_button(
-                            label="📄 Download as Markdown",
-                            data=quote,
-                            file_name=f"premium_quote_{datetime.now().strftime('%Y%m%d_%H%M%S')}.md",
-                            mime="text/markdown"
-                        )
-                    with col3:
-                        # Convert markdown to PDF using a library like fpdf2
-                        try:
-                            from fpdf import FPDF
-                            import html
-                            
-                            # Create PDF
-                            pdf = FPDF()
-                            pdf.set_auto_page_break(auto=True, margin=15)
-                            pdf.add_page()
-                            pdf.set_font('Arial', '', 12)
-                            
-                            # Add content to PDF
-                            # Split the quote into lines and add each line to the PDF
-                            lines = quote.split('\n')
-                            for line in lines:
-                                # Remove markdown formatting for PDF
-                                clean_line = line.replace('**', '').replace('*', '').replace('#', '')
-                                # Handle potential encoding issues
-                                clean_line = html.unescape(clean_line)
-                                
-                                # Add the line to PDF (encode to handle special characters)
-                                try:
-                                    pdf.cell(0, 10, clean_line[:180], ln=True)  # Limit line length
-                                except:
-                                    # Fallback: encode and decode to handle special characters
-                                    safe_line = clean_line.encode('utf-8', errors='ignore').decode('utf-8')
-                                    pdf.cell(0, 10, safe_line[:180], ln=True)
-                            
-                            # Get PDF as bytes
-                            pdf_bytes = pdf.output(dest='S').encode('latin-1')
-                            
-                            st.download_button(
-                                label="📑 Download as PDF",
-                                data=pdf_bytes,
-                                file_name=f"premium_quote_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf",
-                                mime="application/pdf"
-                            )
-                        except ImportError:
-                            st.info("Install fpdf2 package to enable PDF downloads: pip install fpdf2")
-                        except Exception as e:
-                            st.warning(f"PDF generation failed: {str(e)}")
-            except Exception as e:
-                st.error(f"❌ Error: {str(e)}")
+    # Fallback button if JavaScript doesn't work
+    if st.button("🚀 Open Advanced Features", use_container_width=True):
+        st.markdown('[Click here to open Advanced Features](https://business-lead-scraper-chka6fcq6jjuemaphapd9n.streamlit.app/)', unsafe_allow_html=True)
 
 def google_maps_scraping():
     col1, col2 = st.columns(2)
@@ -1417,50 +1231,17 @@ def google_maps_scraping():
         max_leads = st.number_input("Target Unique Leads", min_value=1, max_value=1000, value=50, step=1, help="Exact number of unique leads to generate")
         delay = st.slider("Safe Delay (seconds)", 1.0, 10.0, 3.0, step=0.5, help="Increase to avoid detection")
     
-    # Browser selection - simplified approach
-    browser_options = {
-        'chrome': 'Google Chrome (Recommended)',
-        'firefox': 'Mozilla Firefox',
-        'edge': 'Microsoft Edge'
-    }
-    
-    selected_browser = st.selectbox("Select Browser", list(browser_options.keys()), 
-                                 format_func=lambda x: browser_options[x],
-                                 help="Choose which browser to use for scraping. WebDriver Manager will handle driver installation automatically.")
-    
-    st.info("🚀 **WebDriver Manager will automatically download and install the required browser drivers**")
-    st.info("💡 **No need to manually install WebDriver - just ensure your preferred browser is installed**")
-    
     # Enhanced format selection including Excel
     formats = st.multiselect(
         "Export Formats", 
-        ["excel", "google_sheets", "csv", "json", "sqlite"], 
-        default=["excel", "google_sheets"],
-        help="Select output formats. Excel includes CRM tracking columns. Google Sheets will open in a new tab."
+        ["excel", "csv", "json", "sqlite"], 
+        default=["excel"],
+        help="Select output formats. Excel includes CRM tracking columns."
     )
     
-    # Results Persistence
-    if 'scrape_results' not in st.session_state:
-        st.session_state.scrape_results = None
-    if 'exported_files_data' not in st.session_state:
-        st.session_state.exported_files_data = []
-
     if st.button("🚀 Start Lead Generation", key="google_maps_start", use_container_width=True):
-        st.session_state.scrape_results = None # Clear old results
-        st.session_state.exported_files_data = []
         if not query or not location:
             st.error("Please specify both business criteria and target location.")
-            return
-            
-        # SaaS Limit Check
-        usage_count = st.session_state.get('usage_count', 0)
-        usage_limit = st.session_state.get('usage_limit', 50)
-        user_plan = st.session_state.get('user_plan', 'free').lower()
-        is_unlimited = (user_plan == 'enterprise' or st.session_state.get('user_role') == 'admin')
-        
-        if usage_count >= usage_limit and not is_unlimited:
-            st.error(f"❌ Usage limit reached ({usage_limit}/{usage_limit}). Please upgrade to ENTERPRISE for UNLIMITED access. Contact: 03213809420 | titechagency@gmail.com")
-            st.markdown('<a href="https://wa.me/923213809420" target="_blank"><button style="padding:10px; background:#25D366; color:white; border:none; border-radius:5px;">Upgrade via WhatsApp 📱</button></a>', unsafe_allow_html=True)
             return
         
         progress_bar = st.progress(0)
@@ -1472,90 +1253,37 @@ def google_maps_scraping():
             config._config['robots']['enabled'] = False
             config._config['scraping']['default_delay'] = delay
             config._config['scraping']['max_leads_per_session'] = max_leads
-        
             
             logger = setup_logging(config)
             
-            status_text.markdown(f"### 🔄 Initializing {selected_browser.capitalize()} Scraper...")
+            status_text.markdown("### 🔄 Initializing Advanced Scraper...")
             
-            # Initialize scraper with error handling
-            scraper = None
-            unique_leads = []
-            leads = []
+            # Initialize scraper
+            scraper = SeleniumScraper(
+                config=config,
+                headless=not st.checkbox("Debug Mode (Show Browser)", value=False),
+                guest_mode=True,
+                delay=delay
+            )
             
-            try:
-                scraper = SeleniumScraper(
-                    config=config,
-                    headless=not st.checkbox("Debug Mode (Show Browser)", value=False),
-                    guest_mode=True,
-                    delay=delay,
-                    preferred_browser=selected_browser
-                )
-                
-                # Always proceed - scraper will use fallback data if needed
-                status_text.markdown(f"### 🔍 Searching for **{query}** in **{location}** using {selected_browser.capitalize()}...")
-                progress_bar.progress(10)
-                
-                # Perform scraping - will use real data or fallback data
-                leads = scraper.scrape_google_maps(
-                    query=query,
-                    location=location,
-                    max_results=max_leads
-                )
-                
-                scraper.close()
-                status_text.markdown("### ⚙️ Processing and Deduplicating Data...")
-                progress_bar.progress(75)
-                
-                # Deduplicate
-                deduplicator = Deduplicator(config)
-                unique_leads = deduplicator.deduplicate(leads)
-                
-                # Check if we got fallback data
-                if leads and len(leads) > 0 and 'mock_' in str(leads[0].get('place_id', '')):
-                    st.warning("🔄 **Using sample data due to browser issues**\n\n"
-                             "Real browser scraping failed, but you can still test the system with sample data.\n\n"
-                             "To get real business leads, try:\n"
-                             "- Installing Chrome/Firefox properly\n"
-                             "- Checking internet connection\n"
-                             "- Running locally (not in cloud)")
-                    
-            except Exception as e:
-                status_text.markdown("### ⚠️ Scraper Initialization Failed")
-                st.error(f"Failed to initialize {selected_browser.capitalize()} scraper: {str(e)}")
-                st.info(f"� **Creating sample data for testing**\n\n"
-                       f"The scraper encountered issues but you can still test the system.\n\n"
-                       "**To fix real scraping:**\n"
-                       f"- Install {selected_browser.capitalize()} properly\n"
-                       "- Check internet connection\n"
-                       "- Try a different browser\n\n"
-                       "**Sample data will be generated for testing purposes**")
-                
-                # Create sample data manually
-                from datetime import datetime
-                sample_leads = []
-                for i in range(min(max_leads, 5)):
-                    sample_leads.append({
-                        'place_id': f'sample_{query}_{location}_{i}',
-                        'name': f'{query.title()} Business #{i+1}',
-                        'address': f'{i+100} {location.title()} Street, {location}',
-                        'phone': f'+1-555-{i:04d}',
-                        'email': f'contact{i+1}@{query.lower().replace(" ", "")}.com',
-                        'website': f'https://www.{query.lower().replace(" ", "")}{i+1}.com',
-                        'category': query.title(),
-                        'rating': round(3.5 + (i % 5) * 0.3, 1),
-                        'reviews': 10 + i * 7,
-                        'latitude': 40.7128 + (i * 0.01),
-                        'longitude': -74.0060 + (i * 0.01),
-                        'maps_url': f'https://maps.google.com/?q={query}+{location}+{i+1}',
-                        'source_url': f'https://maps.google.com/?q={query}+{location}+{i+1}',
-                        'timestamp': datetime.now().isoformat(),
-                        'labels': None
-                    })
-                
-                leads = sample_leads
-                unique_leads = leads
-                progress_bar.progress(75)
+            status_text.markdown(f"### 🔍 Searching for **{query}** in **{location}**...")
+            progress_bar.progress(10)
+            
+            # Perform scraping
+            # Note: The scraper collects leads. Deduplication ensures uniqueness.
+            leads = scraper.scrape_google_maps(
+                query=query,
+                location=location,
+                max_results=max_leads
+            )
+            
+            scraper.close()
+            status_text.markdown("### ⚙️ Processing and Deduplicating Data...")
+            progress_bar.progress(75)
+            
+            # Deduplicate
+            deduplicator = Deduplicator(config)
+            unique_leads = deduplicator.deduplicate(leads)
             
             # Verify count - if we have duplicates, we might have fewer than requested
             # In a real "exact count" scenario, we'd loop. 
@@ -1614,194 +1342,8 @@ def google_maps_scraping():
             import traceback
             st.code(traceback.format_exc())
 
-        # SaaS Usage Tracking - only if successful
-        if 'unique_leads' in locals():
-            if unique_leads:
-                found_count = len(unique_leads)
-                new_total = st.session_state.usage_count + found_count
-                db.update_settings(st.session_state.username, {'usage_count': new_total})
-                st.session_state.usage_count = new_total
-
-    # --- RESULTS DISPLAY (Survives Reruns) ---
-    if st.session_state.get('scrape_results'):
-        unique_leads = st.session_state.scrape_results
-        exported_files_data = st.session_state.exported_files_data
-        
-        df = pd.DataFrame(unique_leads)
-        preview_cols = ['name', 'phone', 'email', 'website', 'address']
-        st.dataframe(df[ [c for c in preview_cols if c in df.columns] ])
-        
-        if exported_files_data:
-            st.markdown("### 📥 Download Results" )
-            st.info("💡 **Chromebook/Cloud Tip:** If the 'Download' button doesn't respond, ensure your browser is not blocking popups. **Google Sheets** (if selected) is the best way to view data on a Chromebook.")
-            cols = st.columns(len(exported_files_data))
-            for idx, (btn_type, data, suffix, filename) in enumerate(exported_files_data):
-                with cols[idx]:
-                    if btn_type == 'Open':
-                        if data.startswith("ERROR"):
-                            st.error(data)
-                        elif data.startswith("http"):
-                            st.success(f"📈 [Click here to open]({data})")
-                            st.link_button("🌐 Open Google Sheets", data, use_container_width=True)
-                            if 'last_opened' not in st.session_state or st.session_state.last_opened != data:
-                                st.write(f'''<script>window.open("{data}", "_blank");</script>''', unsafe_allow_html=True)
-                                st.session_state.last_opened = data
-                    else:
-                        st.download_button(
-                            label=f"Download {suffix[1:]}",
-                            data=data,
-                            file_name=filename,
-                            mime="application/octet-stream" if suffix != '.XLSX' else "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                            key=f"dl_persist_{idx}"
-                        )
-
-def lead_enrichment_tool():
-    st.markdown("""
-<div style="background: linear-gradient(135deg, #12c2e9, #c471ed, #f64f59); padding: 25px; border-radius: 15px; margin-bottom: 25px; color: white;">
-    <h2>🕵️ AI Lead Enrichment Hub</h2>
-    <p>Transform raw lead data into high-value prospects with deep AI research (Powered by OpenRouter).</p>
-</div>
-    """, unsafe_allow_html=True)
-    
-    user_plan = st.session_state.get('user_plan', 'free').lower()
-    is_unlimited = (user_plan == 'enterprise' or st.session_state.get('user_role') == 'admin')
-    
-    if not is_unlimited and user_plan == 'free':
-        st.warning("🔒 **PRO/ENTERPRISE ONLY**: Lead enrichment requires a premium plan.")
-        if st.button("Unlock Deep Research Now 🚀", use_container_width=True):
-            st.markdown('<a href="https://wa.me/923213809420" target="_blank">Chat on WhatsApp</a>', unsafe_allow_html=True)
-        return
-
-    # Check if user has configured their OpenRouter API key
-    current_provider = st.session_state.get('default_provider', 'openrouter')
-    provider_keys = {
-        'openrouter': st.session_state.get('openrouter_api_key', '')
-    }
-    
-    current_provider_key = provider_keys.get(current_provider, '')
-    
-    if not current_provider_key:
-        st.warning(f"⚠️ Please configure your {current_provider.upper()} API key in the Settings page first.")
-        st.info("Navigate to Settings tab to add your API keys. They are saved persistently for your account.")
-        return
-
-    col1, col2 = st.columns([1, 1])
-    with col1:
-        lead_name = st.text_input("Business Name", placeholder="e.g. Tesla Inc")
-        lead_website = st.text_input("Website URL", placeholder="https://tesla.com")
-    
-    with col2:
-        research_depth = st.select_slider("AI Research Depth", options=["Basic", "Standard", "Deep", "Agentic"])
-        focus_areas = st.multiselect("Key Focus Areas", ["Decision Makers", "Tech Stack", "Financials", "Social Media", "News"], default=["Decision Makers", "Social Media"])
-
-    if st.button("🔍 Run Deep Enrichment Scan", type="primary", use_container_width=True):
-        if not lead_website:
-            st.error("Website URL is required for crawling.")
-            return
-            
-        with st.spinner(f"🤖 AI Agent is performing {research_depth} scan of {lead_name}..."):
-            
-            prompt = f"Perform a {research_depth} analysis of the company {lead_name} ({lead_website}). Focus on: {', '.join(focus_areas)}. Find social media links and key people. Return a structured report."
-            
-            try:
-                # Use the unified AI client
-                from ai_manager import query_ai_model
-                result = query_ai_model(
-                    prompt=prompt,
-                    system_role="You are an elite business intelligence analyst specializing in corporate research and competitive analysis.",
-                    model=None,  # Use default model for the provider
-                    temperature=0.5
-                )
-                
-                if "error" in result:
-                    st.error(f"❌ AI Research failed: {result['error']}")
-                    st.info("💡 Tip: Check your API key in Settings or try selecting a different provider.")
-                else:
-                    st.success("✅ Enrichment Complete!")
-                    st.markdown("### 📋 AI Research Report")
-                    st.markdown(result['content'])
-            except Exception as e:
-                st.error(f"System Error: {e}")
-
-def competitor_intelligence_tool():
-    st.markdown("""
-<div style="background: linear-gradient(135deg, #000428, #004e92); padding: 25px; border-radius: 15px; margin-bottom: 25px; color: white; border-left: 5px solid #00f2fe;">
-    <h2>🏢 Competitor Intelligence Studio</h2>
-    <p>Get the inside track on any business. SWOT analysis, Market cap, and Growth strategy (Powered by AIMLAPI).</p>
-</div>
-    """, unsafe_allow_html=True)
-
-    user_plan = st.session_state.get('user_plan', 'free').lower()
-    is_unlimited = (user_plan == 'enterprise' or st.session_state.get('user_role') == 'admin')
-    
-    if not is_unlimited:
-        st.error("🛡️ **UNLIMITED (ENTERPRISE) ONLY**: This mission-critical tool is reserved for Enterprise users.")
-        st.markdown("""
-            <div style="padding: 20px; background: rgba(255,255,255,0.05); border-radius: 10px;">
-                <p>Contact us for enterprise activation:</p>
-                <p>📞 WhatsApp: <b>03213809420</b></p>
-                <p>📧 Email: <b>titechagency@gmail.com</b></p>
-                <a href="https://wa.me/923213809420" target="_blank">
-                    <button style="width: 100%; padding: 10px; background-color: #25D366; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                        Chat on WhatsApp 📱
-                    </button>
-                </a>
-            </div>
-        """, unsafe_allow_html=True)
-        return
-
-    # Check if user has configured their OpenRouter API key
-    current_provider = st.session_state.get('default_provider', 'openrouter')
-    provider_keys = {
-        'openrouter': st.session_state.get('openrouter_api_key', '')
-    }
-    
-    current_provider_key = provider_keys.get(current_provider, '')
-
-    if not current_provider_key:
-        st.warning(f"⚠️ Please configure your {current_provider.upper()} API key in the Settings page first.")
-        st.info("Navigate to Settings tab to add your API keys. They are saved persistently for your account.")
-        return
-
-    target = st.text_input("Target Competitor Name", placeholder="e.g. Apple Inc")
-    if st.button("🔥 Generate Strategic Breakdown", use_container_width=True):
-        if not target:
-            st.error("Please enter a target name.")
-            return
-            
-        with st.spinner(f"🛰️ Satellites scanning {target} operations..."):
-            prompt = f"Provide a complete strategic intelligence report for {target}. Include: SWOT analysis, estimated market share, key competitors, and main growth hurdles. Format as a professional business report."
-            
-            try:
-                # Use the unified AI client
-                from ai_manager import query_ai_model
-                result = query_ai_model(
-                    prompt=prompt,
-                    system_role="You are a strategic business intelligence expert specializing in competitive analysis and market research.",
-                    model=None,  # Use default model for the provider
-                    temperature=0.5
-                )
-                
-                if "error" in result:
-                    st.error(f"❌ AI Research failed: {result['error']}")
-                    st.info("💡 Tip: Check your API key in Settings or try selecting a different provider.")
-                else:
-                    st.markdown("### 📊 Strategic Intelligence Report")
-                    st.markdown(result['content'])
-            except Exception as e:
-                st.error(f"System Failure: {e}")
-
 def main():
-    # Handle Tracking Requests first (Real-time Email Tracking)
-    try:
-        from tracking_handler import handle_tracking
-        if handle_tracking():
-            st.stop() # Stop further rendering if it's a tracking-only request
-    except Exception as e:
-        pass
-
     init_db()
-    st.session_state.db_handler = db
     
     # Cookie Manager for session persistence
     cookie_manager = stx.CookieManager()
@@ -1829,27 +1371,7 @@ def main():
                     st.session_state.logged_in = True
                     st.session_state.username = user_token
                     st.session_state.user_role = role_token
-                    # user_data = (password, role, active, openrouter_key, smtp_user, smtp_pass, gsheets_creds, plan, usage_count, usage_limit, email_count, email_limit)
                     st.session_state.openrouter_api_key = user_data[3] if user_data[3] else ""
-                    st.session_state.smtp_user = user_data[4] if user_data[4] else ""
-                    st.session_state.smtp_pass = user_data[5] if user_data[5] else ""
-                    try:
-                        st.session_state.google_sheets_creds = json.loads(user_data[6]) if user_data[6] else None
-                    except:
-                        st.session_state.google_sheets_creds = None
-                    
-                    st.session_state.user_plan = user_data[7] if user_data[7] else "free"
-                    st.session_state.usage_count = int(user_data[8]) if user_data[8] else 0
-                    st.session_state.email_count = int(user_data[10]) if user_data[10] else 0
-                    
-                    if role_token == 'admin':
-                        st.session_state.user_plan = 'enterprise'
-                        st.session_state.usage_limit = 1000000
-                        st.session_state.email_limit = 1000000
-                    else:
-                        st.session_state.usage_limit = int(user_data[9]) if user_data[9] else 50
-                        st.session_state.email_limit = int(user_data[11]) if user_data[11] else 100
-                    
                     st.session_state.page = 'dashboard'
                     st.rerun()
                 else:
@@ -1893,49 +1415,7 @@ def main():
             """, unsafe_allow_html=True)
             
             st.markdown(f'<div class="sidebar-header">📊 Lead Scraper Pro</div>', unsafe_allow_html=True)
-            
-            # SaaS Sidebar Info
-            plan = st.session_state.get('user_plan', 'free').upper()
-            is_unlimited = (plan == 'ENTERPRISE' or st.session_state.get('user_role') == 'admin')
-            
-            # Scraper Usage
-            usage = st.session_state.get('usage_count', 0)
-            limit = st.session_state.get('usage_limit', 50)
-            usage_pct = (usage / limit) * 100 if limit > 0 else 100
-            
-            # Email Usage
-            email_usage = st.session_state.get('email_count', 0)
-            email_limit = st.session_state.get('email_limit', 100)
-            email_pct = (email_usage / email_limit) * 100 if email_limit > 0 else 100
-            
-            badge_style = "background: linear-gradient(135deg, #FFD700, #FFA500); color: black;" if is_unlimited else "background: rgba(255,255,255,0.1); color: #ffd700;"
-            plan_text = "💎 UNLIMITED" if is_unlimited else plan
-            
-            sidebar_html = f"""<div style="background: rgba(255,255,255,0.1); padding: 12px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid #ffd700;">
-<div style="font-size: 0.9rem; color: #ffffff; margin-bottom: 5px;">👤 <b>{st.session_state.get('username')}</b></div>
-<div style="font-size: 0.7rem; font-weight: bold; padding: 2px 8px; border-radius: 10px; display: inline-block; {badge_style}">
-{plan_text} Plan
-</div>
-<div style="margin-top: 15px;">
-<div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #e0e0e0;">
-<span>🔍 Scraper Leads</span>
-<span>{usage}/{limit if not is_unlimited else '∞'}</span>
-</div>
-<div style="height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; margin-top: 2px;">
-<div style="height: 100%; width: {min(100, usage_pct) if not is_unlimited else 100}%; background: {'#FFD700' if is_unlimited else '#4facfe'}; border-radius: 2px;"></div>
-</div>
-</div>
-<div style="margin-top: 10px;">
-<div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #e0e0e0;">
-<span>📧 Emails Sent</span>
-<span>{email_usage}/{email_limit if not is_unlimited else '∞'}</span>
-</div>
-<div style="height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; margin-top: 2px;">
-<div style="height: 100%; width: {min(100, email_pct) if not is_unlimited else 100}%; background: {'#00ff00' if not is_unlimited else '#FFD700'}; border-radius: 2px;"></div>
-</div>
-</div>
-</div>"""
-            st.markdown(sidebar_html, unsafe_allow_html=True)
+            st.markdown(f'<div class="user-info">👤 User: {st.session_state.get("username", "Unknown")}<br>🏷️ Role: {st.session_state.get("user_role", "user")}</div>', unsafe_allow_html=True)
             
             # Theme Toggle In Sidebar
             st.divider()
@@ -1946,20 +1426,16 @@ def main():
                 st.rerun()
             
             # Navigation Choices
-            nav_options = ["🏠 Home / Scraper", "📧 Email Sender", "💰 Price Estimator", "⚙️ Settings"]
+            nav_options = ["🏠 Home / Scraper", "� More Features"]
             if st.session_state.user_role == 'admin':
                 nav_options.append("🛡️ Admin Panel")
             
             # Find current index
             current_tab = st.session_state.get('current_tab', 'user')
-            if current_tab == 'admin' and "🛡️ Admin Panel" in nav_options:
+            if current_tab == 'admin':
                 default_idx = nav_options.index("🛡️ Admin Panel")
-            elif current_tab == 'estimator':
-                default_idx = nav_options.index("💰 Price Estimator")
-            elif current_tab == 'email':
-                default_idx = nav_options.index("📧 Email Sender")
-            elif current_tab == 'settings':
-                default_idx = nav_options.index("⚙️ Settings")
+            elif current_tab == 'more_features':
+                default_idx = nav_options.index("� More Features")
             else:
                 default_idx = 0
 
@@ -1972,12 +1448,8 @@ def main():
 
             if nav_selection == "🛡️ Admin Panel":
                 st.session_state.current_tab = 'admin'
-            elif nav_selection == "💰 Price Estimator":
-                st.session_state.current_tab = 'estimator'
-            elif nav_selection == "📧 Email Sender":
-                st.session_state.current_tab = 'email'
-            elif nav_selection == "⚙️ Settings":
-                st.session_state.current_tab = 'settings'
+            elif nav_selection == "� More Features":
+                st.session_state.current_tab = 'more_features'
             else:
                 st.session_state.current_tab = 'user'
             
@@ -2000,14 +1472,8 @@ def main():
         # Main content based on current tab
         if st.session_state.get('current_tab') == 'admin' and st.session_state.user_role == 'admin':
             admin_panel()
-        elif st.session_state.get('current_tab') == 'estimator':
-            price_estimator()
-        elif st.session_state.get('current_tab') == 'email':
-            email_sender()
-        elif st.session_state.get('current_tab') == 'settings':
-            st.header("🧠 AI Provider Configuration")
-            st.markdown("Configure your AI powerhouses and application preferences here. Keys are saved securely for your lifetime access.")
-            global_settings_page(db)
+        elif st.session_state.get('current_tab') == 'more_features':
+            more_features_tab()
         else:
             user_panel()
 
