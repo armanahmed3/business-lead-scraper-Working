@@ -1417,6 +1417,29 @@ def google_maps_scraping():
         max_leads = st.number_input("Target Unique Leads", min_value=1, max_value=1000, value=50, step=1, help="Exact number of unique leads to generate")
         delay = st.slider("Safe Delay (seconds)", 1.0, 10.0, 3.0, step=0.5, help="Increase to avoid detection")
     
+    # Browser selection
+    available_browsers = []
+    try:
+        from selenium_scraper import get_available_browsers
+        available_browsers = get_available_browsers()
+    except:
+        available_browsers = []
+    
+    if available_browsers:
+        browser_options = {
+            'chrome': 'Google Chrome (Recommended)',
+            'firefox': 'Mozilla Firefox',
+            'edge': 'Microsoft Edge'
+        }
+        # Only show browsers that are actually available
+        browser_choices = {k: v for k, v in browser_options.items() if k in available_browsers}
+        selected_browser = st.selectbox("Select Browser", list(browser_choices.keys()), 
+                                     format_func=lambda x: browser_choices[x],
+                                     help="Choose which browser to use for scraping")
+    else:
+        st.warning("⚠️ No supported browsers detected. Please install Google Chrome, Firefox, or Microsoft Edge.")
+        selected_browser = None
+    
     # Enhanced format selection including Excel
     formats = st.multiselect(
         "Export Formats", 
@@ -1436,6 +1459,10 @@ def google_maps_scraping():
         st.session_state.exported_files_data = []
         if not query or not location:
             st.error("Please specify both business criteria and target location.")
+            return
+            
+        if not available_browsers:
+            st.error("❌ No supported browsers found. Please install Google Chrome, Firefox, or Microsoft Edge.")
             return
             
         # SaaS Limit Check
@@ -1462,7 +1489,7 @@ def google_maps_scraping():
             
             logger = setup_logging(config)
             
-            status_text.markdown("### 🔄 Initializing Advanced Scraper...")
+            status_text.markdown(f"### 🔄 Initializing {selected_browser.capitalize()} Scraper...")
             
             # Initialize scraper with error handling
             scraper = None
@@ -1474,22 +1501,24 @@ def google_maps_scraping():
                     config=config,
                     headless=not st.checkbox("Debug Mode (Show Browser)", value=False),
                     guest_mode=True,
-                    delay=delay
+                    delay=delay,
+                    preferred_browser=selected_browser
                 )
                 
                 # Check if scraper is properly initialized
-                if not hasattr(scraper, 'chrome_available') or not scraper.chrome_available:
-                    status_text.markdown("### ⚠️ Chrome Not Available - Real Scraper Required")
-                    st.error("🚫 **Chrome browser is required for real lead generation**\n\n"
+                if not hasattr(scraper, 'browser_available') or not scraper.browser_available:
+                    status_text.markdown("### ⚠️ Browser Not Available")
+                    st.error(f"🚫 **{selected_browser.capitalize()} browser is required for real lead generation**\n\n"
                            "Demo mode has been disabled to ensure only real, unique leads are generated.\n\n"
-                           "**To get real leads:**\n"
-                           "- Install Google Chrome browser\n"
+                           f"**To get real leads with {selected_browser.capitalize()}:**\n"
+                           f"- Install {selected_browser.capitalize()} browser\n"
                            "- Run this application locally\n"
-                           "- Ensure Chrome WebDriver is available\n\n"
+                           "- Ensure WebDriver is available\n\n"
+                           "**Alternative browsers available:** " + ", ".join([b.capitalize() for b in available_browsers if b != selected_browser]) + "\n\n"
                            "**No demo/sample data will be generated - only real business leads!**")
                     return
                 
-                status_text.markdown(f"### 🔍 Searching for **{query}** in **{location}**...")
+                status_text.markdown(f"### 🔍 Searching for **{query}** in **{location}** using {selected_browser.capitalize()}...")
                 progress_bar.progress(10)
                 
                 # Perform scraping
@@ -1510,9 +1539,10 @@ def google_maps_scraping():
                 
             except Exception as e:
                 status_text.markdown("### ⚠️ Scraper Initialization Failed")
-                st.error(f"Failed to initialize scraper: {str(e)}")
-                st.info("🚫 **Real Chrome browser is required for lead generation**\n\n"
-                       "Please install Google Chrome and ensure Chrome WebDriver is available.\n\n"
+                st.error(f"Failed to initialize {selected_browser.capitalize()} scraper: {str(e)}")
+                st.info(f"🚫 **Real browser is required for lead generation**\n\n"
+                       f"Please install {selected_browser.capitalize()} and ensure WebDriver is available.\n\n"
+                       "**Available browsers:** " + ", ".join([b.capitalize() for b in available_browsers]) + "\n\n"
                        "**No demo data will be generated - only real business leads!**")
                 return
             

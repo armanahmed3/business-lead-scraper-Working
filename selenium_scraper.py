@@ -36,7 +36,11 @@ from selenium.common.exceptions import (
     WebDriverException
 )
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from selenium.webdriver.edge.service import Service as EdgeService
 
 from robots_checker import RobotsChecker
 from utils import sleep_random
@@ -129,10 +133,94 @@ def is_chrome_available():
         return False
 
 
-class SeleniumScraper:
-    """Selenium-based scraper for extracting business leads from Google Maps."""
+def is_firefox_available():
+    """Check if Firefox is available on the system."""
     
-    def __init__(self, config, headless=False, guest_mode=True, profile=None, delay=1.5):
+    try:
+        system = platform.system()
+        
+        if system == "Windows":
+            common_paths = [
+                r"C:\Program Files\Mozilla Firefox\firefox.exe",
+                r"C:\Program Files (x86)\Mozilla Firefox\firefox.exe",
+                os.path.expanduser(r"~\AppData\Local\Mozilla Firefox\firefox.exe")
+            ]
+            
+            for path in common_paths:
+                if os.path.exists(path):
+                    return True
+                    
+        elif system == "Darwin":
+            result = subprocess.run(['which', 'firefox'], 
+                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
+                                    timeout=5)
+            if result.returncode == 0:
+                return True
+        else:
+            result = subprocess.run(['which', 'firefox'], 
+                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
+                                    timeout=5)
+            if result.returncode == 0:
+                return True
+                
+        return False
+    except:
+        return False
+
+
+def is_edge_available():
+    """Check if Microsoft Edge is available on the system."""
+    
+    try:
+        system = platform.system()
+        
+        if system == "Windows":
+            common_paths = [
+                r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+                r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
+                os.path.expanduser(r"~\AppData\Local\Microsoft\Edge\Application\msedge.exe")
+            ]
+            
+            for path in common_paths:
+                if os.path.exists(path):
+                    return True
+                    
+        elif system == "Darwin":
+            result = subprocess.run(['which', 'microsoft-edge'], 
+                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
+                                    timeout=5)
+            if result.returncode == 0:
+                return True
+        else:
+            result = subprocess.run(['which', 'microsoft-edge'], 
+                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
+                                    timeout=5)
+            if result.returncode == 0:
+                return True
+                
+        return False
+    except:
+        return False
+
+
+def get_available_browsers():
+    """Get list of available browsers on the system."""
+    available = []
+    
+    if is_chrome_available():
+        available.append('chrome')
+    if is_firefox_available():
+        available.append('firefox')
+    if is_edge_available():
+        available.append('edge')
+        
+    return available
+
+
+class SeleniumScraper:
+    """Selenium-based scraper for extracting business leads from Google Maps with multi-browser support."""
+    
+    def __init__(self, config, headless=False, guest_mode=True, profile=None, delay=1.5, preferred_browser=None):
         """Initialize the Selenium scraper."""
         self.config = config
         self.headless = headless
@@ -143,57 +231,118 @@ class SeleniumScraper:
         self.robots_checker = RobotsChecker(config)
         self.driver = None
         self.wait = None
+        self.browser_type = None
         
-        self._setup_driver()
+        self._setup_driver(preferred_browser)
     
-    def _setup_driver(self):
-        """Set up Chrome WebDriver with appropriate options."""
-        self.logger.info("Setting up Chrome WebDriver...")
+    def _setup_driver(self, preferred_browser=None):
+        """Set up WebDriver with appropriate browser - supports Chrome, Firefox, Edge."""
+        self.logger.info("Setting up WebDriver with multi-browser support...")
         
         # Check if running in cloud environment first
         if is_running_in_cloud_environment():
-            self.logger.error("Chrome not available in cloud environment")
-            self.chrome_available = False
+            self.logger.error("Browsers not available in cloud environment")
+            self.browser_available = False
             self.driver = None
             self.wait = None
             return
         
-        # Check if Chrome is available on system
-        chrome_available = is_chrome_available()
-        if not chrome_available:
-            self.logger.error("Chrome/Chromium not found on system.")
-            print("⚠️  Warning: Chrome/Chromium not found on system.")
-            print("   This may cause issues in deployment environments.")
-            self.chrome_available = False
+        # Get available browsers
+        available_browsers = get_available_browsers()
+        
+        if not available_browsers:
+            self.logger.error("No supported browsers found on system")
+            print("⚠️  Warning: No supported browsers (Chrome, Firefox, Edge) found on system.")
+            print("   Please install one of the following browsers:")
+            print("   - Google Chrome")
+            print("   - Mozilla Firefox") 
+            print("   - Microsoft Edge")
+            self.browser_available = False
             self.driver = None
             self.wait = None
             return
         
+        # Select browser to use
+        if preferred_browser and preferred_browser in available_browsers:
+            self.browser_type = preferred_browser
+        else:
+            # Auto-select best available browser (Chrome > Firefox > Edge)
+            if 'chrome' in available_browsers:
+                self.browser_type = 'chrome'
+            elif 'firefox' in available_browsers:
+                self.browser_type = 'firefox'
+            elif 'edge' in available_browsers:
+                self.browser_type = 'edge'
+            else:
+                self.browser_type = available_browsers[0]
+        
+        self.logger.info(f"Using browser: {self.browser_type}")
+        
+        # Setup the selected browser
+        try:
+            if self.browser_type == 'chrome':
+                self._setup_chrome_driver()
+            elif self.browser_type == 'firefox':
+                self._setup_firefox_driver()
+            elif self.browser_type == 'edge':
+                self._setup_edge_driver()
+            else:
+                raise ValueError(f"Unsupported browser: {self.browser_type}")
+                
+            self.browser_available = True
+            self.logger.info(f"✓ {self.browser_type.capitalize()} WebDriver initialized successfully")
+            
+        except Exception as e:
+            self.logger.error(f"Failed to initialize {self.browser_type} WebDriver: {e}")
+            print(f"\n🚨 {self.browser_type.capitalize()} WebDriver Error: {e}")
+            print(f"   Trying alternative browsers...")
+            
+            # Try fallback browsers
+            available_browsers.remove(self.browser_type)
+            for browser in available_browsers:
+                try:
+                    self.browser_type = browser
+                    if browser == 'chrome':
+                        self._setup_chrome_driver()
+                    elif browser == 'firefox':
+                        self._setup_firefox_driver()
+                    elif browser == 'edge':
+                        self._setup_edge_driver()
+                    
+                    self.browser_available = True
+                    self.logger.info(f"✓ {browser.capitalize()} WebDriver initialized successfully (fallback)")
+                    print(f"✅ Successfully initialized {browser.capitalize()} as fallback")
+                    return
+                except Exception as fallback_error:
+                    self.logger.warning(f"Fallback to {browser} failed: {fallback_error}")
+                    continue
+            
+            # All browsers failed
+            self.browser_available = False
+            self.driver = None
+            self.wait = None
+            print(f"\n❌ All browser initialization attempts failed")
+            print("   Please install a supported browser and ensure WebDriver is available")
+    
+    def _setup_chrome_driver(self):
+        """Setup Chrome WebDriver."""
         options = webdriver.ChromeOptions()
         
         if self.guest_mode and not self.profile:
-            self.logger.info("Launching Chrome in Guest mode")
             options.add_argument('--guest')
         elif self.profile:
-            self.logger.info(f"Launching Chrome with profile: {self.profile}")
-            
             system = platform.system()
             if system == 'Windows':
-                user_data_dir = os.path.join(
-                    os.environ['LOCALAPPDATA'],
-                    'Google', 'Chrome', 'User Data'
-                )
+                user_data_dir = os.path.join(os.environ['LOCALAPPDATA'], 'Google', 'Chrome', 'User Data')
             elif system == 'Darwin':
-                user_data_dir = os.path.expanduser(
-                    '~/Library/Application Support/Google/Chrome'
-                )
+                user_data_dir = os.path.expanduser('~/Library/Application Support/Google/Chrome')
             else:
                 user_data_dir = os.path.expanduser('~/.config/google-chrome')
             
             options.add_argument(f'--user-data-dir={user_data_dir}')
             options.add_argument(f'--profile-directory={self.profile}')
         
-        # Essential options for Linux/Docker environments
+        # Essential options
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
         options.add_argument('--disable-gpu')
@@ -237,38 +386,83 @@ class SeleniumScraper:
             "profile.managed_default_content_settings.images": 2
         })
         
-        try:
-            chrome_driver_path = ChromeDriverManager().install()
-            service = Service(chrome_driver_path)
-            service.log_path = "NUL" if os.name == "nt" else "/dev/null"
+        chrome_driver_path = ChromeDriverManager().install()
+        service = Service(chrome_driver_path)
+        service.log_path = "NUL" if os.name == "nt" else "/dev/null"
+        
+        self.driver = webdriver.Chrome(service=service, options=options)
+        self.driver.set_page_load_timeout(self.config.selenium['page_load_timeout'])
+        self.wait = WebDriverWait(self.driver, 15)
+        
+        # Anti-detection scripts
+        self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+        self.driver.execute_script("Object.defineProperty(navigator, 'plugins', {get: () => [1, 2, 3, 4, 5]})")
+        self.driver.execute_script("Object.defineProperty(navigator, 'languages', {get: () => ['en-US', 'en']})")
+        self.driver.execute_script("const newProto = navigator.__proto__; delete newProto.webdriver; navigator.__proto__ = newProto;")
+    
+    def _setup_firefox_driver(self):
+        """Setup Firefox WebDriver."""
+        options = webdriver.FirefoxOptions()
+        
+        if self.headless:
+            options.add_argument('--headless')
+        options.add_argument('--width=1920')
+        options.add_argument('--height=1080')
+        
+        # Firefox specific options
+        options.set_preference("permissions.default.image", 2)
+        options.set_preference("permissions.default.stylesheet", 2)
+        options.set_preference("dom.ipc.plugins.enabled", False)
+        options.set_preference("browser.download.folderList", 2)
+        options.set_preference("browser.helperApps.neverAsk.saveToDisk", "application/octet-stream")
+        
+        firefox_driver_path = GeckoDriverManager().install()
+        service = FirefoxService(firefox_driver_path)
+        service.log_path = "NUL" if os.name == "nt" else "/dev/null"
+        
+        self.driver = webdriver.Firefox(service=service, options=options)
+        self.driver.set_page_load_timeout(self.config.selenium['page_load_timeout'])
+        self.wait = WebDriverWait(self.driver, 15)
+    
+    def _setup_edge_driver(self):
+        """Setup Edge WebDriver."""
+        options = webdriver.EdgeOptions()
+        
+        if self.guest_mode and not self.profile:
+            options.add_argument('--guest')
+        elif self.profile:
+            system = platform.system()
+            if system == 'Windows':
+                user_data_dir = os.path.join(os.environ['LOCALAPPDATA'], 'Microsoft', 'Edge', 'User Data')
+            elif system == 'Darwin':
+                user_data_dir = os.path.expanduser('~/Library/Application Support/Microsoft Edge')
+            else:
+                user_data_dir = os.path.expanduser('~/.config/microsoft-edge')
             
-            self.driver = webdriver.Chrome(service=service, options=options)
-            
-            self.driver.set_page_load_timeout(
-                self.config.selenium['page_load_timeout']
-            )
-            self.wait = WebDriverWait(self.driver, 15)
-            
-            self.driver.execute_script(
-                "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
-            )
-            
-            # Additional stealth scripts
-            self.driver.execute_script(
-                "Object.defineProperty(navigator, 'plugins', {get: () => [1, 2, 3, 4, 5]})"
-            )
-            self.driver.execute_script(
-                "Object.defineProperty(navigator, 'languages', {get: () => ['en-US', 'en']})"
-            )
-            self.driver.execute_script(
-                "const newProto = navigator.__proto__;\n                delete newProto.webdriver;\n                navigator.__proto__ = newProto;"
-            )
-            
-            self.logger.info("✓ Chrome WebDriver initialized successfully")
-            
-        except Exception as e:
-            self.logger.error(f"Failed to initialize Chrome WebDriver: {e}")
-            raise
+            options.add_argument(f'--user-data-dir={user_data_dir}')
+            options.add_argument(f'--profile-directory={self.profile}')
+        
+        # Essential options
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--disable-extensions')
+        
+        if self.headless:
+            options.add_argument('--headless')
+        options.add_argument('--window-size=1920,1080')
+        options.add_argument('--lang=en-US')
+        
+        edge_driver_path = EdgeChromiumDriverManager().install()
+        service = EdgeService(edge_driver_path)
+        service.log_path = "NUL" if os.name == "nt" else "/dev/null"
+        
+        self.driver = webdriver.Edge(service=service, options=options)
+        self.driver.set_page_load_timeout(self.config.selenium['page_load_timeout'])
+        self.wait = WebDriverWait(self.driver, 15)
+        
+        # Anti-detection scripts
+        self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
     
     def scrape_google_maps(
         self,
