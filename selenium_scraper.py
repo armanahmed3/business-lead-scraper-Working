@@ -82,54 +82,118 @@ def is_chrome_available():
         system = platform.system()
         
         if system == "Windows":
+            # Enhanced Windows detection
+            chrome_paths = [
+                # Registry-based detection
+                None,  # Will be filled by registry check
+                # Common installation paths
+                r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+                r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+                os.path.expanduser(r"~\AppData\Local\Google\Chrome\Application\chrome.exe"),
+                os.path.expanduser(r"~\AppData\Local\Chromium\Application\chrome.exe"),
+                # Alternative paths
+                r"C:\Program Files\Google\Chrome\chrome.exe",
+                r"C:\Program Files (x86)\Google\Chrome\chrome.exe",
+                r"C:\Users\%USERNAME%\AppData\Local\Google\Chrome\Application\chrome.exe",
+            ]
+            
+            # Try registry first
             if winreg is not None:
                 try:
-                    reg_path = r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe"
-                    with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, reg_path) as key:
-                        install_path = winreg.QueryValue(key, "")
-                        if install_path and os.path.exists(install_path):
-                            return True
-                except:
-                    pass
-                
-                common_paths = [
-                    r"C:\Program Files\Google\Chrome\Application\chrome.exe",
-                    r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
-                    os.path.expanduser(r"~\AppData\Local\Google\Chrome\Application\chrome.exe")
-                ]
-                
-                for path in common_paths:
-                    if os.path.exists(path):
-                        return True
+                    reg_paths = [
+                        r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe",
+                        r"SOFTWARE\Google\Chrome"
+                    ]
+                    
+                    for reg_path in reg_paths:
+                        try:
+                            with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, reg_path) as key:
+                                install_path = winreg.QueryValue(key, "")
+                                if install_path and os.path.exists(install_path):
+                                    print(f"✓ Chrome found via registry: {install_path}")
+                                    return True
+                        except (FileNotFoundError, OSError):
+                            continue
+                            
+                    # Try user-specific registry
+                    try:
+                        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"SOFTWARE\Google\Chrome") as key:
+                            install_path = winreg.QueryValue(key, "InstallPath")
+                            if install_path:
+                                chrome_exe = os.path.join(install_path, "chrome.exe")
+                                if os.path.exists(chrome_exe):
+                                    print(f"✓ Chrome found via user registry: {chrome_exe}")
+                                    return True
+                    except (FileNotFoundError, OSError):
+                        pass
+                except Exception as e:
+                    print(f"Registry check failed: {e}")
+            
+            # Check common paths
+            for path in chrome_paths[1:]:  # Skip the None placeholder
+                if path and "%USERNAME%" in path:
+                    path = os.path.expandvars(path)
+                if path and os.path.exists(path):
+                    print(f"✓ Chrome found at: {path}")
+                    return True
                         
-        elif system == "Darwin":
-            result = subprocess.run(['which', 'google-chrome'], 
-                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
-                                    timeout=5)
-            if result.returncode == 0:
-                return True
+        elif system == "Darwin":  # macOS
+            mac_paths = [
+                "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+                "/Applications/Chromium.app/Contents/MacOS/Chromium",
+                os.path.expanduser("~/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"),
+            ]
+            
+            for path in mac_paths:
+                if os.path.exists(path):
+                    print(f"✓ Chrome found at: {path}")
+                    return True
+                    
+            # Try which command
+            for cmd in ['google-chrome', 'chrome', 'chromium']:
+                try:
+                    result = subprocess.run(['which', cmd], 
+                                            stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
+                                            timeout=5)
+                    if result.returncode == 0:
+                        print(f"✓ Chrome found via which: {cmd}")
+                        return True
+                except:
+                    continue
                                     
-        else:
-            result = subprocess.run(['which', 'google-chrome'], 
-                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
-                                    timeout=5)
-            if result.returncode == 0:
-                return True
+        else:  # Linux
+            linux_paths = [
+                "/usr/bin/google-chrome",
+                "/usr/bin/chromium-browser",
+                "/usr/bin/chromium",
+                "/usr/local/bin/google-chrome",
+                "/usr/local/bin/chromium-browser",
+                "/snap/bin/google-chrome",
+                "/opt/google/chrome/google-chrome",
+            ]
+            
+            for path in linux_paths:
+                if os.path.exists(path):
+                    print(f"✓ Chrome found at: {path}")
+                    return True
+                    
+            # Try which command
+            for cmd in ['google-chrome', 'chrome', 'chromium-browser', 'chromium']:
+                try:
+                    result = subprocess.run(['which', cmd], 
+                                            stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
+                                            timeout=5)
+                    if result.returncode == 0:
+                        print(f"✓ Chrome found via which: {cmd}")
+                        return True
+                except:
+                    continue
                 
-            result = subprocess.run(['which', 'chromium-browser'], 
-                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
-                                    timeout=5)
-            if result.returncode == 0:
-                return True
-                
-            result = subprocess.run(['which', 'chrome'], 
-                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
-                                    timeout=5)
-            if result.returncode == 0:
-                return True
-                
+        print("❌ Chrome not found in any standard location")
         return False
-    except:
+        
+    except Exception as e:
+        print(f"Chrome detection error: {e}")
         return False
 
 
@@ -201,6 +265,48 @@ def is_edge_available():
         return False
     except:
         return False
+
+
+def debug_browser_detection():
+    """Debug function to help diagnose browser detection issues."""
+    print("🔍 DEBUG: Browser Detection Status")
+    print("=" * 50)
+    
+    system = platform.system()
+    print(f"Operating System: {system}")
+    
+    # Check Chrome
+    print("\n🌐 Chrome Detection:")
+    chrome_found = is_chrome_available()
+    print(f"Chrome Available: {chrome_found}")
+    
+    if system == "Windows":
+        print("\n📁 Checking common Chrome paths:")
+        paths_to_check = [
+            r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+            r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+            os.path.expanduser(r"~\AppData\Local\Google\Chrome\Application\chrome.exe"),
+        ]
+        
+        for path in paths_to_check:
+            exists = os.path.exists(path)
+            print(f"  {'✓' if exists else '✗'} {path}")
+    
+    # Check Firefox
+    print("\n🦊 Firefox Detection:")
+    firefox_found = is_firefox_available()
+    print(f"Firefox Available: {firefox_found}")
+    
+    # Check Edge
+    print("\n📱 Edge Detection:")
+    edge_found = is_edge_available()
+    print(f"Edge Available: {edge_found}")
+    
+    # Summary
+    available_browsers = get_available_browsers()
+    print(f"\n📋 Available Browsers: {', '.join(available_browsers)}")
+    
+    return available_browsers
 
 
 def get_available_browsers():

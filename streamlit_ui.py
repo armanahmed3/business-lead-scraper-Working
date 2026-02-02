@@ -1420,10 +1420,22 @@ def google_maps_scraping():
     # Browser selection
     available_browsers = []
     try:
-        from selenium_scraper import get_available_browsers
+        from selenium_scraper import get_available_browsers, debug_browser_detection
         available_browsers = get_available_browsers()
-    except:
+    except Exception as e:
+        st.error(f"Browser detection error: {e}")
         available_browsers = []
+    
+    # Debug section
+    with st.expander("🔍 Debug Browser Detection", expanded=False):
+        if st.button("Run Browser Detection Debug"):
+            try:
+                from selenium_scraper import debug_browser_detection
+                debug_info = debug_browser_detection()
+                st.success("Debug completed! Check console output above.")
+                st.code(f"Detected browsers: {debug_info}")
+            except Exception as e:
+                st.error(f"Debug failed: {e}")
     
     if available_browsers:
         browser_options = {
@@ -1436,8 +1448,13 @@ def google_maps_scraping():
         selected_browser = st.selectbox("Select Browser", list(browser_choices.keys()), 
                                      format_func=lambda x: browser_choices[x],
                                      help="Choose which browser to use for scraping")
+        st.success(f"✅ {len(available_browsers)} browser(s) detected: {', '.join([b.capitalize() for b in available_browsers])}")
     else:
         st.warning("⚠️ No supported browsers detected. Please install Google Chrome, Firefox, or Microsoft Edge.")
+        st.info("💡 **Troubleshooting Tips:**")
+        st.info("- Make sure Chrome is installed in the default location")
+        st.info("- Try running the debug tool above")
+        st.info("- Restart the application after installing a browser")
         selected_browser = None
     
     # Enhanced format selection including Excel
