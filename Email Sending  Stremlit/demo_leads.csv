@@ -1,0 +1,1001 @@
+id,first_name,last_name,email,company,phone,job_title,industry,source,ai_score,lead_quality,status,created_date,notes
+1,Sarah,Gonzalez,sarah.gonzalez@yahoo.com,QuantumLeap,+1-670-788-7047,Director,Consulting,Email Campaign,0.504,Medium,Converted,2024-10-25 11:47:06.306698,Lead from Website - Consulting industry
+2,David,Garcia,david.garcia@gmail.com,CloudSystems,+1-210-331-3488,Product Manager,Consulting,Email Campaign,0.399,Low,Qualified,2025-09-06 11:47:06.306698,Lead from Paid Ads - Consulting industry
+3,James,Brown,james.brown@hotmail.com,Digital Dynamics,+1-951-589-5997,Manager,Education,Paid Ads,0.566,Medium,New,2025-08-25 11:47:06.306698,Lead from Email Campaign - Education industry
+4,Ashley,Martinez,ashley.martinez@yahoo.com,AI Solutions,+1-245-816-2980,Data Scientist,Healthcare,Social Media,0.31,Low,Converted,2024-11-11 11:47:06.306698,Lead from Email Campaign - Healthcare industry
+5,David,Garcia,david.garcia@gmail.com,FutureTech,+1-255-574-9480,CTO,Education,Social Media,0.7,High,Qualified,2025-06-03 11:47:06.306698,Lead from Paid Ads - Education industry
+6,Jennifer,Miller,jennifer.miller@hotmail.com,CyberCore,+1-517-317-7548,CTO,Education,Social Media,0.261,Low,New,2024-12-13 11:47:06.306698,Lead from Referral - Education industry
+7,James,Gonzalez,james.gonzalez@yahoo.com,CyberCore,+1-345-335-6491,Director,Healthcare,Social Media,0.66,Medium,New,2025-08-07 11:47:06.306698,Lead from Website - Healthcare industry
+8,Daniel,Lopez,daniel.lopez@yahoo.com,SmartData,+1-567-619-7008,Director,Retail,Website,0.327,Low,Converted,2025-06-27 11:47:06.306698,Lead from Paid Ads - Retail industry
+9,James,Gonzalez,james.gonzalez@smartdata.com,SmartData,+1-710-484-1025,Marketing Manager,Consulting,Event,0.448,Medium,New,2025-02-18 11:47:06.306698,Lead from Referral - Consulting industry
+10,Ashley,Wilson,ashley.wilson@yahoo.com,DataSoft,+1-988-227-7770,CEO,Manufacturing,Paid Ads,0.526,Medium,Converted,2025-08-13 11:47:06.306698,Lead from Event - Manufacturing industry
+11,Robert,Davis,robert.davis@hotmail.com,CyberCore,+1-358-533-6865,Manager,Manufacturing,Event,0.693,Medium,New,2025-05-04 11:47:06.306698,Lead from Event - Manufacturing industry
+12,Ashley,Gonzalez,ashley.gonzalez@yahoo.com,CyberCore,+1-900-473-3149,CTO,Technology,Email Campaign,0.335,Low,Converted,2024-12-09 11:47:06.306698,Lead from Social Media - Technology industry
+13,Michael,Anderson,michael.anderson@yahoo.com,AI Solutions,+1-618-440-3573,Data Scientist,Manufacturing,Website,0.508,Medium,Qualified,2025-08-21 11:47:06.306698,Lead from Referral - Manufacturing industry
+14,Ashley,Lopez,ashley.lopez@ai solutions.com,AI Solutions,+1-828-344-5150,Director,Healthcare,Event,0.523,Medium,Converted,2025-02-14 11:47:06.306698,Lead from Social Media - Healthcare industry
+15,Jennifer,Johnson,jennifer.johnson@yahoo.com,DataSoft,+1-941-469-1386,Sales Director,Healthcare,Referral,0.284,Low,Converted,2025-04-14 11:47:06.306698,Lead from Website - Healthcare industry
+16,Jessica,Wilson,jessica.wilson@smartdata.com,SmartData,+1-289-274-9223,CEO,Retail,Event,0.603,Medium,New,2025-02-17 11:47:06.306698,Lead from Cold Outreach - Retail industry
+17,Emily,Jones,emily.jones@hotmail.com,QuantumLeap,+1-716-235-7840,Sales Director,Retail,Referral,0.283,Low,New,2025-04-23 11:47:06.306698,Lead from Referral - Retail industry
+18,Michael,Gonzalez,michael.gonzalez@yahoo.com,CyberCore,+1-647-217-5358,Manager,Healthcare,Event,0.476,Medium,Qualified,2025-01-28 11:47:06.306698,Lead from Social Media - Healthcare industry
+19,James,Garcia,james.garcia@quantumleap.com,QuantumLeap,+1-855-608-7255,Manager,Finance,Paid Ads,0.516,Medium,Qualified,2025-05-23 11:47:06.306698,Lead from Website - Finance industry
+20,Robert,Brown,robert.brown@yahoo.com,DataSoft,+1-688-266-6157,Marketing Manager,Education,Cold Outreach,0.358,Low,Contacted,2025-05-27 11:47:06.306698,Lead from Referral - Education industry
+21,Robert,Wilson,robert.wilson@smartdata.com,SmartData,+1-705-822-9562,CEO,Finance,Paid Ads,0.613,Medium,Qualified,2025-03-29 11:47:06.306698,Lead from Email Campaign - Finance industry
+22,Amanda,Davis,amanda.davis@gmail.com,TechCorp,+1-472-990-6296,Manager,Education,Email Campaign,0.54,Medium,New,2024-11-23 11:47:06.306698,Lead from Referral - Education industry
+23,David,Martinez,david.martinez@yahoo.com,QuantumLeap,+1-278-722-1621,CEO,Finance,Website,0.404,Medium,Qualified,2025-03-27 11:47:06.306698,Lead from Paid Ads - Finance industry
+24,Robert,Jones,robert.jones@gmail.com,CyberCore,+1-297-635-8922,Senior Developer,Finance,Social Media,0.556,Medium,Converted,2024-11-28 11:47:06.306698,Lead from Event - Finance industry
+25,Michael,Garcia,michael.garcia@gmail.com,AI Solutions,+1-780-762-8473,Marketing Manager,Finance,Website,0.453,Medium,Converted,2025-06-10 11:47:06.306698,Lead from Website - Finance industry
+26,Michael,Wilson,michael.wilson@cloudsystems.com,CloudSystems,+1-442-916-4002,CTO,Finance,Referral,0.534,Medium,New,2025-02-08 11:47:06.306698,Lead from Cold Outreach - Finance industry
+27,Daniel,Brown,daniel.brown@yahoo.com,CloudSystems,+1-230-570-9789,Manager,Consulting,Referral,0.518,Medium,New,2025-06-09 11:47:06.306698,Lead from Event - Consulting industry
+28,Christopher,Davis,christopher.davis@cloudsystems.com,CloudSystems,+1-285-204-4882,Director,Education,Event,0.452,Medium,Contacted,2024-09-25 11:47:06.306698,Lead from Cold Outreach - Education industry
+29,Ashley,Williams,ashley.williams@hotmail.com,CloudSystems,+1-317-785-1812,CTO,Consulting,Referral,0.336,Low,Converted,2025-03-13 11:47:06.306698,Lead from Social Media - Consulting industry
+30,Jessica,Brown,jessica.brown@yahoo.com,QuantumLeap,+1-326-490-2547,Director,Education,Event,0.434,Medium,Qualified,2025-03-31 11:47:06.306698,Lead from Social Media - Education industry
+31,Emily,Anderson,emily.anderson@hotmail.com,CyberCore,+1-528-470-1507,Senior Developer,Education,Social Media,0.25,Low,Qualified,2025-08-22 11:47:06.306698,Lead from Email Campaign - Education industry
+32,Robert,Anderson,robert.anderson@yahoo.com,InnovateLab,+1-817-387-4690,VP Marketing,Healthcare,Paid Ads,0.358,Low,Contacted,2025-08-04 11:47:06.306698,Lead from Event - Healthcare industry
+33,Daniel,Miller,daniel.miller@hotmail.com,CloudSystems,+1-527-906-6256,Sales Director,Consulting,Referral,0.46,Medium,New,2025-04-04 11:47:06.306698,Lead from Website - Consulting industry
+34,Jennifer,Smith,jennifer.smith@yahoo.com,AI Solutions,+1-761-311-3868,Marketing Manager,Healthcare,Social Media,0.194,Low,Converted,2025-03-05 11:47:06.306698,Lead from Email Campaign - Healthcare industry
+35,Ashley,Williams,ashley.williams@techcorp.com,TechCorp,+1-922-672-1233,Data Scientist,Consulting,Referral,0.375,Low,New,2025-03-22 11:47:06.306698,Lead from Email Campaign - Consulting industry
+36,Ashley,Hernandez,ashley.hernandez@gmail.com,QuantumLeap,+1-740-704-8175,Director,Retail,Social Media,0.361,Low,Contacted,2025-06-05 11:47:06.306698,Lead from Email Campaign - Retail industry
+37,William,Garcia,william.garcia@smartdata.com,SmartData,+1-342-933-9916,Product Manager,Healthcare,Website,0.608,Medium,Contacted,2025-02-16 11:47:06.306698,Lead from Referral - Healthcare industry
+38,Daniel,Johnson,daniel.johnson@ai solutions.com,AI Solutions,+1-917-367-9298,Product Manager,Finance,Cold Outreach,1.0,High,Converted,2024-12-06 11:47:06.306698,Lead from Event - Finance industry
+39,Jane,Johnson,jane.johnson@yahoo.com,AI Solutions,+1-754-774-3461,CTO,Retail,Email Campaign,0.312,Low,New,2024-12-02 11:47:06.306698,Lead from Social Media - Retail industry
+40,Sarah,Rodriguez,sarah.rodriguez@gmail.com,SmartData,+1-780-476-6290,Data Scientist,Healthcare,Referral,0.219,Low,Qualified,2025-05-06 11:47:06.306698,Lead from Cold Outreach - Healthcare industry
+41,Jessica,Garcia,jessica.garcia@ai solutions.com,AI Solutions,+1-409-676-3336,Product Manager,Manufacturing,Website,0.327,Low,New,2024-11-30 11:47:06.306698,Lead from Referral - Manufacturing industry
+42,William,Williams,william.williams@futuretech.com,FutureTech,+1-819-344-5426,Director,Healthcare,Email Campaign,0.424,Medium,Converted,2025-02-28 11:47:06.306698,Lead from Email Campaign - Healthcare industry
+43,Christopher,Johnson,christopher.johnson@hotmail.com,CyberCore,+1-385-360-3758,CTO,Technology,Email Campaign,0.793,High,Converted,2025-02-13 11:47:06.306698,Lead from Social Media - Technology industry
+44,John,Davis,john.davis@hotmail.com,QuantumLeap,+1-703-769-2202,Director,Healthcare,Event,0.212,Low,New,2025-07-15 11:47:06.306698,Lead from Cold Outreach - Healthcare industry
+45,William,Rodriguez,william.rodriguez@hotmail.com,Digital Dynamics,+1-859-527-4892,Manager,Consulting,Website,0.386,Low,Contacted,2025-01-31 11:47:06.306698,Lead from Website - Consulting industry
+46,John,Miller,john.miller@yahoo.com,CyberCore,+1-365-397-5489,Director,Technology,Website,0.563,Medium,New,2024-12-22 11:47:06.306698,Lead from Referral - Technology industry
+47,John,Martinez,john.martinez@gmail.com,TechCorp,+1-540-778-7540,Manager,Retail,Referral,0.303,Low,Qualified,2025-07-31 11:47:06.306698,Lead from Cold Outreach - Retail industry
+48,Robert,Garcia,robert.garcia@yahoo.com,CyberCore,+1-791-315-7403,CEO,Finance,Paid Ads,0.637,Medium,Qualified,2024-11-09 11:47:06.306698,Lead from Website - Finance industry
+49,Daniel,Brown,daniel.brown@gmail.com,CyberCore,+1-707-959-1435,Marketing Manager,Education,Cold Outreach,0.635,Medium,Contacted,2025-07-16 11:47:06.306698,Lead from Email Campaign - Education industry
+50,Amanda,Garcia,amanda.garcia@smartdata.com,SmartData,+1-249-603-4005,CTO,Education,Email Campaign,0.346,Low,Converted,2025-02-21 11:47:06.306698,Lead from Email Campaign - Education industry
+51,David,Wilson,david.wilson@yahoo.com,SmartData,+1-549-705-9336,Data Scientist,Finance,Paid Ads,0.616,Medium,Contacted,2025-02-03 11:47:06.307697,Lead from Email Campaign - Finance industry
+52,Jessica,Brown,jessica.brown@yahoo.com,TechCorp,+1-796-784-2548,Manager,Technology,Referral,0.548,Medium,Qualified,2024-09-22 11:47:06.307697,Lead from Social Media - Technology industry
+53,David,Miller,david.miller@yahoo.com,Digital Dynamics,+1-663-729-8177,CTO,Manufacturing,Email Campaign,0.374,Low,New,2025-01-01 11:47:06.307697,Lead from Email Campaign - Manufacturing industry
+54,Amanda,Jones,amanda.jones@gmail.com,FutureTech,+1-411-546-2448,CTO,Retail,Website,0.314,Low,Converted,2024-09-25 11:47:06.307697,Lead from Event - Retail industry
+55,Ashley,Brown,ashley.brown@yahoo.com,QuantumLeap,+1-298-525-8551,Data Scientist,Healthcare,Website,0.611,Medium,Converted,2025-03-24 11:47:06.307697,Lead from Event - Healthcare industry
+56,Jennifer,Jones,jennifer.jones@hotmail.com,QuantumLeap,+1-841-657-6649,Sales Director,Education,Cold Outreach,0.248,Low,Contacted,2025-03-28 11:47:06.307697,Lead from Email Campaign - Education industry
+57,Sarah,Rodriguez,sarah.rodriguez@hotmail.com,InnovateLab,+1-293-627-4617,Director,Consulting,Cold Outreach,0.329,Low,Converted,2025-05-28 11:47:06.307697,Lead from Paid Ads - Consulting industry
+58,Jennifer,Miller,jennifer.miller@yahoo.com,QuantumLeap,+1-336-828-7408,Product Manager,Healthcare,Event,0.493,Medium,Converted,2025-03-23 11:47:06.307697,Lead from Event - Healthcare industry
+59,Jane,Gonzalez,jane.gonzalez@cloudsystems.com,CloudSystems,+1-878-949-3961,Sales Director,Retail,Social Media,0.525,Medium,Contacted,2025-05-13 11:47:06.307697,Lead from Social Media - Retail industry
+60,David,Davis,david.davis@techcorp.com,TechCorp,+1-374-436-4320,CTO,Healthcare,Event,0.693,Medium,Qualified,2024-10-29 11:47:06.307697,Lead from Referral - Healthcare industry
+61,John,Johnson,john.johnson@hotmail.com,SmartData,+1-258-379-8617,Director,Manufacturing,Website,0.283,Low,Qualified,2025-03-25 11:47:06.307697,Lead from Social Media - Manufacturing industry
+62,Emily,Jones,emily.jones@quantumleap.com,QuantumLeap,+1-834-552-9069,Senior Developer,Technology,Cold Outreach,0.751,High,New,2025-05-25 11:47:06.307697,Lead from Email Campaign - Technology industry
+63,Jessica,Wilson,jessica.wilson@yahoo.com,InnovateLab,+1-361-692-4562,Product Manager,Education,Social Media,0.473,Medium,Contacted,2025-04-07 11:47:06.307697,Lead from Referral - Education industry
+64,James,Brown,james.brown@yahoo.com,TechCorp,+1-286-459-2747,VP Marketing,Healthcare,Event,0.442,Medium,Contacted,2024-12-13 11:47:06.307697,Lead from Event - Healthcare industry
+65,James,Jones,james.jones@digital dynamics.com,Digital Dynamics,+1-859-261-7241,Manager,Healthcare,Cold Outreach,0.364,Low,Qualified,2025-01-12 11:47:06.307697,Lead from Event - Healthcare industry
+66,Amanda,Garcia,amanda.garcia@hotmail.com,Digital Dynamics,+1-522-212-8711,Manager,Retail,Social Media,0.492,Medium,New,2024-11-26 11:47:06.307697,Lead from Referral - Retail industry
+67,James,Jones,james.jones@gmail.com,Digital Dynamics,+1-466-587-7157,Data Scientist,Finance,Cold Outreach,0.42,Medium,Contacted,2025-05-18 11:47:06.307697,Lead from Referral - Finance industry
+68,Robert,Gonzalez,robert.gonzalez@gmail.com,Digital Dynamics,+1-496-886-1209,CEO,Healthcare,Paid Ads,0.951,High,Converted,2025-03-06 11:47:06.307697,Lead from Website - Healthcare industry
+69,Amanda,Smith,amanda.smith@yahoo.com,InnovateLab,+1-907-467-8767,Data Scientist,Finance,Referral,0.382,Low,Contacted,2025-07-29 11:47:06.307697,Lead from Cold Outreach - Finance industry
+70,Michael,Wilson,michael.wilson@gmail.com,TechCorp,+1-919-653-1424,VP Marketing,Consulting,Cold Outreach,0.275,Low,Converted,2024-09-13 11:47:06.307697,Lead from Cold Outreach - Consulting industry
+71,Christopher,Williams,christopher.williams@yahoo.com,TechCorp,+1-218-289-1356,Marketing Manager,Healthcare,Website,0.487,Medium,Contacted,2024-12-30 11:47:06.307697,Lead from Email Campaign - Healthcare industry
+72,Christopher,Miller,christopher.miller@yahoo.com,QuantumLeap,+1-293-493-2566,VP Marketing,Manufacturing,Referral,0.184,Low,New,2025-01-13 11:47:06.307697,Lead from Website - Manufacturing industry
+73,Michael,Smith,michael.smith@hotmail.com,InnovateLab,+1-338-596-4840,CTO,Finance,Paid Ads,0.409,Medium,Qualified,2025-07-23 11:47:06.307697,Lead from Paid Ads - Finance industry
+74,David,Martinez,david.martinez@hotmail.com,SmartData,+1-437-821-5766,Sales Director,Technology,Website,0.512,Medium,New,2025-04-05 11:47:06.307697,Lead from Social Media - Technology industry
+75,Jennifer,Hernandez,jennifer.hernandez@futuretech.com,FutureTech,+1-601-735-1795,Sales Director,Consulting,Social Media,0.499,Medium,Qualified,2025-07-30 11:47:06.307697,Lead from Social Media - Consulting industry
+76,Ashley,Lopez,ashley.lopez@hotmail.com,DataSoft,+1-951-550-7444,Director,Consulting,Social Media,0.219,Low,Contacted,2024-12-09 11:47:06.307697,Lead from Website - Consulting industry
+77,William,Johnson,william.johnson@gmail.com,TechCorp,+1-839-466-1802,Senior Developer,Consulting,Social Media,0.61,Medium,Contacted,2025-04-09 11:47:06.307697,Lead from Website - Consulting industry
+78,Jessica,Garcia,jessica.garcia@gmail.com,CloudSystems,+1-440-289-9616,Senior Developer,Manufacturing,Paid Ads,0.691,Medium,Qualified,2024-12-21 11:47:06.307697,Lead from Paid Ads - Manufacturing industry
+79,Jessica,Johnson,jessica.johnson@hotmail.com,CloudSystems,+1-203-807-8988,CEO,Finance,Website,0.511,Medium,Converted,2025-05-19 11:47:06.307697,Lead from Paid Ads - Finance industry
+80,David,Gonzalez,david.gonzalez@hotmail.com,AI Solutions,+1-272-440-4049,Marketing Manager,Technology,Social Media,0.318,Low,Qualified,2025-05-20 11:47:06.307697,Lead from Website - Technology industry
+81,Jessica,Rodriguez,jessica.rodriguez@yahoo.com,InnovateLab,+1-392-576-6003,CTO,Technology,Website,0.297,Low,Contacted,2025-02-14 11:47:06.307697,Lead from Website - Technology industry
+82,Jessica,Gonzalez,jessica.gonzalez@gmail.com,AI Solutions,+1-908-301-6336,VP Marketing,Consulting,Email Campaign,0.277,Low,Qualified,2025-07-25 11:47:06.307697,Lead from Referral - Consulting industry
+83,James,Hernandez,james.hernandez@yahoo.com,TechCorp,+1-299-514-6173,VP Marketing,Education,Website,0.477,Medium,Converted,2025-08-16 11:47:06.307697,Lead from Referral - Education industry
+84,Robert,Brown,robert.brown@yahoo.com,CloudSystems,+1-208-239-9433,Product Manager,Healthcare,Paid Ads,0.269,Low,New,2024-09-21 11:47:06.307697,Lead from Website - Healthcare industry
+85,James,Lopez,james.lopez@yahoo.com,SmartData,+1-980-772-2364,VP Marketing,Finance,Paid Ads,0.358,Low,New,2024-12-03 11:47:06.307697,Lead from Website - Finance industry
+86,Michael,Williams,michael.williams@cloudsystems.com,CloudSystems,+1-431-664-8005,Director,Manufacturing,Social Media,0.575,Medium,New,2025-02-07 11:47:06.307697,Lead from Website - Manufacturing industry
+87,Emily,Davis,emily.davis@hotmail.com,InnovateLab,+1-933-412-2635,CTO,Finance,Social Media,0.469,Medium,Converted,2025-04-14 11:47:06.307697,Lead from Social Media - Finance industry
+88,Daniel,Miller,daniel.miller@futuretech.com,FutureTech,+1-957-969-9828,Director,Technology,Referral,0.655,Medium,Qualified,2025-05-12 11:47:06.307697,Lead from Referral - Technology industry
+89,Ashley,Smith,ashley.smith@yahoo.com,FutureTech,+1-772-847-7688,CEO,Retail,Cold Outreach,0.554,Medium,Converted,2025-03-26 11:47:06.307697,Lead from Referral - Retail industry
+90,Jane,Jones,jane.jones@gmail.com,DataSoft,+1-349-920-8894,CEO,Technology,Cold Outreach,0.434,Medium,New,2025-07-20 11:47:06.307697,Lead from Paid Ads - Technology industry
+91,Jane,Lopez,jane.lopez@gmail.com,Digital Dynamics,+1-325-821-1127,Senior Developer,Retail,Social Media,0.384,Low,New,2024-11-03 11:47:06.307697,Lead from Social Media - Retail industry
+92,Jessica,Lopez,jessica.lopez@hotmail.com,CloudSystems,+1-406-590-3070,CTO,Finance,Paid Ads,0.425,Medium,Converted,2025-03-30 11:47:06.307697,Lead from Paid Ads - Finance industry
+93,Daniel,Anderson,daniel.anderson@yahoo.com,CyberCore,+1-531-437-5322,CEO,Technology,Cold Outreach,0.517,Medium,Converted,2025-04-16 11:47:06.307697,Lead from Website - Technology industry
+94,Jennifer,Brown,jennifer.brown@hotmail.com,FutureTech,+1-760-507-3303,Sales Director,Finance,Email Campaign,0.489,Medium,Converted,2024-12-15 11:47:06.307697,Lead from Paid Ads - Finance industry
+95,Jane,Rodriguez,jane.rodriguez@yahoo.com,SmartData,+1-542-719-6526,VP Marketing,Education,Event,0.476,Medium,Contacted,2025-06-05 11:47:06.307697,Lead from Paid Ads - Education industry
+96,Sarah,Anderson,sarah.anderson@innovatelab.com,InnovateLab,+1-560-574-6283,Manager,Manufacturing,Event,0.693,Medium,Contacted,2025-04-05 11:47:06.307697,Lead from Website - Manufacturing industry
+97,John,Rodriguez,john.rodriguez@yahoo.com,SmartData,+1-572-634-4110,Marketing Manager,Retail,Email Campaign,0.536,Medium,Qualified,2025-02-17 11:47:06.307697,Lead from Event - Retail industry
+98,Jennifer,Brown,jennifer.brown@yahoo.com,DataSoft,+1-981-234-2163,Sales Director,Consulting,Social Media,0.246,Low,Qualified,2025-06-14 11:47:06.307697,Lead from Website - Consulting industry
+99,David,Martinez,david.martinez@gmail.com,DataSoft,+1-805-463-7814,Data Scientist,Consulting,Referral,0.359,Low,Qualified,2025-07-30 11:47:06.307697,Lead from Website - Consulting industry
+100,Christopher,Johnson,christopher.johnson@ai solutions.com,AI Solutions,+1-475-982-5419,CEO,Technology,Website,0.516,Medium,New,2025-02-06 11:47:06.307697,Lead from Social Media - Technology industry
+101,Ashley,Davis,ashley.davis@cybercore.com,CyberCore,+1-626-809-8056,CTO,Education,Social Media,0.477,Medium,Qualified,2024-12-11 11:47:06.307697,Lead from Social Media - Education industry
+102,Ashley,Gonzalez,ashley.gonzalez@hotmail.com,TechCorp,+1-812-732-1664,Manager,Education,Website,0.626,Medium,Converted,2024-11-17 11:47:06.307697,Lead from Cold Outreach - Education industry
+103,James,Brown,james.brown@hotmail.com,QuantumLeap,+1-490-513-8714,Marketing Manager,Education,Cold Outreach,0.266,Low,Converted,2025-03-01 11:47:06.307697,Lead from Paid Ads - Education industry
+104,Emily,Gonzalez,emily.gonzalez@datasoft.com,DataSoft,+1-351-479-3975,Marketing Manager,Finance,Website,0.522,Medium,Converted,2025-01-21 11:47:06.307697,Lead from Cold Outreach - Finance industry
+105,Sarah,Lopez,sarah.lopez@yahoo.com,AI Solutions,+1-358-770-5801,Data Scientist,Consulting,Paid Ads,0.391,Low,Qualified,2025-08-26 11:47:06.307697,Lead from Website - Consulting industry
+106,David,Anderson,david.anderson@cloudsystems.com,CloudSystems,+1-305-462-5352,Data Scientist,Retail,Social Media,0.447,Medium,New,2024-11-16 11:47:06.307697,Lead from Social Media - Retail industry
+107,Michael,Anderson,michael.anderson@gmail.com,AI Solutions,+1-369-989-1396,CEO,Manufacturing,Email Campaign,0.305,Low,Converted,2025-08-22 11:47:06.307697,Lead from Email Campaign - Manufacturing industry
+108,Christopher,Miller,christopher.miller@hotmail.com,CloudSystems,+1-247-862-2953,CEO,Education,Website,0.452,Medium,Contacted,2024-12-18 11:47:06.307697,Lead from Social Media - Education industry
+109,Sarah,Davis,sarah.davis@hotmail.com,QuantumLeap,+1-668-835-9000,Director,Finance,Referral,0.513,Medium,New,2025-04-27 11:47:06.307697,Lead from Social Media - Finance industry
+110,Sarah,Lopez,sarah.lopez@hotmail.com,CyberCore,+1-216-751-2960,Manager,Technology,Social Media,0.428,Medium,Contacted,2025-02-24 11:47:06.307697,Lead from Paid Ads - Technology industry
+111,Emily,Anderson,emily.anderson@yahoo.com,AI Solutions,+1-751-363-1383,Senior Developer,Consulting,Referral,0.221,Low,Converted,2025-08-02 11:47:06.307697,Lead from Website - Consulting industry
+112,Sarah,Martinez,sarah.martinez@gmail.com,SmartData,+1-346-946-6178,Data Scientist,Manufacturing,Cold Outreach,0.518,Medium,New,2025-06-03 11:47:06.307697,Lead from Website - Manufacturing industry
+113,John,Rodriguez,john.rodriguez@yahoo.com,CloudSystems,+1-363-376-5289,VP Marketing,Retail,Paid Ads,0.315,Low,New,2024-11-05 11:47:06.307697,Lead from Social Media - Retail industry
+114,Sarah,Miller,sarah.miller@techcorp.com,TechCorp,+1-778-856-4018,VP Marketing,Finance,Email Campaign,0.996,High,Contacted,2025-04-18 11:47:06.307697,Lead from Referral - Finance industry
+115,Robert,Johnson,robert.johnson@gmail.com,QuantumLeap,+1-628-447-7095,Marketing Manager,Consulting,Email Campaign,0.653,Medium,New,2024-12-04 11:47:06.307697,Lead from Referral - Consulting industry
+116,Christopher,Jones,christopher.jones@gmail.com,CloudSystems,+1-216-997-3520,Director,Healthcare,Event,0.559,Medium,New,2024-10-22 11:47:06.307697,Lead from Social Media - Healthcare industry
+117,William,Jones,william.jones@futuretech.com,FutureTech,+1-240-955-8288,CEO,Retail,Cold Outreach,0.628,Medium,Qualified,2025-08-10 11:47:06.307697,Lead from Cold Outreach - Retail industry
+118,William,Hernandez,william.hernandez@gmail.com,AI Solutions,+1-909-620-2095,Data Scientist,Retail,Paid Ads,0.631,Medium,Converted,2024-10-26 11:47:06.307697,Lead from Cold Outreach - Retail industry
+119,Emily,Garcia,emily.garcia@gmail.com,InnovateLab,+1-288-216-3347,Data Scientist,Manufacturing,Paid Ads,0.6,Medium,Converted,2025-03-16 11:47:06.307697,Lead from Event - Manufacturing industry
+120,Daniel,Smith,daniel.smith@cloudsystems.com,CloudSystems,+1-887-282-3922,Senior Developer,Manufacturing,Email Campaign,0.565,Medium,New,2024-10-28 11:47:06.307697,Lead from Paid Ads - Manufacturing industry
+121,David,Anderson,david.anderson@yahoo.com,DataSoft,+1-748-473-2179,Data Scientist,Healthcare,Cold Outreach,0.496,Medium,Converted,2024-10-23 11:47:06.307697,Lead from Cold Outreach - Healthcare industry
+122,John,Jones,john.jones@futuretech.com,FutureTech,+1-923-471-7253,CTO,Manufacturing,Cold Outreach,0.789,High,Qualified,2025-04-16 11:47:06.307697,Lead from Referral - Manufacturing industry
+123,David,Wilson,david.wilson@gmail.com,CyberCore,+1-615-467-2606,Product Manager,Education,Referral,0.456,Medium,New,2025-04-01 11:47:06.307697,Lead from Website - Education industry
+124,William,Williams,william.williams@smartdata.com,SmartData,+1-311-520-4696,CEO,Technology,Email Campaign,0.496,Medium,Contacted,2025-08-22 11:47:06.307697,Lead from Website - Technology industry
+125,James,Jones,james.jones@hotmail.com,TechCorp,+1-468-652-6229,VP Marketing,Manufacturing,Paid Ads,0.602,Medium,Qualified,2024-11-30 11:47:06.307697,Lead from Cold Outreach - Manufacturing industry
+126,Ashley,Rodriguez,ashley.rodriguez@gmail.com,DataSoft,+1-420-715-3332,Manager,Consulting,Event,0.51,Medium,New,2025-09-09 11:47:06.307697,Lead from Cold Outreach - Consulting industry
+127,Jane,Hernandez,jane.hernandez@cloudsystems.com,CloudSystems,+1-589-956-5083,Product Manager,Finance,Social Media,0.412,Medium,New,2024-09-29 11:47:06.307697,Lead from Social Media - Finance industry
+128,Ashley,Miller,ashley.miller@gmail.com,CloudSystems,+1-669-842-1908,Data Scientist,Retail,Website,0.383,Low,Contacted,2025-08-12 11:47:06.307697,Lead from Email Campaign - Retail industry
+129,Jennifer,Gonzalez,jennifer.gonzalez@cloudsystems.com,CloudSystems,+1-790-402-4482,VP Marketing,Retail,Event,0.442,Medium,Converted,2025-07-14 11:47:06.307697,Lead from Email Campaign - Retail industry
+130,Daniel,Hernandez,daniel.hernandez@yahoo.com,FutureTech,+1-972-389-3240,Sales Director,Healthcare,Social Media,0.67,Medium,Qualified,2025-01-27 11:47:06.307697,Lead from Event - Healthcare industry
+131,William,Anderson,william.anderson@yahoo.com,AI Solutions,+1-259-449-5851,VP Marketing,Manufacturing,Email Campaign,0.37,Low,New,2025-04-02 11:47:06.307697,Lead from Paid Ads - Manufacturing industry
+132,Amanda,Garcia,amanda.garcia@yahoo.com,CyberCore,+1-987-787-3822,Senior Developer,Healthcare,Paid Ads,0.288,Low,Qualified,2024-11-28 11:47:06.307697,Lead from Referral - Healthcare industry
+133,William,Anderson,william.anderson@hotmail.com,CloudSystems,+1-688-669-4053,Product Manager,Manufacturing,Event,0.622,Medium,New,2025-02-14 11:47:06.307697,Lead from Event - Manufacturing industry
+134,Jennifer,Martinez,jennifer.martinez@gmail.com,DataSoft,+1-597-389-1269,VP Marketing,Finance,Referral,0.409,Medium,Contacted,2024-09-18 11:47:06.307697,Lead from Website - Finance industry
+135,John,Miller,john.miller@futuretech.com,FutureTech,+1-274-259-1495,VP Marketing,Consulting,Social Media,0.31,Low,Contacted,2024-10-12 11:47:06.307697,Lead from Website - Consulting industry
+136,Sarah,Anderson,sarah.anderson@hotmail.com,TechCorp,+1-703-971-9157,CEO,Retail,Website,0.491,Medium,Contacted,2024-10-26 11:47:06.307697,Lead from Event - Retail industry
+137,John,Wilson,john.wilson@hotmail.com,CloudSystems,+1-206-777-2325,Marketing Manager,Manufacturing,Event,0.457,Medium,Converted,2025-08-01 11:47:06.307697,Lead from Website - Manufacturing industry
+138,John,Davis,john.davis@gmail.com,DataSoft,+1-278-217-1165,Data Scientist,Retail,Website,0.429,Medium,Converted,2025-07-02 11:47:06.307697,Lead from Website - Retail industry
+139,Jessica,Hernandez,jessica.hernandez@digital dynamics.com,Digital Dynamics,+1-625-922-6570,CEO,Manufacturing,Website,0.579,Medium,New,2024-11-13 11:47:06.307697,Lead from Cold Outreach - Manufacturing industry
+140,Emily,Miller,emily.miller@gmail.com,TechCorp,+1-632-255-6585,Data Scientist,Manufacturing,Paid Ads,0.556,Medium,Converted,2024-10-07 11:47:06.307697,Lead from Email Campaign - Manufacturing industry
+141,Emily,Anderson,emily.anderson@yahoo.com,SmartData,+1-886-863-7739,Manager,Consulting,Email Campaign,0.473,Medium,Contacted,2025-07-20 11:47:06.307697,Lead from Paid Ads - Consulting industry
+142,William,Wilson,william.wilson@smartdata.com,SmartData,+1-684-750-5658,Marketing Manager,Healthcare,Referral,0.431,Medium,Converted,2025-05-21 11:47:06.307697,Lead from Website - Healthcare industry
+143,James,Williams,james.williams@hotmail.com,Digital Dynamics,+1-893-807-6876,VP Marketing,Manufacturing,Referral,0.26,Low,Contacted,2025-03-27 11:47:06.307697,Lead from Paid Ads - Manufacturing industry
+144,Jennifer,Smith,jennifer.smith@smartdata.com,SmartData,+1-410-554-7704,Sales Director,Education,Website,0.313,Low,New,2025-03-04 11:47:06.308694,Lead from Referral - Education industry
+145,Michael,Martinez,michael.martinez@yahoo.com,FutureTech,+1-858-909-7666,CEO,Manufacturing,Website,0.539,Medium,Qualified,2025-08-11 11:47:06.308694,Lead from Event - Manufacturing industry
+146,Daniel,Rodriguez,daniel.rodriguez@hotmail.com,AI Solutions,+1-657-844-5313,CEO,Technology,Referral,0.471,Medium,Contacted,2025-05-10 11:47:06.308694,Lead from Paid Ads - Technology industry
+147,Emily,Hernandez,emily.hernandez@gmail.com,CyberCore,+1-650-978-7852,Manager,Consulting,Cold Outreach,0.321,Low,New,2025-05-14 11:47:06.308694,Lead from Social Media - Consulting industry
+148,Emily,Miller,emily.miller@cybercore.com,CyberCore,+1-689-947-2610,Director,Finance,Referral,0.418,Medium,Qualified,2024-11-18 11:47:06.308694,Lead from Email Campaign - Finance industry
+149,Robert,Williams,robert.williams@cybercore.com,CyberCore,+1-982-496-4537,CTO,Retail,Cold Outreach,0.456,Medium,Contacted,2025-02-24 11:47:06.308694,Lead from Website - Retail industry
+150,Emily,Anderson,emily.anderson@yahoo.com,FutureTech,+1-304-653-1084,Senior Developer,Retail,Social Media,0.509,Medium,Qualified,2025-01-18 11:47:06.308694,Lead from Email Campaign - Retail industry
+151,Jennifer,Rodriguez,jennifer.rodriguez@gmail.com,DataSoft,+1-605-391-9903,CTO,Education,Email Campaign,0.467,Medium,Contacted,2025-09-10 11:47:06.308694,Lead from Website - Education industry
+152,William,Smith,william.smith@gmail.com,SmartData,+1-352-250-2807,Sales Director,Manufacturing,Email Campaign,0.287,Low,Contacted,2025-08-09 11:47:06.308694,Lead from Cold Outreach - Manufacturing industry
+153,Jessica,Lopez,jessica.lopez@hotmail.com,FutureTech,+1-740-560-7207,CTO,Healthcare,Social Media,0.367,Low,New,2025-05-02 11:47:06.308694,Lead from Referral - Healthcare industry
+154,Jessica,Anderson,jessica.anderson@futuretech.com,FutureTech,+1-780-674-8848,VP Marketing,Healthcare,Paid Ads,0.386,Low,Qualified,2025-02-11 11:47:06.308694,Lead from Email Campaign - Healthcare industry
+155,Daniel,Lopez,daniel.lopez@hotmail.com,AI Solutions,+1-990-538-9450,Senior Developer,Consulting,Social Media,0.214,Low,Contacted,2024-12-15 11:47:06.308694,Lead from Paid Ads - Consulting industry
+156,John,Smith,john.smith@hotmail.com,CloudSystems,+1-671-797-8377,Marketing Manager,Finance,Social Media,0.829,High,New,2024-12-29 11:47:06.308694,Lead from Paid Ads - Finance industry
+157,David,Davis,david.davis@gmail.com,Digital Dynamics,+1-423-292-2690,CTO,Healthcare,Email Campaign,0.317,Low,New,2025-02-13 11:47:06.308694,Lead from Email Campaign - Healthcare industry
+158,Christopher,Jones,christopher.jones@ai solutions.com,AI Solutions,+1-838-585-4314,CTO,Retail,Event,0.736,High,Contacted,2025-08-18 11:47:06.308694,Lead from Email Campaign - Retail industry
+159,Sarah,Johnson,sarah.johnson@gmail.com,Digital Dynamics,+1-793-948-3325,VP Marketing,Healthcare,Social Media,0.373,Low,Contacted,2025-01-09 11:47:06.308694,Lead from Event - Healthcare industry
+160,James,Rodriguez,james.rodriguez@gmail.com,CyberCore,+1-831-489-6368,Senior Developer,Consulting,Cold Outreach,0.523,Medium,New,2024-09-20 11:47:06.308694,Lead from Social Media - Consulting industry
+161,Jennifer,Williams,jennifer.williams@yahoo.com,Digital Dynamics,+1-597-907-1237,CTO,Education,Cold Outreach,0.537,Medium,Qualified,2025-08-05 11:47:06.308694,Lead from Website - Education industry
+162,Jane,Garcia,jane.garcia@yahoo.com,CyberCore,+1-652-588-9558,Marketing Manager,Manufacturing,Email Campaign,0.441,Medium,Qualified,2024-12-17 11:47:06.308694,Lead from Cold Outreach - Manufacturing industry
+163,Daniel,Johnson,daniel.johnson@gmail.com,InnovateLab,+1-832-494-6777,VP Marketing,Retail,Referral,0.508,Medium,Converted,2025-07-21 11:47:06.308694,Lead from Cold Outreach - Retail industry
+164,Jane,Gonzalez,jane.gonzalez@yahoo.com,AI Solutions,+1-291-540-7393,CEO,Technology,Website,0.619,Medium,Qualified,2024-12-08 11:47:06.308694,Lead from Paid Ads - Technology industry
+165,Jennifer,Smith,jennifer.smith@hotmail.com,FutureTech,+1-397-206-6851,Sales Director,Healthcare,Paid Ads,0.584,Medium,Contacted,2024-11-14 11:47:06.308694,Lead from Email Campaign - Healthcare industry
+166,John,Rodriguez,john.rodriguez@gmail.com,InnovateLab,+1-982-574-1110,Manager,Consulting,Social Media,0.209,Low,Converted,2025-03-22 11:47:06.308694,Lead from Website - Consulting industry
+167,Sarah,Miller,sarah.miller@hotmail.com,CloudSystems,+1-503-855-7783,VP Marketing,Manufacturing,Referral,0.304,Low,New,2024-09-28 11:47:06.308694,Lead from Website - Manufacturing industry
+168,Daniel,Gonzalez,daniel.gonzalez@yahoo.com,SmartData,+1-803-367-2227,CTO,Technology,Event,0.941,High,Qualified,2025-06-18 11:47:06.308694,Lead from Referral - Technology industry
+169,Jessica,Johnson,jessica.johnson@hotmail.com,DataSoft,+1-344-816-6175,Director,Finance,Social Media,0.299,Low,Qualified,2024-09-16 11:47:06.308694,Lead from Cold Outreach - Finance industry
+170,Ashley,Gonzalez,ashley.gonzalez@futuretech.com,FutureTech,+1-343-329-6458,Manager,Finance,Paid Ads,0.536,Medium,Qualified,2025-01-27 11:47:06.308694,Lead from Website - Finance industry
+171,Jennifer,Smith,jennifer.smith@cybercore.com,CyberCore,+1-437-555-7840,Sales Director,Technology,Referral,0.622,Medium,New,2025-08-09 11:47:06.308694,Lead from Website - Technology industry
+172,William,Brown,william.brown@gmail.com,AI Solutions,+1-363-556-1057,VP Marketing,Technology,Referral,0.572,Medium,Qualified,2024-09-24 11:47:06.308694,Lead from Social Media - Technology industry
+173,David,Lopez,david.lopez@gmail.com,CloudSystems,+1-355-900-3959,Director,Healthcare,Cold Outreach,0.632,Medium,New,2024-11-11 11:47:06.308694,Lead from Event - Healthcare industry
+174,Daniel,Gonzalez,daniel.gonzalez@hotmail.com,AI Solutions,+1-706-695-1026,CEO,Finance,Website,0.57,Medium,Converted,2025-01-03 11:47:06.308694,Lead from Website - Finance industry
+175,Jane,Rodriguez,jane.rodriguez@hotmail.com,Digital Dynamics,+1-778-376-2735,CEO,Consulting,Event,0.642,Medium,New,2024-10-10 11:47:06.308694,Lead from Cold Outreach - Consulting industry
+176,Jennifer,Anderson,jennifer.anderson@hotmail.com,InnovateLab,+1-953-375-2274,CTO,Retail,Cold Outreach,0.334,Low,Qualified,2024-10-24 11:47:06.308694,Lead from Referral - Retail industry
+177,Daniel,Anderson,daniel.anderson@yahoo.com,SmartData,+1-855-996-6964,Director,Healthcare,Event,0.179,Low,Contacted,2025-08-17 11:47:06.308694,Lead from Referral - Healthcare industry
+178,Jessica,Smith,jessica.smith@ai solutions.com,AI Solutions,+1-915-805-8066,CEO,Healthcare,Cold Outreach,0.688,Medium,Converted,2025-06-13 11:47:06.308694,Lead from Website - Healthcare industry
+179,Jane,Rodriguez,jane.rodriguez@hotmail.com,AI Solutions,+1-392-618-7818,Manager,Manufacturing,Referral,0.37,Low,Contacted,2024-10-23 11:47:06.308694,Lead from Event - Manufacturing industry
+180,Ashley,Jones,ashley.jones@gmail.com,FutureTech,+1-593-245-7839,Data Scientist,Retail,Email Campaign,0.277,Low,Contacted,2025-03-26 11:47:06.308694,Lead from Website - Retail industry
+181,Ashley,Davis,ashley.davis@futuretech.com,FutureTech,+1-555-408-5668,VP Marketing,Finance,Event,0.912,High,Converted,2025-07-16 11:47:06.308694,Lead from Website - Finance industry
+182,Robert,Anderson,robert.anderson@yahoo.com,InnovateLab,+1-682-908-1825,CTO,Finance,Social Media,0.385,Low,Qualified,2025-04-23 11:47:06.308694,Lead from Event - Finance industry
+183,Ashley,Rodriguez,ashley.rodriguez@hotmail.com,Digital Dynamics,+1-871-397-3887,Product Manager,Retail,Paid Ads,0.339,Low,Converted,2024-11-12 11:47:06.308694,Lead from Cold Outreach - Retail industry
+184,Sarah,Davis,sarah.davis@hotmail.com,SmartData,+1-522-810-1831,Product Manager,Healthcare,Referral,0.429,Medium,Contacted,2025-02-04 11:47:06.308694,Lead from Referral - Healthcare industry
+185,Jennifer,Gonzalez,jennifer.gonzalez@cybercore.com,CyberCore,+1-788-214-8887,Product Manager,Manufacturing,Cold Outreach,0.508,Medium,Converted,2025-05-12 11:47:06.308694,Lead from Website - Manufacturing industry
+186,Emily,Smith,emily.smith@hotmail.com,TechCorp,+1-346-751-3986,Marketing Manager,Finance,Website,0.421,Medium,Qualified,2024-10-01 11:47:06.308694,Lead from Referral - Finance industry
+187,Sarah,Johnson,sarah.johnson@futuretech.com,FutureTech,+1-842-407-5641,Sales Director,Education,Email Campaign,0.64,Medium,Converted,2025-04-08 11:47:06.308694,Lead from Email Campaign - Education industry
+188,Emily,Brown,emily.brown@hotmail.com,SmartData,+1-244-781-5933,Manager,Technology,Paid Ads,0.389,Low,Qualified,2024-11-13 11:47:06.308694,Lead from Website - Technology industry
+189,David,Gonzalez,david.gonzalez@gmail.com,InnovateLab,+1-261-467-7662,Manager,Manufacturing,Cold Outreach,0.616,Medium,Converted,2025-07-15 11:47:06.308694,Lead from Referral - Manufacturing industry
+190,Jennifer,Lopez,jennifer.lopez@yahoo.com,DataSoft,+1-692-248-1060,Marketing Manager,Manufacturing,Referral,0.766,High,Contacted,2024-10-05 11:47:06.308694,Lead from Event - Manufacturing industry
+191,Robert,Brown,robert.brown@futuretech.com,FutureTech,+1-602-772-4785,Sales Director,Technology,Paid Ads,0.657,Medium,Contacted,2025-02-06 11:47:06.308694,Lead from Referral - Technology industry
+192,Michael,Garcia,michael.garcia@yahoo.com,CloudSystems,+1-209-727-4073,Sales Director,Healthcare,Website,0.462,Medium,Qualified,2025-07-13 11:47:06.308694,Lead from Cold Outreach - Healthcare industry
+193,John,Wilson,john.wilson@gmail.com,InnovateLab,+1-640-472-3809,VP Marketing,Manufacturing,Event,0.285,Low,Converted,2025-07-22 11:47:06.308694,Lead from Website - Manufacturing industry
+194,William,Brown,william.brown@yahoo.com,CyberCore,+1-904-310-9979,Marketing Manager,Education,Email Campaign,0.874,High,Qualified,2024-12-05 11:47:06.308694,Lead from Social Media - Education industry
+195,Sarah,Anderson,sarah.anderson@gmail.com,AI Solutions,+1-200-624-4481,Director,Manufacturing,Social Media,0.269,Low,Qualified,2025-07-31 11:47:06.308694,Lead from Paid Ads - Manufacturing industry
+196,Jessica,Brown,jessica.brown@hotmail.com,TechCorp,+1-718-219-9828,Product Manager,Technology,Paid Ads,0.535,Medium,Contacted,2024-11-19 11:47:06.308694,Lead from Email Campaign - Technology industry
+197,Robert,Miller,robert.miller@gmail.com,CyberCore,+1-419-221-1250,CEO,Retail,Social Media,0.664,Medium,New,2025-04-28 11:47:06.308694,Lead from Cold Outreach - Retail industry
+198,David,Martinez,david.martinez@hotmail.com,AI Solutions,+1-785-407-3187,VP Marketing,Finance,Email Campaign,0.406,Medium,Converted,2024-09-30 11:47:06.308694,Lead from Website - Finance industry
+199,Amanda,Lopez,amanda.lopez@ai solutions.com,AI Solutions,+1-426-655-9966,VP Marketing,Retail,Referral,0.511,Medium,Qualified,2025-04-14 11:47:06.308694,Lead from Email Campaign - Retail industry
+200,Christopher,Rodriguez,christopher.rodriguez@smartdata.com,SmartData,+1-767-686-1736,VP Marketing,Manufacturing,Website,0.39,Low,New,2025-06-05 11:47:06.308694,Lead from Website - Manufacturing industry
+201,Jessica,Brown,jessica.brown@gmail.com,InnovateLab,+1-285-200-3560,CTO,Healthcare,Social Media,0.538,Medium,New,2024-09-14 11:47:06.308694,Lead from Email Campaign - Healthcare industry
+202,James,Gonzalez,james.gonzalez@hotmail.com,SmartData,+1-534-289-2316,Data Scientist,Education,Paid Ads,0.614,Medium,Contacted,2024-12-02 11:47:06.308694,Lead from Paid Ads - Education industry
+203,Sarah,Smith,sarah.smith@cloudsystems.com,CloudSystems,+1-914-318-1583,CEO,Retail,Paid Ads,0.378,Low,New,2025-05-17 11:47:06.308694,Lead from Email Campaign - Retail industry
+204,Jennifer,Williams,jennifer.williams@gmail.com,TechCorp,+1-761-723-4429,Data Scientist,Technology,Event,0.305,Low,Converted,2024-10-27 11:47:06.308694,Lead from Website - Technology industry
+205,Robert,Martinez,robert.martinez@yahoo.com,FutureTech,+1-220-521-1515,Data Scientist,Education,Referral,0.167,Low,Converted,2024-12-17 11:47:06.308694,Lead from Event - Education industry
+206,Jennifer,Jones,jennifer.jones@yahoo.com,Digital Dynamics,+1-357-315-3610,CTO,Retail,Referral,0.309,Low,Contacted,2025-07-06 11:47:06.308694,Lead from Social Media - Retail industry
+207,Emily,Miller,emily.miller@hotmail.com,Digital Dynamics,+1-927-686-3456,Marketing Manager,Finance,Paid Ads,0.517,Medium,New,2025-09-04 11:47:06.308694,Lead from Referral - Finance industry
+208,William,Lopez,william.lopez@hotmail.com,TechCorp,+1-754-439-7940,Marketing Manager,Technology,Cold Outreach,0.78,High,New,2025-07-16 11:47:06.308694,Lead from Event - Technology industry
+209,Jane,Martinez,jane.martinez@gmail.com,InnovateLab,+1-449-507-5040,Product Manager,Technology,Email Campaign,0.557,Medium,Qualified,2025-04-02 11:47:06.308694,Lead from Social Media - Technology industry
+210,Amanda,Rodriguez,amanda.rodriguez@yahoo.com,InnovateLab,+1-440-443-7602,Senior Developer,Manufacturing,Event,0.4,Medium,Qualified,2025-05-17 11:47:06.308694,Lead from Referral - Manufacturing industry
+211,Jennifer,Hernandez,jennifer.hernandez@yahoo.com,AI Solutions,+1-642-974-3948,CTO,Consulting,Email Campaign,0.554,Medium,Converted,2025-04-08 11:47:06.308694,Lead from Paid Ads - Consulting industry
+212,James,Brown,james.brown@gmail.com,QuantumLeap,+1-311-856-8811,Senior Developer,Manufacturing,Referral,0.52,Medium,New,2025-02-03 11:47:06.308694,Lead from Cold Outreach - Manufacturing industry
+213,John,Brown,john.brown@techcorp.com,TechCorp,+1-810-286-9027,VP Marketing,Education,Email Campaign,0.471,Medium,Converted,2025-03-31 11:47:06.308694,Lead from Website - Education industry
+214,Jennifer,Miller,jennifer.miller@smartdata.com,SmartData,+1-588-909-2890,Marketing Manager,Education,Email Campaign,0.341,Low,Contacted,2024-12-11 11:47:06.308694,Lead from Event - Education industry
+215,Amanda,Wilson,amanda.wilson@gmail.com,CloudSystems,+1-788-555-4772,CEO,Retail,Social Media,0.576,Medium,Converted,2025-07-01 11:47:06.308694,Lead from Cold Outreach - Retail industry
+216,Ashley,Wilson,ashley.wilson@gmail.com,AI Solutions,+1-832-768-2124,Senior Developer,Retail,Referral,0.458,Medium,Qualified,2025-01-20 11:47:06.308694,Lead from Email Campaign - Retail industry
+217,Emily,Brown,emily.brown@smartdata.com,SmartData,+1-736-517-1107,VP Marketing,Finance,Paid Ads,0.437,Medium,New,2025-02-26 11:47:06.308694,Lead from Referral - Finance industry
+218,Daniel,Miller,daniel.miller@gmail.com,FutureTech,+1-896-431-8838,VP Marketing,Technology,Website,0.57,Medium,Converted,2025-07-10 11:47:06.308694,Lead from Website - Technology industry
+219,Daniel,Williams,daniel.williams@yahoo.com,FutureTech,+1-385-525-3695,Director,Finance,Website,0.422,Medium,Qualified,2025-03-16 11:47:06.308694,Lead from Paid Ads - Finance industry
+220,Jennifer,Rodriguez,jennifer.rodriguez@gmail.com,CyberCore,+1-912-242-2429,CEO,Retail,Referral,0.674,Medium,Converted,2025-01-26 11:47:06.308694,Lead from Social Media - Retail industry
+221,John,Wilson,john.wilson@hotmail.com,AI Solutions,+1-932-511-2981,VP Marketing,Retail,Event,0.294,Low,Qualified,2024-11-05 11:47:06.308694,Lead from Paid Ads - Retail industry
+222,Michael,Lopez,michael.lopez@digital dynamics.com,Digital Dynamics,+1-340-709-7136,VP Marketing,Retail,Social Media,0.687,Medium,Qualified,2024-12-28 11:47:06.308694,Lead from Cold Outreach - Retail industry
+223,John,Lopez,john.lopez@hotmail.com,TechCorp,+1-528-586-9569,Sales Director,Technology,Email Campaign,0.812,High,Converted,2025-01-06 11:47:06.308694,Lead from Event - Technology industry
+224,David,Smith,david.smith@ai solutions.com,AI Solutions,+1-745-830-2817,CTO,Technology,Paid Ads,0.554,Medium,Contacted,2024-11-30 11:47:06.308694,Lead from Cold Outreach - Technology industry
+225,Jennifer,Lopez,jennifer.lopez@techcorp.com,TechCorp,+1-412-712-6454,CTO,Technology,Paid Ads,0.615,Medium,New,2025-06-28 11:47:06.308694,Lead from Email Campaign - Technology industry
+226,Sarah,Miller,sarah.miller@futuretech.com,FutureTech,+1-280-436-1515,Sales Director,Manufacturing,Social Media,0.593,Medium,New,2025-08-09 11:47:06.308694,Lead from Paid Ads - Manufacturing industry
+227,William,Hernandez,william.hernandez@gmail.com,CyberCore,+1-650-804-3377,Senior Developer,Technology,Cold Outreach,0.558,Medium,Converted,2024-12-07 11:47:06.308694,Lead from Email Campaign - Technology industry
+228,Robert,Anderson,robert.anderson@hotmail.com,InnovateLab,+1-255-352-6831,Sales Director,Finance,Email Campaign,0.328,Low,Qualified,2024-09-23 11:47:06.308694,Lead from Website - Finance industry
+229,Daniel,Jones,daniel.jones@smartdata.com,SmartData,+1-774-608-2002,CEO,Technology,Event,0.554,Medium,Qualified,2024-10-03 11:47:06.308694,Lead from Cold Outreach - Technology industry
+230,William,Hernandez,william.hernandez@hotmail.com,InnovateLab,+1-618-607-1675,Manager,Technology,Email Campaign,0.718,High,Contacted,2025-01-02 11:47:06.308694,Lead from Email Campaign - Technology industry
+231,Christopher,Johnson,christopher.johnson@innovatelab.com,InnovateLab,+1-935-954-5036,CEO,Healthcare,Event,0.474,Medium,Converted,2025-02-01 11:47:06.308694,Lead from Paid Ads - Healthcare industry
+232,Michael,Williams,michael.williams@yahoo.com,CyberCore,+1-973-645-8722,VP Marketing,Consulting,Website,0.714,High,Qualified,2024-11-19 11:47:06.308694,Lead from Paid Ads - Consulting industry
+233,Amanda,Rodriguez,amanda.rodriguez@hotmail.com,Digital Dynamics,+1-879-424-9634,Product Manager,Technology,Referral,0.708,High,Qualified,2025-09-05 11:47:06.309691,Lead from Referral - Technology industry
+234,Daniel,Davis,daniel.davis@futuretech.com,FutureTech,+1-569-223-9713,Manager,Retail,Referral,0.479,Medium,Qualified,2025-08-05 11:47:06.309691,Lead from Cold Outreach - Retail industry
+235,Emily,Jones,emily.jones@yahoo.com,DataSoft,+1-636-472-4672,CEO,Education,Paid Ads,0.344,Low,Contacted,2025-04-28 11:47:06.309691,Lead from Event - Education industry
+236,Jessica,Wilson,jessica.wilson@hotmail.com,DataSoft,+1-932-355-8173,Sales Director,Technology,Referral,0.364,Low,New,2025-03-21 11:47:06.309691,Lead from Email Campaign - Technology industry
+237,Daniel,Wilson,daniel.wilson@techcorp.com,TechCorp,+1-821-627-3619,Marketing Manager,Education,Cold Outreach,0.369,Low,Qualified,2024-12-18 11:47:06.309691,Lead from Email Campaign - Education industry
+238,Daniel,Miller,daniel.miller@innovatelab.com,InnovateLab,+1-861-820-4990,Senior Developer,Healthcare,Email Campaign,0.474,Medium,Converted,2025-01-25 11:47:06.309691,Lead from Email Campaign - Healthcare industry
+239,Amanda,Anderson,amanda.anderson@gmail.com,FutureTech,+1-340-271-2407,Senior Developer,Technology,Social Media,0.425,Medium,Contacted,2025-01-27 11:47:06.309691,Lead from Event - Technology industry
+240,John,Smith,john.smith@hotmail.com,SmartData,+1-421-419-4116,Senior Developer,Finance,Event,0.488,Medium,Qualified,2025-05-24 11:47:06.309691,Lead from Website - Finance industry
+241,Ashley,Williams,ashley.williams@hotmail.com,DataSoft,+1-235-650-6733,Senior Developer,Education,Social Media,0.588,Medium,Qualified,2024-10-26 11:47:06.309691,Lead from Event - Education industry
+242,Michael,Davis,michael.davis@yahoo.com,Digital Dynamics,+1-220-668-7771,Sales Director,Technology,Website,0.555,Medium,Qualified,2025-05-10 11:47:06.309691,Lead from Paid Ads - Technology industry
+243,Jane,Brown,jane.brown@futuretech.com,FutureTech,+1-799-967-2709,Senior Developer,Finance,Social Media,0.761,High,Qualified,2025-01-30 11:47:06.309691,Lead from Referral - Finance industry
+244,Ashley,Brown,ashley.brown@gmail.com,QuantumLeap,+1-329-842-2463,Sales Director,Education,Cold Outreach,0.388,Low,Converted,2025-06-06 11:47:06.309691,Lead from Paid Ads - Education industry
+245,Christopher,Rodriguez,christopher.rodriguez@hotmail.com,Digital Dynamics,+1-758-433-1911,Senior Developer,Healthcare,Cold Outreach,0.456,Medium,Contacted,2024-12-14 11:47:06.309691,Lead from Email Campaign - Healthcare industry
+246,Christopher,Wilson,christopher.wilson@gmail.com,CyberCore,+1-418-767-9911,Senior Developer,Retail,Referral,0.374,Low,Converted,2025-01-14 11:47:06.309691,Lead from Referral - Retail industry
+247,Michael,Rodriguez,michael.rodriguez@cloudsystems.com,CloudSystems,+1-304-734-1039,Marketing Manager,Consulting,Event,0.478,Medium,Qualified,2024-11-01 11:47:06.309691,Lead from Referral - Consulting industry
+248,John,Brown,john.brown@hotmail.com,AI Solutions,+1-590-458-8756,Product Manager,Education,Event,0.751,High,Converted,2024-12-13 11:47:06.309691,Lead from Social Media - Education industry
+249,David,Miller,david.miller@gmail.com,Digital Dynamics,+1-963-901-1511,CEO,Healthcare,Email Campaign,0.336,Low,New,2025-03-10 11:47:06.309691,Lead from Cold Outreach - Healthcare industry
+250,Ashley,Smith,ashley.smith@gmail.com,FutureTech,+1-794-785-4244,Marketing Manager,Retail,Social Media,0.482,Medium,New,2025-03-11 11:47:06.309691,Lead from Paid Ads - Retail industry
+251,Daniel,Johnson,daniel.johnson@gmail.com,CloudSystems,+1-861-380-8277,Senior Developer,Consulting,Email Campaign,0.304,Low,Contacted,2025-02-19 11:47:06.309691,Lead from Referral - Consulting industry
+252,William,Davis,william.davis@gmail.com,AI Solutions,+1-371-907-4316,Sales Director,Healthcare,Event,0.74,High,Qualified,2024-10-02 11:47:06.309691,Lead from Email Campaign - Healthcare industry
+253,Ashley,Hernandez,ashley.hernandez@techcorp.com,TechCorp,+1-772-850-4944,Manager,Consulting,Website,0.386,Low,Qualified,2025-04-01 11:47:06.309691,Lead from Event - Consulting industry
+254,Ashley,Gonzalez,ashley.gonzalez@yahoo.com,SmartData,+1-390-526-4683,Marketing Manager,Healthcare,Website,0.295,Low,Qualified,2024-10-16 11:47:06.309691,Lead from Social Media - Healthcare industry
+255,Jessica,Miller,jessica.miller@hotmail.com,TechCorp,+1-503-295-5886,Director,Manufacturing,Referral,0.62,Medium,New,2025-06-28 11:47:06.309691,Lead from Referral - Manufacturing industry
+256,Christopher,Jones,christopher.jones@yahoo.com,AI Solutions,+1-528-859-1407,CEO,Education,Paid Ads,0.497,Medium,Converted,2025-07-31 11:47:06.309691,Lead from Social Media - Education industry
+257,William,Wilson,william.wilson@gmail.com,QuantumLeap,+1-626-735-9341,Senior Developer,Finance,Social Media,0.474,Medium,Converted,2024-09-17 11:47:06.309691,Lead from Social Media - Finance industry
+258,Christopher,Garcia,christopher.garcia@yahoo.com,AI Solutions,+1-343-503-8133,CEO,Retail,Event,0.531,Medium,Contacted,2025-05-18 11:47:06.309691,Lead from Referral - Retail industry
+259,Jennifer,Gonzalez,jennifer.gonzalez@gmail.com,SmartData,+1-571-513-3120,Manager,Healthcare,Website,0.403,Medium,Qualified,2025-03-27 11:47:06.309691,Lead from Cold Outreach - Healthcare industry
+260,Sarah,Miller,sarah.miller@hotmail.com,SmartData,+1-601-478-4051,VP Marketing,Retail,Social Media,0.342,Low,Converted,2024-12-03 11:47:06.309691,Lead from Cold Outreach - Retail industry
+261,Daniel,Hernandez,daniel.hernandez@smartdata.com,SmartData,+1-357-420-5781,Marketing Manager,Manufacturing,Event,0.468,Medium,Contacted,2025-05-23 11:47:06.309691,Lead from Social Media - Manufacturing industry
+262,Michael,Anderson,michael.anderson@yahoo.com,DataSoft,+1-789-447-9647,Product Manager,Consulting,Social Media,0.697,Medium,New,2025-04-14 11:47:06.309691,Lead from Social Media - Consulting industry
+263,David,Hernandez,david.hernandez@gmail.com,SmartData,+1-998-908-7869,CEO,Retail,Paid Ads,0.582,Medium,Converted,2025-02-01 11:47:06.309691,Lead from Referral - Retail industry
+264,Sarah,Lopez,sarah.lopez@techcorp.com,TechCorp,+1-828-871-5874,Senior Developer,Consulting,Email Campaign,0.588,Medium,New,2024-11-11 11:47:06.309691,Lead from Cold Outreach - Consulting industry
+265,Jane,Martinez,jane.martinez@yahoo.com,QuantumLeap,+1-389-273-2337,VP Marketing,Finance,Website,0.53,Medium,Contacted,2025-07-03 11:47:06.309691,Lead from Social Media - Finance industry
+266,Daniel,Wilson,daniel.wilson@yahoo.com,TechCorp,+1-253-349-4992,Marketing Manager,Healthcare,Website,0.355,Low,Qualified,2025-06-14 11:47:06.309691,Lead from Email Campaign - Healthcare industry
+267,Amanda,Davis,amanda.davis@cybercore.com,CyberCore,+1-778-514-5465,Senior Developer,Finance,Paid Ads,0.548,Medium,Contacted,2024-10-07 11:47:06.309691,Lead from Event - Finance industry
+268,Jennifer,Wilson,jennifer.wilson@smartdata.com,SmartData,+1-255-306-5531,Senior Developer,Healthcare,Email Campaign,0.67,Medium,New,2024-12-17 11:47:06.309691,Lead from Website - Healthcare industry
+269,David,Wilson,david.wilson@gmail.com,Digital Dynamics,+1-815-583-8631,CEO,Education,Cold Outreach,0.245,Low,Converted,2024-10-02 11:47:06.309691,Lead from Referral - Education industry
+270,Jennifer,Martinez,jennifer.martinez@quantumleap.com,QuantumLeap,+1-883-968-5801,Director,Consulting,Social Media,0.318,Low,New,2025-01-26 11:47:06.309691,Lead from Event - Consulting industry
+271,Jennifer,Martinez,jennifer.martinez@yahoo.com,SmartData,+1-421-499-5052,Data Scientist,Retail,Website,0.523,Medium,Converted,2025-07-30 11:47:06.309691,Lead from Cold Outreach - Retail industry
+272,Jessica,Rodriguez,jessica.rodriguez@ai solutions.com,AI Solutions,+1-764-918-9043,Senior Developer,Retail,Paid Ads,0.431,Medium,Qualified,2025-08-02 11:47:06.309691,Lead from Paid Ads - Retail industry
+273,Emily,Gonzalez,emily.gonzalez@hotmail.com,TechCorp,+1-300-683-9894,VP Marketing,Consulting,Referral,0.619,Medium,New,2025-01-30 11:47:06.309691,Lead from Paid Ads - Consulting industry
+274,Jane,Gonzalez,jane.gonzalez@hotmail.com,InnovateLab,+1-393-711-3593,CTO,Consulting,Referral,0.592,Medium,Qualified,2024-10-28 11:47:06.309691,Lead from Social Media - Consulting industry
+275,Christopher,Brown,christopher.brown@yahoo.com,InnovateLab,+1-490-812-9664,VP Marketing,Consulting,Paid Ads,0.423,Medium,Converted,2025-07-10 11:47:06.309691,Lead from Email Campaign - Consulting industry
+276,Jennifer,Brown,jennifer.brown@quantumleap.com,QuantumLeap,+1-661-536-6731,Senior Developer,Manufacturing,Referral,0.692,Medium,Contacted,2025-06-25 11:47:06.309691,Lead from Email Campaign - Manufacturing industry
+277,Christopher,Martinez,christopher.martinez@hotmail.com,QuantumLeap,+1-471-571-1777,CTO,Healthcare,Social Media,0.601,Medium,Converted,2024-12-31 11:47:06.309691,Lead from Social Media - Healthcare industry
+278,Jennifer,Smith,jennifer.smith@gmail.com,TechCorp,+1-946-870-2516,Manager,Technology,Website,0.764,High,Contacted,2024-11-19 11:47:06.309691,Lead from Website - Technology industry
+279,Amanda,Garcia,amanda.garcia@gmail.com,TechCorp,+1-998-506-5129,Senior Developer,Education,Email Campaign,0.348,Low,Converted,2025-07-27 11:47:06.309691,Lead from Email Campaign - Education industry
+280,Emily,Lopez,emily.lopez@gmail.com,QuantumLeap,+1-997-862-3948,Marketing Manager,Consulting,Cold Outreach,0.206,Low,Qualified,2024-11-09 11:47:06.309691,Lead from Event - Consulting industry
+281,John,Miller,john.miller@yahoo.com,QuantumLeap,+1-918-819-3890,Product Manager,Healthcare,Paid Ads,0.163,Low,Contacted,2025-01-31 11:47:06.309691,Lead from Website - Healthcare industry
+282,Daniel,Gonzalez,daniel.gonzalez@gmail.com,DataSoft,+1-341-303-1388,Manager,Retail,Website,0.592,Medium,Contacted,2025-01-30 11:47:06.309691,Lead from Email Campaign - Retail industry
+283,Daniel,Jones,daniel.jones@innovatelab.com,InnovateLab,+1-661-335-4474,VP Marketing,Manufacturing,Social Media,0.506,Medium,Converted,2025-05-19 11:47:06.309691,Lead from Cold Outreach - Manufacturing industry
+284,John,Brown,john.brown@hotmail.com,Digital Dynamics,+1-818-486-4616,Product Manager,Education,Cold Outreach,0.27,Low,Contacted,2025-01-30 11:47:06.309691,Lead from Website - Education industry
+285,Jane,Lopez,jane.lopez@yahoo.com,Digital Dynamics,+1-984-859-3915,Sales Director,Finance,Social Media,0.541,Medium,Converted,2025-04-23 11:47:06.309691,Lead from Event - Finance industry
+286,James,Miller,james.miller@yahoo.com,SmartData,+1-599-320-7461,VP Marketing,Manufacturing,Website,0.398,Low,Contacted,2025-04-21 11:47:06.309691,Lead from Paid Ads - Manufacturing industry
+287,Jane,Hernandez,jane.hernandez@gmail.com,Digital Dynamics,+1-271-956-4231,Sales Director,Finance,Referral,0.523,Medium,New,2025-04-14 11:47:06.309691,Lead from Social Media - Finance industry
+288,Christopher,Wilson,christopher.wilson@yahoo.com,CloudSystems,+1-412-660-4323,CTO,Retail,Email Campaign,0.381,Low,Qualified,2024-10-24 11:47:06.309691,Lead from Social Media - Retail industry
+289,Jane,Hernandez,jane.hernandez@digital dynamics.com,Digital Dynamics,+1-801-523-9247,CEO,Technology,Cold Outreach,0.748,High,Converted,2025-07-12 11:47:06.309691,Lead from Social Media - Technology industry
+290,James,Rodriguez,james.rodriguez@hotmail.com,InnovateLab,+1-250-744-7708,Data Scientist,Technology,Email Campaign,0.373,Low,Contacted,2024-12-26 11:47:06.309691,Lead from Cold Outreach - Technology industry
+291,James,Anderson,james.anderson@smartdata.com,SmartData,+1-205-552-9216,Data Scientist,Healthcare,Paid Ads,0.494,Medium,Qualified,2024-12-21 11:47:06.309691,Lead from Paid Ads - Healthcare industry
+292,James,Martinez,james.martinez@gmail.com,AI Solutions,+1-769-986-3669,Senior Developer,Finance,Website,0.419,Medium,New,2025-04-24 11:47:06.309691,Lead from Social Media - Finance industry
+293,Jessica,Wilson,jessica.wilson@yahoo.com,AI Solutions,+1-967-413-4081,Senior Developer,Manufacturing,Social Media,0.513,Medium,New,2025-04-29 11:47:06.309691,Lead from Referral - Manufacturing industry
+294,William,Johnson,william.johnson@gmail.com,InnovateLab,+1-398-506-4490,Sales Director,Consulting,Paid Ads,0.309,Low,New,2025-06-24 11:47:06.309691,Lead from Email Campaign - Consulting industry
+295,Jessica,Anderson,jessica.anderson@hotmail.com,InnovateLab,+1-609-223-2197,Marketing Manager,Healthcare,Referral,0.248,Low,New,2024-09-29 11:47:06.309691,Lead from Social Media - Healthcare industry
+296,Jennifer,Davis,jennifer.davis@yahoo.com,TechCorp,+1-319-560-2210,CEO,Technology,Website,0.576,Medium,Converted,2024-10-20 11:47:06.309691,Lead from Website - Technology industry
+297,Christopher,Martinez,christopher.martinez@gmail.com,InnovateLab,+1-639-451-4327,Marketing Manager,Consulting,Event,0.457,Medium,Contacted,2025-06-28 11:47:06.309691,Lead from Cold Outreach - Consulting industry
+298,Jessica,Davis,jessica.davis@quantumleap.com,QuantumLeap,+1-562-820-1611,Data Scientist,Education,Event,0.327,Low,Contacted,2024-12-25 11:47:06.309691,Lead from Social Media - Education industry
+299,Christopher,Garcia,christopher.garcia@hotmail.com,AI Solutions,+1-802-720-6700,Data Scientist,Retail,Event,0.623,Medium,Contacted,2024-10-01 11:47:06.309691,Lead from Paid Ads - Retail industry
+300,Emily,Martinez,emily.martinez@hotmail.com,QuantumLeap,+1-614-268-9200,CEO,Technology,Event,0.566,Medium,Converted,2025-04-11 11:47:06.309691,Lead from Event - Technology industry
+301,Jennifer,Anderson,jennifer.anderson@hotmail.com,DataSoft,+1-548-645-3072,Data Scientist,Education,Social Media,0.356,Low,Qualified,2024-10-29 11:47:06.309691,Lead from Website - Education industry
+302,Ashley,Smith,ashley.smith@gmail.com,SmartData,+1-805-668-9392,CTO,Manufacturing,Cold Outreach,0.189,Low,Qualified,2025-03-23 11:47:06.309691,Lead from Event - Manufacturing industry
+303,John,Rodriguez,john.rodriguez@yahoo.com,CloudSystems,+1-596-535-6196,Director,Manufacturing,Cold Outreach,0.567,Medium,Qualified,2025-04-24 11:47:06.309691,Lead from Event - Manufacturing industry
+304,Christopher,Wilson,christopher.wilson@yahoo.com,TechCorp,+1-920-209-3206,Manager,Healthcare,Cold Outreach,0.455,Medium,New,2025-05-01 11:47:06.309691,Lead from Email Campaign - Healthcare industry
+305,Jennifer,Lopez,jennifer.lopez@gmail.com,AI Solutions,+1-818-508-7519,VP Marketing,Finance,Event,0.61,Medium,Contacted,2025-06-16 11:47:06.309691,Lead from Event - Finance industry
+306,David,Jones,david.jones@yahoo.com,FutureTech,+1-889-677-8371,VP Marketing,Healthcare,Cold Outreach,0.47,Medium,Converted,2024-11-06 11:47:06.309691,Lead from Email Campaign - Healthcare industry
+307,Amanda,Gonzalez,amanda.gonzalez@yahoo.com,TechCorp,+1-298-398-3663,Marketing Manager,Technology,Email Campaign,0.31,Low,Converted,2024-12-31 11:47:06.309691,Lead from Email Campaign - Technology industry
+308,Jane,Lopez,jane.lopez@yahoo.com,SmartData,+1-657-853-6590,Manager,Healthcare,Paid Ads,0.368,Low,New,2025-03-12 11:47:06.309691,Lead from Referral - Healthcare industry
+309,Amanda,Gonzalez,amanda.gonzalez@yahoo.com,CyberCore,+1-986-442-7486,CEO,Retail,Paid Ads,0.573,Medium,Qualified,2025-07-05 11:47:06.309691,Lead from Website - Retail industry
+310,Christopher,Johnson,christopher.johnson@hotmail.com,QuantumLeap,+1-252-530-6090,VP Marketing,Education,Website,0.236,Low,Contacted,2025-01-24 11:47:06.309691,Lead from Referral - Education industry
+311,Sarah,Wilson,sarah.wilson@hotmail.com,SmartData,+1-358-335-5547,Sales Director,Finance,Website,0.491,Medium,Contacted,2025-08-20 11:47:06.309691,Lead from Referral - Finance industry
+312,Ashley,Williams,ashley.williams@digital dynamics.com,Digital Dynamics,+1-902-736-3422,Data Scientist,Education,Website,0.357,Low,Converted,2024-11-25 11:47:06.309691,Lead from Paid Ads - Education industry
+313,Daniel,Hernandez,daniel.hernandez@cloudsystems.com,CloudSystems,+1-645-612-4838,Product Manager,Healthcare,Cold Outreach,0.644,Medium,Converted,2024-12-28 11:47:06.309691,Lead from Referral - Healthcare industry
+314,Emily,Anderson,emily.anderson@ai solutions.com,AI Solutions,+1-687-392-5575,Sales Director,Healthcare,Email Campaign,0.506,Medium,New,2024-10-02 11:47:06.309691,Lead from Event - Healthcare industry
+315,Christopher,Rodriguez,christopher.rodriguez@ai solutions.com,AI Solutions,+1-304-240-7567,Director,Finance,Website,0.734,High,New,2025-02-01 11:47:06.309691,Lead from Referral - Finance industry
+316,Christopher,Miller,christopher.miller@hotmail.com,FutureTech,+1-250-409-7521,Manager,Technology,Event,0.616,Medium,Qualified,2025-09-08 11:47:06.309691,Lead from Social Media - Technology industry
+317,James,Lopez,james.lopez@hotmail.com,AI Solutions,+1-692-763-1441,VP Marketing,Manufacturing,Referral,0.732,High,New,2024-11-19 11:47:06.309691,Lead from Website - Manufacturing industry
+318,John,Williams,john.williams@yahoo.com,DataSoft,+1-233-563-5576,Data Scientist,Consulting,Email Campaign,0.712,High,New,2025-01-16 11:47:06.310689,Lead from Website - Consulting industry
+319,William,Garcia,william.garcia@hotmail.com,InnovateLab,+1-528-595-4619,Manager,Consulting,Event,0.238,Low,Qualified,2025-02-16 11:47:06.310689,Lead from Event - Consulting industry
+320,Michael,Miller,michael.miller@hotmail.com,SmartData,+1-498-476-1554,Manager,Manufacturing,Cold Outreach,0.495,Medium,Converted,2025-04-20 11:47:06.310689,Lead from Email Campaign - Manufacturing industry
+321,Jane,Martinez,jane.martinez@hotmail.com,DataSoft,+1-459-414-1848,Marketing Manager,Education,Paid Ads,0.76,High,Converted,2025-05-27 11:47:06.310689,Lead from Email Campaign - Education industry
+322,Ashley,Garcia,ashley.garcia@gmail.com,CyberCore,+1-265-612-6170,CTO,Consulting,Website,0.464,Medium,Contacted,2025-03-26 11:47:06.310689,Lead from Email Campaign - Consulting industry
+323,Jessica,Garcia,jessica.garcia@yahoo.com,CloudSystems,+1-999-427-5206,Director,Retail,Paid Ads,0.798,High,Qualified,2024-11-16 11:47:06.310689,Lead from Cold Outreach - Retail industry
+324,William,Williams,william.williams@gmail.com,CloudSystems,+1-406-778-9021,Marketing Manager,Retail,Email Campaign,0.377,Low,New,2025-07-16 11:47:06.310689,Lead from Event - Retail industry
+325,Sarah,Martinez,sarah.martinez@hotmail.com,DataSoft,+1-328-459-1355,Sales Director,Education,Email Campaign,0.603,Medium,Converted,2025-02-21 11:47:06.310689,Lead from Website - Education industry
+326,Jessica,Brown,jessica.brown@hotmail.com,FutureTech,+1-587-573-6485,CEO,Retail,Referral,0.75,High,Contacted,2025-08-20 11:47:06.310689,Lead from Email Campaign - Retail industry
+327,James,Wilson,james.wilson@cybercore.com,CyberCore,+1-501-234-8407,Marketing Manager,Consulting,Cold Outreach,0.386,Low,Contacted,2024-10-05 11:47:06.310689,Lead from Event - Consulting industry
+328,David,Gonzalez,david.gonzalez@yahoo.com,QuantumLeap,+1-390-500-7003,Manager,Finance,Cold Outreach,0.486,Medium,New,2025-08-18 11:47:06.310689,Lead from Referral - Finance industry
+329,Amanda,Lopez,amanda.lopez@gmail.com,InnovateLab,+1-364-576-7946,Product Manager,Education,Referral,0.755,High,Contacted,2025-07-05 11:47:06.310689,Lead from Paid Ads - Education industry
+330,Daniel,Garcia,daniel.garcia@gmail.com,QuantumLeap,+1-579-368-7881,Manager,Retail,Website,0.442,Medium,Qualified,2025-07-27 11:47:06.310689,Lead from Cold Outreach - Retail industry
+331,Amanda,Davis,amanda.davis@gmail.com,DataSoft,+1-583-460-2327,Marketing Manager,Healthcare,Paid Ads,0.55,Medium,Contacted,2025-07-03 11:47:06.310689,Lead from Event - Healthcare industry
+332,Amanda,Lopez,amanda.lopez@hotmail.com,AI Solutions,+1-424-519-7635,Marketing Manager,Manufacturing,Event,0.601,Medium,New,2025-04-16 11:47:06.310689,Lead from Event - Manufacturing industry
+333,William,Davis,william.davis@yahoo.com,CloudSystems,+1-665-379-3936,Senior Developer,Technology,Social Media,0.435,Medium,Qualified,2025-02-10 11:47:06.310689,Lead from Paid Ads - Technology industry
+334,Sarah,Garcia,sarah.garcia@yahoo.com,InnovateLab,+1-480-542-9350,Product Manager,Manufacturing,Event,0.56,Medium,Converted,2025-02-28 11:47:06.310689,Lead from Paid Ads - Manufacturing industry
+335,Christopher,Brown,christopher.brown@gmail.com,DataSoft,+1-945-707-9884,Director,Manufacturing,Email Campaign,0.5,Medium,New,2025-06-30 11:47:06.310689,Lead from Social Media - Manufacturing industry
+336,Emily,Davis,emily.davis@yahoo.com,TechCorp,+1-429-567-3183,Product Manager,Finance,Event,0.426,Medium,Converted,2024-12-16 11:47:06.310689,Lead from Referral - Finance industry
+337,Jane,Lopez,jane.lopez@yahoo.com,DataSoft,+1-366-236-1493,Product Manager,Healthcare,Cold Outreach,0.355,Low,New,2025-03-19 11:47:06.310689,Lead from Event - Healthcare industry
+338,Emily,Johnson,emily.johnson@gmail.com,CloudSystems,+1-803-269-1772,VP Marketing,Consulting,Website,0.759,High,Converted,2024-11-08 11:47:06.310689,Lead from Cold Outreach - Consulting industry
+339,David,Miller,david.miller@gmail.com,TechCorp,+1-723-653-4634,Director,Consulting,Event,0.292,Low,Contacted,2025-04-05 11:47:06.310689,Lead from Paid Ads - Consulting industry
+340,Amanda,Jones,amanda.jones@hotmail.com,CyberCore,+1-800-430-4668,Data Scientist,Technology,Referral,0.686,Medium,Converted,2024-11-07 11:47:06.310689,Lead from Paid Ads - Technology industry
+341,Sarah,Garcia,sarah.garcia@gmail.com,SmartData,+1-596-654-6712,VP Marketing,Healthcare,Cold Outreach,0.458,Medium,Converted,2025-05-19 11:47:06.310689,Lead from Social Media - Healthcare industry
+342,John,Williams,john.williams@digital dynamics.com,Digital Dynamics,+1-754-643-9796,Product Manager,Manufacturing,Website,0.705,High,Contacted,2025-06-18 11:47:06.310689,Lead from Email Campaign - Manufacturing industry
+343,David,Jones,david.jones@hotmail.com,FutureTech,+1-715-879-9835,Data Scientist,Healthcare,Website,0.578,Medium,Qualified,2025-06-01 11:47:06.310689,Lead from Website - Healthcare industry
+344,Christopher,Davis,christopher.davis@yahoo.com,Digital Dynamics,+1-391-264-6100,Sales Director,Finance,Cold Outreach,0.528,Medium,Converted,2024-11-24 11:47:06.310689,Lead from Referral - Finance industry
+345,Michael,Davis,michael.davis@yahoo.com,InnovateLab,+1-292-807-1376,CEO,Manufacturing,Social Media,0.335,Low,Converted,2025-03-31 11:47:06.310689,Lead from Paid Ads - Manufacturing industry
+346,David,Lopez,david.lopez@innovatelab.com,InnovateLab,+1-830-567-1363,Data Scientist,Retail,Website,0.805,High,Qualified,2024-09-15 11:47:06.310689,Lead from Referral - Retail industry
+347,Ashley,Smith,ashley.smith@yahoo.com,TechCorp,+1-889-857-5390,Marketing Manager,Finance,Social Media,0.753,High,Contacted,2025-04-07 11:47:06.310689,Lead from Referral - Finance industry
+348,James,Lopez,james.lopez@hotmail.com,DataSoft,+1-255-940-5605,CEO,Retail,Website,0.472,Medium,New,2025-07-03 11:47:06.310689,Lead from Referral - Retail industry
+349,Emily,Davis,emily.davis@yahoo.com,QuantumLeap,+1-764-832-7879,Product Manager,Education,Email Campaign,0.444,Medium,Contacted,2024-10-31 11:47:06.310689,Lead from Email Campaign - Education industry
+350,Robert,Rodriguez,robert.rodriguez@hotmail.com,SmartData,+1-557-511-7238,Director,Finance,Social Media,0.375,Low,New,2025-04-30 11:47:06.310689,Lead from Paid Ads - Finance industry
+351,William,Johnson,william.johnson@gmail.com,TechCorp,+1-725-743-3711,CTO,Consulting,Cold Outreach,0.594,Medium,Qualified,2025-05-19 11:47:06.310689,Lead from Event - Consulting industry
+352,Daniel,Jones,daniel.jones@digital dynamics.com,Digital Dynamics,+1-213-681-6898,Product Manager,Finance,Cold Outreach,0.926,High,Contacted,2025-06-06 11:47:06.310689,Lead from Event - Finance industry
+353,Jane,Anderson,jane.anderson@ai solutions.com,AI Solutions,+1-829-305-3003,Product Manager,Manufacturing,Email Campaign,0.374,Low,New,2025-02-13 11:47:06.310689,Lead from Paid Ads - Manufacturing industry
+354,Daniel,Jones,daniel.jones@gmail.com,FutureTech,+1-411-270-3379,CTO,Retail,Cold Outreach,0.292,Low,Converted,2025-02-16 11:47:06.310689,Lead from Email Campaign - Retail industry
+355,Christopher,Smith,christopher.smith@gmail.com,QuantumLeap,+1-251-255-8332,CEO,Education,Cold Outreach,0.337,Low,Converted,2025-08-24 11:47:06.310689,Lead from Paid Ads - Education industry
+356,Daniel,Jones,daniel.jones@hotmail.com,FutureTech,+1-285-824-2573,Marketing Manager,Technology,Referral,0.441,Medium,Converted,2025-06-03 11:47:06.310689,Lead from Website - Technology industry
+357,Ashley,Brown,ashley.brown@hotmail.com,AI Solutions,+1-264-590-3447,Product Manager,Healthcare,Email Campaign,0.425,Medium,New,2024-12-22 11:47:06.310689,Lead from Website - Healthcare industry
+358,Amanda,Smith,amanda.smith@gmail.com,CloudSystems,+1-955-596-7785,Manager,Finance,Cold Outreach,0.509,Medium,Converted,2025-04-14 11:47:06.310689,Lead from Website - Finance industry
+359,Sarah,Wilson,sarah.wilson@gmail.com,FutureTech,+1-491-350-4639,Manager,Manufacturing,Event,0.266,Low,Converted,2024-09-13 11:47:06.310689,Lead from Cold Outreach - Manufacturing industry
+360,Michael,Hernandez,michael.hernandez@yahoo.com,CyberCore,+1-871-340-4173,Director,Finance,Social Media,0.838,High,Qualified,2024-10-17 11:47:06.310689,Lead from Referral - Finance industry
+361,Christopher,Anderson,christopher.anderson@yahoo.com,CyberCore,+1-453-536-8032,Director,Healthcare,Email Campaign,0.292,Low,New,2025-02-16 11:47:06.310689,Lead from Paid Ads - Healthcare industry
+362,Michael,Davis,michael.davis@hotmail.com,SmartData,+1-949-607-1802,CEO,Technology,Website,0.517,Medium,Qualified,2024-09-17 11:47:06.310689,Lead from Event - Technology industry
+363,Emily,Williams,emily.williams@yahoo.com,SmartData,+1-221-809-7808,Manager,Education,Social Media,0.319,Low,Qualified,2025-04-15 11:47:06.310689,Lead from Email Campaign - Education industry
+364,Christopher,Hernandez,christopher.hernandez@gmail.com,SmartData,+1-675-974-6400,Marketing Manager,Consulting,Website,0.655,Medium,Contacted,2025-02-21 11:47:06.310689,Lead from Social Media - Consulting industry
+365,Jessica,Miller,jessica.miller@hotmail.com,InnovateLab,+1-355-814-4640,Manager,Finance,Paid Ads,0.465,Medium,Converted,2025-07-26 11:47:06.310689,Lead from Event - Finance industry
+366,Jane,Lopez,jane.lopez@yahoo.com,TechCorp,+1-683-241-9538,Sales Director,Healthcare,Referral,0.453,Medium,New,2025-09-03 11:47:06.310689,Lead from Paid Ads - Healthcare industry
+367,Sarah,Lopez,sarah.lopez@innovatelab.com,InnovateLab,+1-718-941-8611,CTO,Manufacturing,Event,0.854,High,New,2024-12-16 11:47:06.310689,Lead from Social Media - Manufacturing industry
+368,Christopher,Brown,christopher.brown@quantumleap.com,QuantumLeap,+1-288-244-1452,Product Manager,Consulting,Website,0.476,Medium,Contacted,2025-04-12 11:47:06.310689,Lead from Email Campaign - Consulting industry
+369,Daniel,Johnson,daniel.johnson@yahoo.com,DataSoft,+1-912-274-1291,Marketing Manager,Retail,Website,0.48,Medium,Contacted,2025-04-20 11:47:06.310689,Lead from Website - Retail industry
+370,Ashley,Williams,ashley.williams@smartdata.com,SmartData,+1-794-318-1537,Data Scientist,Retail,Social Media,0.405,Medium,Converted,2025-07-22 11:47:06.310689,Lead from Website - Retail industry
+371,William,Brown,william.brown@hotmail.com,AI Solutions,+1-829-869-3012,Sales Director,Consulting,Social Media,0.414,Medium,Contacted,2025-05-15 11:47:06.310689,Lead from Referral - Consulting industry
+372,John,Brown,john.brown@hotmail.com,DataSoft,+1-802-469-9834,Senior Developer,Manufacturing,Social Media,0.537,Medium,Contacted,2024-12-05 11:47:06.310689,Lead from Cold Outreach - Manufacturing industry
+373,William,Lopez,william.lopez@gmail.com,InnovateLab,+1-831-926-6479,CTO,Retail,Paid Ads,0.272,Low,Contacted,2025-02-15 11:47:06.310689,Lead from Website - Retail industry
+374,Jennifer,Hernandez,jennifer.hernandez@gmail.com,InnovateLab,+1-260-925-6165,Data Scientist,Retail,Email Campaign,0.381,Low,Contacted,2024-09-18 11:47:06.310689,Lead from Paid Ads - Retail industry
+375,Jessica,Gonzalez,jessica.gonzalez@yahoo.com,DataSoft,+1-403-393-6933,Sales Director,Technology,Email Campaign,0.587,Medium,New,2024-12-17 11:47:06.310689,Lead from Website - Technology industry
+376,Christopher,Wilson,christopher.wilson@hotmail.com,CloudSystems,+1-363-726-7172,Director,Consulting,Website,0.222,Low,Contacted,2024-10-05 11:47:06.310689,Lead from Cold Outreach - Consulting industry
+377,Ashley,Lopez,ashley.lopez@gmail.com,Digital Dynamics,+1-543-444-9422,VP Marketing,Education,Email Campaign,0.528,Medium,Contacted,2024-09-11 11:47:06.310689,Lead from Social Media - Education industry
+378,Ashley,Lopez,ashley.lopez@cybercore.com,CyberCore,+1-795-629-5368,Sales Director,Healthcare,Referral,0.569,Medium,Converted,2025-06-03 11:47:06.310689,Lead from Referral - Healthcare industry
+379,Amanda,Miller,amanda.miller@hotmail.com,AI Solutions,+1-604-309-5183,Product Manager,Manufacturing,Website,0.347,Low,Converted,2025-05-06 11:47:06.311687,Lead from Email Campaign - Manufacturing industry
+380,Ashley,Smith,ashley.smith@gmail.com,Digital Dynamics,+1-916-748-5641,CEO,Healthcare,Email Campaign,0.437,Medium,Converted,2024-11-22 11:47:06.311687,Lead from Website - Healthcare industry
+381,James,Anderson,james.anderson@gmail.com,FutureTech,+1-218-851-3309,CTO,Manufacturing,Cold Outreach,0.751,High,Qualified,2025-03-25 11:47:06.311687,Lead from Social Media - Manufacturing industry
+382,Jennifer,Martinez,jennifer.martinez@gmail.com,Digital Dynamics,+1-603-463-2288,Sales Director,Finance,Website,0.347,Low,Qualified,2025-01-25 11:47:06.311687,Lead from Referral - Finance industry
+383,Emily,Anderson,emily.anderson@yahoo.com,TechCorp,+1-379-568-7627,Director,Finance,Website,0.525,Medium,Qualified,2025-02-21 11:47:06.311687,Lead from Social Media - Finance industry
+384,James,Gonzalez,james.gonzalez@innovatelab.com,InnovateLab,+1-718-578-3893,Marketing Manager,Manufacturing,Event,0.755,High,Qualified,2024-12-29 11:47:06.311687,Lead from Referral - Manufacturing industry
+385,Jane,Rodriguez,jane.rodriguez@hotmail.com,Digital Dynamics,+1-555-223-9920,Data Scientist,Healthcare,Cold Outreach,0.31,Low,Qualified,2025-05-12 11:47:06.311687,Lead from Email Campaign - Healthcare industry
+386,James,Rodriguez,james.rodriguez@cybercore.com,CyberCore,+1-351-949-1087,Manager,Manufacturing,Event,0.464,Medium,New,2025-08-30 11:47:06.311687,Lead from Website - Manufacturing industry
+387,Amanda,Lopez,amanda.lopez@hotmail.com,TechCorp,+1-667-901-7195,Director,Healthcare,Email Campaign,0.613,Medium,Converted,2025-04-25 11:47:06.311687,Lead from Social Media - Healthcare industry
+388,Daniel,Brown,daniel.brown@innovatelab.com,InnovateLab,+1-496-416-6670,VP Marketing,Manufacturing,Email Campaign,0.528,Medium,Contacted,2025-03-12 11:47:06.311687,Lead from Referral - Manufacturing industry
+389,Jessica,Jones,jessica.jones@yahoo.com,DataSoft,+1-484-967-4890,Data Scientist,Technology,Email Campaign,0.435,Medium,Converted,2024-09-19 11:47:06.311687,Lead from Cold Outreach - Technology industry
+390,David,Smith,david.smith@yahoo.com,InnovateLab,+1-969-930-4683,VP Marketing,Technology,Event,0.365,Low,Contacted,2024-12-22 11:47:06.311687,Lead from Paid Ads - Technology industry
+391,Ashley,Smith,ashley.smith@futuretech.com,FutureTech,+1-452-936-1891,Manager,Finance,Event,0.773,High,New,2025-04-14 11:47:06.311687,Lead from Email Campaign - Finance industry
+392,Daniel,Johnson,daniel.johnson@hotmail.com,TechCorp,+1-354-315-1026,VP Marketing,Retail,Email Campaign,0.794,High,Converted,2025-05-22 11:47:06.311687,Lead from Website - Retail industry
+393,Jessica,Anderson,jessica.anderson@digital dynamics.com,Digital Dynamics,+1-791-703-8850,VP Marketing,Technology,Website,0.658,Medium,Converted,2025-05-27 11:47:06.311687,Lead from Social Media - Technology industry
+394,Emily,Rodriguez,emily.rodriguez@yahoo.com,TechCorp,+1-658-739-4258,Senior Developer,Healthcare,Paid Ads,0.561,Medium,Converted,2024-10-26 11:47:06.311687,Lead from Paid Ads - Healthcare industry
+395,Sarah,Smith,sarah.smith@cybercore.com,CyberCore,+1-458-346-3703,Marketing Manager,Healthcare,Event,0.446,Medium,Contacted,2025-08-12 11:47:06.311687,Lead from Social Media - Healthcare industry
+396,Robert,Brown,robert.brown@datasoft.com,DataSoft,+1-792-531-5544,Director,Technology,Paid Ads,0.489,Medium,Qualified,2025-08-30 11:47:06.311687,Lead from Referral - Technology industry
+397,Daniel,Martinez,daniel.martinez@gmail.com,CloudSystems,+1-943-686-1781,Director,Manufacturing,Referral,0.249,Low,Contacted,2025-01-30 11:47:06.311687,Lead from Cold Outreach - Manufacturing industry
+398,Michael,Anderson,michael.anderson@digital dynamics.com,Digital Dynamics,+1-693-386-2207,Director,Education,Website,0.617,Medium,Qualified,2024-12-09 11:47:06.311687,Lead from Event - Education industry
+399,Ashley,Smith,ashley.smith@hotmail.com,DataSoft,+1-394-549-8080,Product Manager,Technology,Website,0.757,High,New,2024-10-11 11:47:06.311687,Lead from Paid Ads - Technology industry
+400,Emily,Wilson,emily.wilson@hotmail.com,FutureTech,+1-337-943-2917,Product Manager,Retail,Website,0.386,Low,Qualified,2024-09-21 11:47:06.311687,Lead from Cold Outreach - Retail industry
+401,Emily,Johnson,emily.johnson@hotmail.com,CloudSystems,+1-900-339-9788,Sales Director,Retail,Event,0.556,Medium,Qualified,2025-03-24 11:47:06.311687,Lead from Cold Outreach - Retail industry
+402,James,Brown,james.brown@hotmail.com,Digital Dynamics,+1-367-325-9377,Product Manager,Retail,Referral,0.415,Medium,Contacted,2025-08-08 11:47:06.311687,Lead from Cold Outreach - Retail industry
+403,Jane,Anderson,jane.anderson@ai solutions.com,AI Solutions,+1-244-461-4058,CEO,Manufacturing,Cold Outreach,0.631,Medium,New,2024-09-28 11:47:06.311687,Lead from Referral - Manufacturing industry
+404,David,Hernandez,david.hernandez@ai solutions.com,AI Solutions,+1-831-888-1559,Manager,Healthcare,Social Media,0.475,Medium,Contacted,2025-08-03 11:47:06.311687,Lead from Email Campaign - Healthcare industry
+405,William,Gonzalez,william.gonzalez@smartdata.com,SmartData,+1-630-712-3369,Director,Healthcare,Email Campaign,0.295,Low,Converted,2024-11-28 11:47:06.311687,Lead from Social Media - Healthcare industry
+406,Ashley,Hernandez,ashley.hernandez@quantumleap.com,QuantumLeap,+1-853-730-8275,Sales Director,Education,Paid Ads,0.414,Medium,Contacted,2025-05-23 11:47:06.311687,Lead from Paid Ads - Education industry
+407,Jane,Williams,jane.williams@hotmail.com,CloudSystems,+1-440-974-7281,VP Marketing,Manufacturing,Event,0.341,Low,Qualified,2025-07-03 11:47:06.311687,Lead from Cold Outreach - Manufacturing industry
+408,Amanda,Wilson,amanda.wilson@gmail.com,TechCorp,+1-631-511-2796,Senior Developer,Consulting,Website,0.412,Medium,Contacted,2024-12-30 11:47:06.311687,Lead from Social Media - Consulting industry
+409,Daniel,Lopez,daniel.lopez@ai solutions.com,AI Solutions,+1-212-333-1384,Manager,Consulting,Paid Ads,0.606,Medium,Qualified,2025-02-13 11:47:06.311687,Lead from Event - Consulting industry
+410,John,Garcia,john.garcia@hotmail.com,SmartData,+1-684-317-8166,CTO,Healthcare,Event,0.231,Low,Qualified,2025-02-01 11:47:06.311687,Lead from Email Campaign - Healthcare industry
+411,Jennifer,Davis,jennifer.davis@gmail.com,Digital Dynamics,+1-924-681-7766,Director,Retail,Paid Ads,0.258,Low,New,2025-04-09 11:47:06.311687,Lead from Email Campaign - Retail industry
+412,Ashley,Williams,ashley.williams@digital dynamics.com,Digital Dynamics,+1-544-507-9632,Director,Education,Cold Outreach,0.496,Medium,New,2024-11-23 11:47:06.311687,Lead from Email Campaign - Education industry
+413,Daniel,Miller,daniel.miller@gmail.com,AI Solutions,+1-852-667-4674,Sales Director,Technology,Cold Outreach,0.795,High,Contacted,2025-02-26 11:47:06.311687,Lead from Email Campaign - Technology industry
+414,Amanda,Rodriguez,amanda.rodriguez@gmail.com,TechCorp,+1-732-629-2107,Data Scientist,Consulting,Event,0.486,Medium,Qualified,2024-10-15 11:47:06.311687,Lead from Cold Outreach - Consulting industry
+415,Ashley,Miller,ashley.miller@yahoo.com,CloudSystems,+1-474-956-7704,Director,Education,Website,0.262,Low,Contacted,2024-09-15 11:47:06.311687,Lead from Event - Education industry
+416,Michael,Johnson,michael.johnson@yahoo.com,CloudSystems,+1-478-898-9883,Data Scientist,Consulting,Email Campaign,0.229,Low,Converted,2025-01-27 11:47:06.311687,Lead from Email Campaign - Consulting industry
+417,Emily,Anderson,emily.anderson@yahoo.com,TechCorp,+1-271-392-8893,Data Scientist,Consulting,Paid Ads,0.373,Low,Qualified,2025-03-11 11:47:06.311687,Lead from Paid Ads - Consulting industry
+418,Christopher,Williams,christopher.williams@hotmail.com,QuantumLeap,+1-865-594-5714,VP Marketing,Finance,Paid Ads,0.489,Medium,Converted,2025-06-20 11:47:06.311687,Lead from Email Campaign - Finance industry
+419,Daniel,Johnson,daniel.johnson@yahoo.com,Digital Dynamics,+1-542-930-7329,Marketing Manager,Healthcare,Event,0.619,Medium,New,2025-06-04 11:47:06.311687,Lead from Referral - Healthcare industry
+420,Michael,Miller,michael.miller@hotmail.com,QuantumLeap,+1-430-688-3631,Product Manager,Healthcare,Referral,0.259,Low,New,2025-04-22 11:47:06.311687,Lead from Referral - Healthcare industry
+421,Daniel,Rodriguez,daniel.rodriguez@techcorp.com,TechCorp,+1-227-236-5853,Sales Director,Manufacturing,Email Campaign,0.601,Medium,Qualified,2025-07-22 11:47:06.311687,Lead from Referral - Manufacturing industry
+422,David,Lopez,david.lopez@gmail.com,DataSoft,+1-530-777-3448,CTO,Retail,Website,0.265,Low,Qualified,2025-02-18 11:47:06.311687,Lead from Paid Ads - Retail industry
+423,James,Davis,james.davis@gmail.com,QuantumLeap,+1-778-721-2493,Senior Developer,Retail,Paid Ads,0.671,Medium,Contacted,2025-09-01 11:47:06.311687,Lead from Email Campaign - Retail industry
+424,Jennifer,Martinez,jennifer.martinez@yahoo.com,Digital Dynamics,+1-888-789-4176,Marketing Manager,Education,Referral,0.613,Medium,Contacted,2025-04-30 11:47:06.311687,Lead from Cold Outreach - Education industry
+425,John,Gonzalez,john.gonzalez@yahoo.com,Digital Dynamics,+1-960-578-8780,VP Marketing,Education,Referral,0.596,Medium,Qualified,2024-09-14 11:47:06.311687,Lead from Website - Education industry
+426,David,Martinez,david.martinez@hotmail.com,AI Solutions,+1-623-377-3980,Data Scientist,Education,Cold Outreach,0.601,Medium,New,2025-06-07 11:47:06.311687,Lead from Cold Outreach - Education industry
+427,John,Garcia,john.garcia@yahoo.com,Digital Dynamics,+1-928-654-2693,Senior Developer,Manufacturing,Email Campaign,0.358,Low,Qualified,2025-02-10 11:47:06.311687,Lead from Cold Outreach - Manufacturing industry
+428,Michael,Anderson,michael.anderson@hotmail.com,DataSoft,+1-276-923-6124,Data Scientist,Retail,Referral,0.703,High,Converted,2025-03-06 11:47:06.311687,Lead from Social Media - Retail industry
+429,Jennifer,Johnson,jennifer.johnson@yahoo.com,TechCorp,+1-908-588-1293,VP Marketing,Manufacturing,Event,0.391,Low,New,2025-07-07 11:47:06.311687,Lead from Cold Outreach - Manufacturing industry
+430,Jane,Anderson,jane.anderson@cybercore.com,CyberCore,+1-737-924-9674,CEO,Education,Email Campaign,0.602,Medium,Qualified,2025-08-29 11:47:06.311687,Lead from Email Campaign - Education industry
+431,Robert,Gonzalez,robert.gonzalez@yahoo.com,FutureTech,+1-543-601-8713,Director,Manufacturing,Cold Outreach,0.712,High,Qualified,2024-12-30 11:47:06.311687,Lead from Website - Manufacturing industry
+432,Robert,Miller,robert.miller@gmail.com,AI Solutions,+1-662-368-4597,Product Manager,Retail,Cold Outreach,0.216,Low,Converted,2025-05-05 11:47:06.311687,Lead from Referral - Retail industry
+433,Emily,Brown,emily.brown@hotmail.com,AI Solutions,+1-543-581-6347,CTO,Manufacturing,Website,0.628,Medium,Contacted,2025-04-13 11:47:06.311687,Lead from Referral - Manufacturing industry
+434,Jennifer,Wilson,jennifer.wilson@yahoo.com,QuantumLeap,+1-307-467-7088,Marketing Manager,Manufacturing,Cold Outreach,0.512,Medium,Contacted,2024-11-01 11:47:06.311687,Lead from Event - Manufacturing industry
+435,William,Miller,william.miller@hotmail.com,QuantumLeap,+1-466-792-4005,Sales Director,Finance,Event,0.652,Medium,Converted,2025-03-13 11:47:06.311687,Lead from Paid Ads - Finance industry
+436,Michael,Davis,michael.davis@gmail.com,AI Solutions,+1-449-912-2900,Sales Director,Technology,Event,0.395,Low,Qualified,2025-01-21 11:47:06.311687,Lead from Email Campaign - Technology industry
+437,Jennifer,Martinez,jennifer.martinez@gmail.com,Digital Dynamics,+1-395-824-8203,Data Scientist,Technology,Social Media,0.399,Low,Contacted,2025-05-19 11:47:06.311687,Lead from Website - Technology industry
+438,Michael,Rodriguez,michael.rodriguez@yahoo.com,CloudSystems,+1-632-312-2427,CEO,Education,Email Campaign,0.417,Medium,Qualified,2025-07-12 11:47:06.311687,Lead from Social Media - Education industry
+439,Jane,Williams,jane.williams@gmail.com,Digital Dynamics,+1-413-555-8726,Product Manager,Healthcare,Website,0.417,Medium,New,2025-02-05 11:47:06.311687,Lead from Email Campaign - Healthcare industry
+440,Michael,Jones,michael.jones@hotmail.com,FutureTech,+1-743-641-4751,Product Manager,Healthcare,Website,0.352,Low,New,2025-03-31 11:47:06.311687,Lead from Website - Healthcare industry
+441,Sarah,Gonzalez,sarah.gonzalez@gmail.com,CloudSystems,+1-598-335-2522,Sales Director,Finance,Email Campaign,0.769,High,Contacted,2024-09-13 11:47:06.311687,Lead from Email Campaign - Finance industry
+442,Ashley,Jones,ashley.jones@yahoo.com,DataSoft,+1-487-909-4580,Product Manager,Education,Referral,0.163,Low,Qualified,2024-12-16 11:47:06.312686,Lead from Cold Outreach - Education industry
+443,Amanda,Gonzalez,amanda.gonzalez@futuretech.com,FutureTech,+1-957-777-5849,Sales Director,Consulting,Paid Ads,0.48,Medium,Qualified,2025-02-05 11:47:06.312686,Lead from Referral - Consulting industry
+444,Ashley,Johnson,ashley.johnson@cloudsystems.com,CloudSystems,+1-480-344-3911,Sales Director,Education,Social Media,0.339,Low,Contacted,2024-11-27 11:47:06.312686,Lead from Social Media - Education industry
+445,Michael,Rodriguez,michael.rodriguez@ai solutions.com,AI Solutions,+1-404-605-8134,CTO,Healthcare,Email Campaign,0.794,High,New,2025-08-12 11:47:06.312686,Lead from Event - Healthcare industry
+446,Amanda,Gonzalez,amanda.gonzalez@hotmail.com,CloudSystems,+1-377-504-1162,Data Scientist,Finance,Paid Ads,0.588,Medium,Qualified,2024-11-06 11:47:06.312686,Lead from Event - Finance industry
+447,David,Williams,david.williams@hotmail.com,CloudSystems,+1-802-221-1810,VP Marketing,Manufacturing,Referral,0.371,Low,Converted,2024-11-18 11:47:06.312686,Lead from Referral - Manufacturing industry
+448,Robert,Lopez,robert.lopez@quantumleap.com,QuantumLeap,+1-798-587-3410,VP Marketing,Healthcare,Cold Outreach,0.372,Low,Qualified,2025-07-08 11:47:06.312686,Lead from Website - Healthcare industry
+449,William,Miller,william.miller@hotmail.com,InnovateLab,+1-341-429-5976,Manager,Manufacturing,Social Media,0.477,Medium,Converted,2025-08-01 11:47:06.312686,Lead from Social Media - Manufacturing industry
+450,Robert,Williams,robert.williams@gmail.com,QuantumLeap,+1-984-892-9285,CTO,Manufacturing,Email Campaign,0.25,Low,Converted,2025-08-26 11:47:06.312686,Lead from Event - Manufacturing industry
+451,Michael,Miller,michael.miller@quantumleap.com,QuantumLeap,+1-349-508-1866,Senior Developer,Technology,Email Campaign,0.688,Medium,New,2025-08-15 11:47:06.312686,Lead from Website - Technology industry
+452,Robert,Davis,robert.davis@yahoo.com,CyberCore,+1-426-619-1635,CEO,Consulting,Cold Outreach,0.733,High,Contacted,2025-06-03 11:47:06.312686,Lead from Referral - Consulting industry
+453,Emily,Brown,emily.brown@quantumleap.com,QuantumLeap,+1-945-718-2837,Marketing Manager,Technology,Social Media,0.899,High,New,2025-07-10 11:47:06.312686,Lead from Social Media - Technology industry
+454,Jennifer,Smith,jennifer.smith@yahoo.com,FutureTech,+1-580-811-4246,Manager,Consulting,Cold Outreach,0.294,Low,New,2025-02-27 11:47:06.312686,Lead from Email Campaign - Consulting industry
+455,Michael,Wilson,michael.wilson@gmail.com,InnovateLab,+1-251-502-3168,Manager,Manufacturing,Email Campaign,0.69,Medium,New,2025-03-09 11:47:06.312686,Lead from Referral - Manufacturing industry
+456,Emily,Jones,emily.jones@cloudsystems.com,CloudSystems,+1-680-207-5047,Data Scientist,Education,Event,0.299,Low,Converted,2025-06-01 11:47:06.312686,Lead from Referral - Education industry
+457,Robert,Smith,robert.smith@yahoo.com,Digital Dynamics,+1-879-727-2702,Senior Developer,Consulting,Cold Outreach,0.377,Low,New,2024-10-28 11:47:06.312686,Lead from Cold Outreach - Consulting industry
+458,Jennifer,Wilson,jennifer.wilson@smartdata.com,SmartData,+1-565-802-2257,Senior Developer,Healthcare,Cold Outreach,0.401,Medium,Qualified,2025-03-14 11:47:06.312686,Lead from Cold Outreach - Healthcare industry
+459,Emily,Hernandez,emily.hernandez@yahoo.com,CloudSystems,+1-750-528-9124,Product Manager,Healthcare,Event,0.19,Low,New,2024-09-13 11:47:06.312686,Lead from Website - Healthcare industry
+460,Michael,Anderson,michael.anderson@gmail.com,SmartData,+1-822-759-8990,Manager,Consulting,Referral,0.57,Medium,Contacted,2024-09-30 11:47:06.312686,Lead from Paid Ads - Consulting industry
+461,Jessica,Davis,jessica.davis@futuretech.com,FutureTech,+1-916-860-1392,VP Marketing,Consulting,Email Campaign,0.72,High,Qualified,2024-11-06 11:47:06.312686,Lead from Referral - Consulting industry
+462,Jane,Davis,jane.davis@hotmail.com,AI Solutions,+1-535-691-4458,Data Scientist,Healthcare,Event,0.609,Medium,Converted,2025-05-11 11:47:06.312686,Lead from Event - Healthcare industry
+463,Jessica,Martinez,jessica.martinez@gmail.com,SmartData,+1-797-838-8202,Product Manager,Retail,Email Campaign,0.443,Medium,Contacted,2025-05-15 11:47:06.312686,Lead from Event - Retail industry
+464,Amanda,Garcia,amanda.garcia@gmail.com,InnovateLab,+1-362-499-9282,CTO,Education,Email Campaign,0.475,Medium,Contacted,2025-03-06 11:47:06.312686,Lead from Email Campaign - Education industry
+465,Jane,Garcia,jane.garcia@yahoo.com,InnovateLab,+1-974-227-2663,Senior Developer,Retail,Event,0.758,High,New,2024-10-02 11:47:06.312686,Lead from Paid Ads - Retail industry
+466,Jessica,Gonzalez,jessica.gonzalez@gmail.com,AI Solutions,+1-215-860-4178,Product Manager,Healthcare,Paid Ads,0.378,Low,New,2024-10-16 11:47:06.312686,Lead from Paid Ads - Healthcare industry
+467,Michael,Miller,michael.miller@hotmail.com,TechCorp,+1-736-766-5547,VP Marketing,Consulting,Paid Ads,0.479,Medium,Converted,2024-10-06 11:47:06.312686,Lead from Email Campaign - Consulting industry
+468,Michael,Davis,michael.davis@yahoo.com,DataSoft,+1-794-325-1846,Product Manager,Education,Cold Outreach,0.339,Low,Qualified,2024-10-01 11:47:06.312686,Lead from Website - Education industry
+469,Emily,Davis,emily.davis@digital dynamics.com,Digital Dynamics,+1-624-284-5670,Marketing Manager,Finance,Social Media,0.826,High,New,2025-07-08 11:47:06.312686,Lead from Cold Outreach - Finance industry
+470,William,Gonzalez,william.gonzalez@yahoo.com,SmartData,+1-331-747-7440,Sales Director,Consulting,Social Media,0.612,Medium,Qualified,2025-02-25 11:47:06.312686,Lead from Website - Consulting industry
+471,William,Garcia,william.garcia@cloudsystems.com,CloudSystems,+1-537-341-7842,CTO,Retail,Website,0.586,Medium,Contacted,2025-02-02 11:47:06.312686,Lead from Cold Outreach - Retail industry
+472,Robert,Miller,robert.miller@innovatelab.com,InnovateLab,+1-384-725-7906,Director,Finance,Website,0.641,Medium,Converted,2024-11-08 11:47:06.312686,Lead from Cold Outreach - Finance industry
+473,Jessica,Hernandez,jessica.hernandez@yahoo.com,SmartData,+1-525-947-4327,Sales Director,Technology,Event,0.551,Medium,Qualified,2024-10-17 11:47:06.312686,Lead from Social Media - Technology industry
+474,Jessica,Jones,jessica.jones@yahoo.com,QuantumLeap,+1-482-789-1004,Senior Developer,Consulting,Event,0.477,Medium,New,2025-09-07 11:47:06.312686,Lead from Event - Consulting industry
+475,Ashley,Gonzalez,ashley.gonzalez@hotmail.com,QuantumLeap,+1-852-430-7265,Manager,Education,Cold Outreach,0.218,Low,Contacted,2025-07-04 11:47:06.312686,Lead from Email Campaign - Education industry
+476,David,Anderson,david.anderson@gmail.com,Digital Dynamics,+1-450-846-9437,Sales Director,Healthcare,Referral,0.483,Medium,Converted,2025-08-02 11:47:06.312686,Lead from Cold Outreach - Healthcare industry
+477,Amanda,Davis,amanda.davis@yahoo.com,CloudSystems,+1-880-630-8620,Manager,Education,Referral,0.719,High,Contacted,2024-12-25 11:47:06.312686,Lead from Email Campaign - Education industry
+478,Jennifer,Martinez,jennifer.martinez@ai solutions.com,AI Solutions,+1-999-218-5110,CTO,Healthcare,Paid Ads,0.419,Medium,Converted,2025-07-11 11:47:06.312686,Lead from Paid Ads - Healthcare industry
+479,Ashley,Williams,ashley.williams@digital dynamics.com,Digital Dynamics,+1-903-670-1515,Sales Director,Finance,Email Campaign,0.673,Medium,Converted,2024-12-07 11:47:06.312686,Lead from Email Campaign - Finance industry
+480,Jessica,Smith,jessica.smith@gmail.com,DataSoft,+1-315-830-6894,VP Marketing,Manufacturing,Email Campaign,0.41,Medium,New,2025-08-07 11:47:06.312686,Lead from Email Campaign - Manufacturing industry
+481,Ashley,Wilson,ashley.wilson@yahoo.com,InnovateLab,+1-655-911-8621,Data Scientist,Manufacturing,Paid Ads,0.361,Low,Contacted,2024-12-05 11:47:06.312686,Lead from Website - Manufacturing industry
+482,Daniel,Lopez,daniel.lopez@ai solutions.com,AI Solutions,+1-913-469-3569,Senior Developer,Healthcare,Email Campaign,0.695,Medium,Qualified,2024-11-21 11:47:06.312686,Lead from Referral - Healthcare industry
+483,Ashley,Jones,ashley.jones@gmail.com,InnovateLab,+1-218-748-8164,Director,Finance,Referral,0.443,Medium,Qualified,2024-09-21 11:47:06.312686,Lead from Cold Outreach - Finance industry
+484,James,Miller,james.miller@smartdata.com,SmartData,+1-957-348-2803,VP Marketing,Manufacturing,Event,0.672,Medium,Qualified,2024-10-08 11:47:06.312686,Lead from Paid Ads - Manufacturing industry
+485,Jennifer,Davis,jennifer.davis@digital dynamics.com,Digital Dynamics,+1-566-305-5250,Product Manager,Consulting,Website,0.565,Medium,Converted,2024-12-27 11:47:06.312686,Lead from Paid Ads - Consulting industry
+486,Jennifer,Garcia,jennifer.garcia@gmail.com,Digital Dynamics,+1-381-238-3537,VP Marketing,Education,Referral,0.239,Low,Qualified,2024-12-02 11:47:06.312686,Lead from Paid Ads - Education industry
+487,Amanda,Williams,amanda.williams@innovatelab.com,InnovateLab,+1-369-802-5447,Senior Developer,Healthcare,Social Media,0.431,Medium,Converted,2025-01-14 11:47:06.312686,Lead from Social Media - Healthcare industry
+488,Christopher,Rodriguez,christopher.rodriguez@hotmail.com,AI Solutions,+1-336-657-5195,CEO,Retail,Referral,0.439,Medium,Contacted,2024-11-25 11:47:06.312686,Lead from Cold Outreach - Retail industry
+489,Emily,Rodriguez,emily.rodriguez@yahoo.com,InnovateLab,+1-499-495-4528,Director,Retail,Email Campaign,0.341,Low,Converted,2025-02-19 11:47:06.312686,Lead from Email Campaign - Retail industry
+490,Robert,Hernandez,robert.hernandez@hotmail.com,DataSoft,+1-763-226-3418,Marketing Manager,Finance,Cold Outreach,0.505,Medium,Contacted,2025-06-06 11:47:06.312686,Lead from Email Campaign - Finance industry
+491,Sarah,Miller,sarah.miller@hotmail.com,AI Solutions,+1-779-304-2439,Director,Retail,Website,0.413,Medium,Qualified,2025-06-29 11:47:06.312686,Lead from Email Campaign - Retail industry
+492,David,Anderson,david.anderson@hotmail.com,TechCorp,+1-941-660-4737,Marketing Manager,Finance,Website,0.437,Medium,New,2024-11-30 11:47:06.312686,Lead from Social Media - Finance industry
+493,Daniel,Johnson,daniel.johnson@yahoo.com,CyberCore,+1-529-960-2234,Product Manager,Finance,Paid Ads,0.374,Low,New,2025-08-06 11:47:06.312686,Lead from Cold Outreach - Finance industry
+494,Jennifer,Davis,jennifer.davis@yahoo.com,TechCorp,+1-402-476-8286,Director,Consulting,Event,0.509,Medium,Contacted,2025-02-27 11:47:06.312686,Lead from Paid Ads - Consulting industry
+495,Jennifer,Wilson,jennifer.wilson@datasoft.com,DataSoft,+1-540-738-4756,VP Marketing,Consulting,Social Media,0.257,Low,Qualified,2025-08-13 11:47:06.312686,Lead from Cold Outreach - Consulting industry
+496,Daniel,Brown,daniel.brown@ai solutions.com,AI Solutions,+1-251-605-8966,Product Manager,Finance,Email Campaign,0.575,Medium,Contacted,2024-10-07 11:47:06.312686,Lead from Cold Outreach - Finance industry
+497,Christopher,Johnson,christopher.johnson@gmail.com,DataSoft,+1-319-542-6709,CEO,Manufacturing,Website,0.518,Medium,New,2025-08-12 11:47:06.312686,Lead from Cold Outreach - Manufacturing industry
+498,Ashley,Smith,ashley.smith@yahoo.com,FutureTech,+1-486-559-8983,Director,Technology,Email Campaign,0.72,High,New,2025-02-07 11:47:06.312686,Lead from Website - Technology industry
+499,Emily,Smith,emily.smith@digital dynamics.com,Digital Dynamics,+1-847-874-2932,Product Manager,Consulting,Cold Outreach,0.483,Medium,Contacted,2024-12-08 11:47:06.312686,Lead from Social Media - Consulting industry
+500,Michael,Anderson,michael.anderson@hotmail.com,FutureTech,+1-694-316-8574,VP Marketing,Finance,Referral,0.855,High,New,2025-03-07 11:47:06.312686,Lead from Social Media - Finance industry
+501,Ashley,Wilson,ashley.wilson@gmail.com,SmartData,+1-960-955-9232,VP Marketing,Healthcare,Referral,0.262,Low,New,2025-01-09 11:47:06.312686,Lead from Email Campaign - Healthcare industry
+502,Christopher,Martinez,christopher.martinez@yahoo.com,FutureTech,+1-317-555-8091,Senior Developer,Manufacturing,Email Campaign,0.442,Medium,Converted,2025-08-20 11:47:06.312686,Lead from Social Media - Manufacturing industry
+503,Amanda,Smith,amanda.smith@gmail.com,AI Solutions,+1-613-207-8204,Director,Education,Email Campaign,0.394,Low,Contacted,2025-05-09 11:47:06.312686,Lead from Paid Ads - Education industry
+504,John,Miller,john.miller@hotmail.com,TechCorp,+1-355-262-1321,VP Marketing,Finance,Cold Outreach,0.341,Low,Qualified,2025-08-20 11:47:06.312686,Lead from Referral - Finance industry
+505,Amanda,Martinez,amanda.martinez@futuretech.com,FutureTech,+1-809-772-9966,Manager,Healthcare,Cold Outreach,0.592,Medium,Qualified,2025-08-26 11:47:06.312686,Lead from Event - Healthcare industry
+506,Daniel,Brown,daniel.brown@gmail.com,DataSoft,+1-963-210-9805,VP Marketing,Finance,Paid Ads,0.511,Medium,New,2024-12-13 11:47:06.312686,Lead from Cold Outreach - Finance industry
+507,William,Rodriguez,william.rodriguez@cybercore.com,CyberCore,+1-968-678-8984,CEO,Retail,Paid Ads,0.355,Low,New,2025-08-20 11:47:06.312686,Lead from Cold Outreach - Retail industry
+508,Amanda,Wilson,amanda.wilson@cloudsystems.com,CloudSystems,+1-304-995-6888,Sales Director,Consulting,Paid Ads,0.589,Medium,Qualified,2025-03-30 11:47:06.312686,Lead from Cold Outreach - Consulting industry
+509,Jennifer,Miller,jennifer.miller@hotmail.com,CloudSystems,+1-855-631-4742,Marketing Manager,Healthcare,Event,0.217,Low,Contacted,2024-12-26 11:47:06.312686,Lead from Email Campaign - Healthcare industry
+510,James,Brown,james.brown@gmail.com,CyberCore,+1-329-902-3577,CEO,Retail,Paid Ads,0.545,Medium,Converted,2025-08-14 11:47:06.312686,Lead from Cold Outreach - Retail industry
+511,David,Wilson,david.wilson@gmail.com,Digital Dynamics,+1-821-277-2194,Data Scientist,Consulting,Paid Ads,0.32,Low,New,2025-07-21 11:47:06.312686,Lead from Email Campaign - Consulting industry
+512,James,Lopez,james.lopez@hotmail.com,CyberCore,+1-617-838-9276,VP Marketing,Manufacturing,Social Media,0.841,High,Converted,2024-12-26 11:47:06.312686,Lead from Social Media - Manufacturing industry
+513,Jane,Anderson,jane.anderson@datasoft.com,DataSoft,+1-681-941-9014,Manager,Healthcare,Cold Outreach,0.42,Medium,Contacted,2024-12-15 11:47:06.312686,Lead from Cold Outreach - Healthcare industry
+514,Daniel,Lopez,daniel.lopez@yahoo.com,FutureTech,+1-601-580-6388,Senior Developer,Manufacturing,Referral,0.41,Medium,Qualified,2025-02-03 11:47:06.312686,Lead from Cold Outreach - Manufacturing industry
+515,Jennifer,Hernandez,jennifer.hernandez@innovatelab.com,InnovateLab,+1-938-848-7675,Product Manager,Finance,Paid Ads,0.691,Medium,Converted,2025-03-30 11:47:06.312686,Lead from Email Campaign - Finance industry
+516,Robert,Garcia,robert.garcia@quantumleap.com,QuantumLeap,+1-971-564-4487,VP Marketing,Healthcare,Paid Ads,0.444,Medium,Qualified,2025-09-10 11:47:06.312686,Lead from Website - Healthcare industry
+517,Ashley,Lopez,ashley.lopez@yahoo.com,QuantumLeap,+1-447-355-4362,Director,Finance,Cold Outreach,0.692,Medium,Contacted,2025-02-13 11:47:06.313684,Lead from Social Media - Finance industry
+518,John,Garcia,john.garcia@ai solutions.com,AI Solutions,+1-785-415-6844,CTO,Manufacturing,Event,0.542,Medium,Converted,2024-09-17 11:47:06.313684,Lead from Referral - Manufacturing industry
+519,Amanda,Rodriguez,amanda.rodriguez@innovatelab.com,InnovateLab,+1-330-671-3961,CEO,Retail,Paid Ads,0.293,Low,Converted,2025-03-08 11:47:06.313684,Lead from Referral - Retail industry
+520,Michael,Rodriguez,michael.rodriguez@hotmail.com,Digital Dynamics,+1-631-887-4679,Senior Developer,Technology,Email Campaign,0.335,Low,Qualified,2025-02-06 11:47:06.313684,Lead from Email Campaign - Technology industry
+521,Ashley,Williams,ashley.williams@gmail.com,QuantumLeap,+1-354-629-8478,Marketing Manager,Education,Website,0.624,Medium,Converted,2025-09-06 11:47:06.313684,Lead from Paid Ads - Education industry
+522,Daniel,Garcia,daniel.garcia@quantumleap.com,QuantumLeap,+1-485-559-3768,VP Marketing,Consulting,Cold Outreach,0.524,Medium,Converted,2025-02-18 11:47:06.313684,Lead from Email Campaign - Consulting industry
+523,John,Smith,john.smith@yahoo.com,TechCorp,+1-445-972-8941,VP Marketing,Finance,Paid Ads,0.487,Medium,Qualified,2025-07-12 11:47:06.313684,Lead from Paid Ads - Finance industry
+524,Amanda,Jones,amanda.jones@hotmail.com,InnovateLab,+1-323-667-7933,VP Marketing,Finance,Social Media,0.517,Medium,Qualified,2024-11-14 11:47:06.313684,Lead from Email Campaign - Finance industry
+525,David,Rodriguez,david.rodriguez@futuretech.com,FutureTech,+1-250-978-3129,Product Manager,Technology,Website,0.453,Medium,Contacted,2025-02-24 11:47:06.313684,Lead from Event - Technology industry
+526,William,Johnson,william.johnson@cloudsystems.com,CloudSystems,+1-481-565-5586,VP Marketing,Healthcare,Email Campaign,0.478,Medium,Contacted,2025-04-02 11:47:06.313684,Lead from Website - Healthcare industry
+527,Robert,Brown,robert.brown@yahoo.com,SmartData,+1-777-629-4592,Sales Director,Education,Social Media,0.413,Medium,Contacted,2025-03-03 11:47:06.313684,Lead from Paid Ads - Education industry
+528,Christopher,Lopez,christopher.lopez@gmail.com,SmartData,+1-358-992-7804,Marketing Manager,Technology,Paid Ads,0.939,High,Contacted,2024-10-01 11:47:06.313684,Lead from Social Media - Technology industry
+529,John,Anderson,john.anderson@hotmail.com,SmartData,+1-348-256-3863,Senior Developer,Technology,Referral,0.501,Medium,Contacted,2025-05-06 11:47:06.313684,Lead from Referral - Technology industry
+530,Sarah,Brown,sarah.brown@gmail.com,FutureTech,+1-780-462-1559,Manager,Healthcare,Email Campaign,0.395,Low,Qualified,2025-07-19 11:47:06.313684,Lead from Referral - Healthcare industry
+531,Sarah,Johnson,sarah.johnson@cloudsystems.com,CloudSystems,+1-659-920-9467,Product Manager,Healthcare,Social Media,0.527,Medium,Contacted,2024-10-18 11:47:06.313684,Lead from Event - Healthcare industry
+532,Jennifer,Brown,jennifer.brown@yahoo.com,DataSoft,+1-456-220-5859,Director,Manufacturing,Cold Outreach,0.422,Medium,New,2024-12-17 11:47:06.313684,Lead from Email Campaign - Manufacturing industry
+533,Daniel,Miller,daniel.miller@hotmail.com,TechCorp,+1-327-627-1088,CTO,Technology,Referral,0.48,Medium,New,2025-05-25 11:47:06.313684,Lead from Social Media - Technology industry
+534,Amanda,Lopez,amanda.lopez@quantumleap.com,QuantumLeap,+1-925-612-3473,Marketing Manager,Consulting,Website,0.676,Medium,New,2025-07-16 11:47:06.313684,Lead from Website - Consulting industry
+535,Jessica,Johnson,jessica.johnson@smartdata.com,SmartData,+1-620-400-3223,VP Marketing,Technology,Paid Ads,0.573,Medium,Contacted,2025-01-29 11:47:06.313684,Lead from Cold Outreach - Technology industry
+536,James,Williams,james.williams@yahoo.com,CloudSystems,+1-505-786-9499,Marketing Manager,Retail,Website,0.627,Medium,Converted,2025-05-03 11:47:06.313684,Lead from Event - Retail industry
+537,Jessica,Rodriguez,jessica.rodriguez@hotmail.com,InnovateLab,+1-281-873-3771,Senior Developer,Manufacturing,Event,0.381,Low,New,2025-07-09 11:47:06.313684,Lead from Referral - Manufacturing industry
+538,Jessica,Garcia,jessica.garcia@gmail.com,Digital Dynamics,+1-924-784-5032,Director,Education,Social Media,0.581,Medium,Converted,2024-11-17 11:47:06.313684,Lead from Paid Ads - Education industry
+539,Ashley,Hernandez,ashley.hernandez@ai solutions.com,AI Solutions,+1-977-493-1870,Manager,Healthcare,Paid Ads,0.637,Medium,New,2024-10-12 11:47:06.313684,Lead from Referral - Healthcare industry
+540,Jennifer,Wilson,jennifer.wilson@quantumleap.com,QuantumLeap,+1-203-598-4689,Product Manager,Finance,Referral,0.559,Medium,Contacted,2025-03-06 11:47:06.313684,Lead from Website - Finance industry
+541,Robert,Anderson,robert.anderson@yahoo.com,AI Solutions,+1-752-978-1667,Director,Finance,Event,0.34,Low,Qualified,2025-06-07 11:47:06.313684,Lead from Paid Ads - Finance industry
+542,Christopher,Williams,christopher.williams@datasoft.com,DataSoft,+1-395-425-5290,CTO,Retail,Cold Outreach,0.854,High,Qualified,2024-12-22 11:47:06.313684,Lead from Website - Retail industry
+543,Ashley,Davis,ashley.davis@hotmail.com,SmartData,+1-868-431-2029,Data Scientist,Education,Referral,0.377,Low,Qualified,2025-01-01 11:47:06.313684,Lead from Social Media - Education industry
+544,John,Lopez,john.lopez@quantumleap.com,QuantumLeap,+1-499-780-1153,Director,Manufacturing,Social Media,0.554,Medium,New,2025-06-03 11:47:06.313684,Lead from Event - Manufacturing industry
+545,Jane,Rodriguez,jane.rodriguez@digital dynamics.com,Digital Dynamics,+1-462-615-5196,CTO,Manufacturing,Event,0.415,Medium,Converted,2025-01-09 11:47:06.313684,Lead from Paid Ads - Manufacturing industry
+546,Ashley,Anderson,ashley.anderson@cybercore.com,CyberCore,+1-902-857-8965,Marketing Manager,Education,Paid Ads,0.432,Medium,Converted,2025-04-27 11:47:06.313684,Lead from Paid Ads - Education industry
+547,Sarah,Gonzalez,sarah.gonzalez@hotmail.com,SmartData,+1-657-868-1949,Senior Developer,Technology,Website,0.727,High,Qualified,2025-05-28 11:47:06.313684,Lead from Event - Technology industry
+548,Jane,Hernandez,jane.hernandez@yahoo.com,Digital Dynamics,+1-793-595-1396,Product Manager,Finance,Email Campaign,0.776,High,Contacted,2025-01-29 11:47:06.313684,Lead from Cold Outreach - Finance industry
+549,Jane,Lopez,jane.lopez@gmail.com,QuantumLeap,+1-558-345-5362,VP Marketing,Healthcare,Event,0.511,Medium,Qualified,2025-05-28 11:47:06.313684,Lead from Website - Healthcare industry
+550,David,Anderson,david.anderson@smartdata.com,SmartData,+1-344-656-3849,Sales Director,Technology,Social Media,0.601,Medium,Contacted,2024-11-17 11:47:06.313684,Lead from Event - Technology industry
+551,Amanda,Johnson,amanda.johnson@hotmail.com,Digital Dynamics,+1-878-798-8234,Product Manager,Technology,Email Campaign,0.634,Medium,New,2025-04-30 11:47:06.313684,Lead from Cold Outreach - Technology industry
+552,James,Rodriguez,james.rodriguez@hotmail.com,FutureTech,+1-957-680-8707,CTO,Finance,Referral,0.446,Medium,Qualified,2025-06-23 11:47:06.313684,Lead from Referral - Finance industry
+553,Michael,Jones,michael.jones@yahoo.com,SmartData,+1-240-417-3280,Marketing Manager,Technology,Referral,0.548,Medium,Contacted,2024-10-22 11:47:06.313684,Lead from Social Media - Technology industry
+554,Robert,Davis,robert.davis@yahoo.com,QuantumLeap,+1-261-769-3981,Marketing Manager,Technology,Referral,0.382,Low,Qualified,2025-03-25 11:47:06.313684,Lead from Event - Technology industry
+555,Amanda,Garcia,amanda.garcia@yahoo.com,AI Solutions,+1-809-333-7097,Data Scientist,Finance,Social Media,0.376,Low,Contacted,2024-10-17 11:47:06.313684,Lead from Social Media - Finance industry
+556,John,Miller,john.miller@gmail.com,AI Solutions,+1-485-868-7767,CEO,Consulting,Cold Outreach,0.505,Medium,Qualified,2025-02-25 11:47:06.313684,Lead from Cold Outreach - Consulting industry
+557,James,Williams,james.williams@gmail.com,Digital Dynamics,+1-244-579-4068,Sales Director,Technology,Paid Ads,0.572,Medium,Converted,2025-03-23 11:47:06.313684,Lead from Event - Technology industry
+558,Sarah,Gonzalez,sarah.gonzalez@cloudsystems.com,CloudSystems,+1-997-273-5209,Manager,Education,Website,0.561,Medium,Converted,2025-04-13 11:47:06.313684,Lead from Email Campaign - Education industry
+559,Sarah,Lopez,sarah.lopez@gmail.com,AI Solutions,+1-395-816-1257,Marketing Manager,Retail,Paid Ads,0.377,Low,Qualified,2024-10-01 11:47:06.313684,Lead from Paid Ads - Retail industry
+560,Christopher,Davis,christopher.davis@yahoo.com,TechCorp,+1-641-464-6206,Director,Manufacturing,Social Media,0.462,Medium,New,2024-11-08 11:47:06.313684,Lead from Event - Manufacturing industry
+561,William,Davis,william.davis@gmail.com,InnovateLab,+1-974-246-1072,Data Scientist,Retail,Event,0.322,Low,New,2024-09-26 11:47:06.313684,Lead from Cold Outreach - Retail industry
+562,John,Rodriguez,john.rodriguez@yahoo.com,AI Solutions,+1-615-806-2302,Director,Consulting,Social Media,0.191,Low,New,2025-02-22 11:47:06.313684,Lead from Email Campaign - Consulting industry
+563,Jane,Gonzalez,jane.gonzalez@hotmail.com,Digital Dynamics,+1-474-204-3212,Manager,Healthcare,Paid Ads,0.426,Medium,Converted,2025-03-19 11:47:06.313684,Lead from Website - Healthcare industry
+564,Sarah,Brown,sarah.brown@yahoo.com,CyberCore,+1-489-497-1765,CTO,Consulting,Website,0.244,Low,Qualified,2024-09-17 11:47:06.313684,Lead from Social Media - Consulting industry
+565,Jessica,Jones,jessica.jones@gmail.com,QuantumLeap,+1-799-289-7244,Data Scientist,Education,Social Media,0.562,Medium,New,2025-08-31 11:47:06.313684,Lead from Paid Ads - Education industry
+566,Michael,Anderson,michael.anderson@futuretech.com,FutureTech,+1-889-488-9383,Director,Retail,Referral,0.766,High,Contacted,2024-12-24 11:47:06.313684,Lead from Event - Retail industry
+567,Jennifer,Johnson,jennifer.johnson@yahoo.com,TechCorp,+1-720-921-9126,Sales Director,Consulting,Paid Ads,0.784,High,New,2025-06-28 11:47:06.313684,Lead from Referral - Consulting industry
+568,David,Davis,david.davis@hotmail.com,InnovateLab,+1-572-250-6659,VP Marketing,Education,Cold Outreach,0.422,Medium,Qualified,2025-03-03 11:47:06.313684,Lead from Paid Ads - Education industry
+569,Jennifer,Smith,jennifer.smith@hotmail.com,TechCorp,+1-262-325-5425,Data Scientist,Technology,Email Campaign,0.411,Medium,Contacted,2024-12-05 11:47:06.313684,Lead from Event - Technology industry
+570,Jennifer,Martinez,jennifer.martinez@gmail.com,FutureTech,+1-487-817-1380,CEO,Finance,Cold Outreach,0.552,Medium,Contacted,2024-12-28 11:47:06.313684,Lead from Social Media - Finance industry
+571,Ashley,Williams,ashley.williams@hotmail.com,CloudSystems,+1-918-785-3586,Product Manager,Healthcare,Cold Outreach,0.397,Low,Contacted,2024-10-30 11:47:06.313684,Lead from Social Media - Healthcare industry
+572,David,Gonzalez,david.gonzalez@gmail.com,DataSoft,+1-957-480-8877,Director,Technology,Website,0.527,Medium,Converted,2024-10-12 11:47:06.313684,Lead from Website - Technology industry
+573,Sarah,Garcia,sarah.garcia@hotmail.com,DataSoft,+1-934-961-9551,Product Manager,Retail,Cold Outreach,0.622,Medium,Contacted,2024-11-22 11:47:06.313684,Lead from Event - Retail industry
+574,Ashley,Wilson,ashley.wilson@gmail.com,Digital Dynamics,+1-201-868-6163,VP Marketing,Retail,Social Media,0.369,Low,Contacted,2025-05-31 11:47:06.313684,Lead from Email Campaign - Retail industry
+575,Robert,Jones,robert.jones@gmail.com,CyberCore,+1-669-702-4871,Sales Director,Healthcare,Event,0.401,Medium,New,2024-10-25 11:47:06.313684,Lead from Social Media - Healthcare industry
+576,Daniel,Miller,daniel.miller@gmail.com,DataSoft,+1-673-678-2489,Director,Retail,Email Campaign,0.284,Low,Qualified,2024-12-03 11:47:06.313684,Lead from Event - Retail industry
+577,Jane,Martinez,jane.martinez@hotmail.com,QuantumLeap,+1-293-556-2822,CEO,Education,Event,0.408,Medium,Converted,2025-07-02 11:47:06.313684,Lead from Email Campaign - Education industry
+578,Christopher,Jones,christopher.jones@cloudsystems.com,CloudSystems,+1-793-590-8666,Senior Developer,Technology,Referral,0.926,High,Converted,2024-09-22 11:47:06.313684,Lead from Paid Ads - Technology industry
+579,James,Garcia,james.garcia@hotmail.com,QuantumLeap,+1-332-793-6853,CEO,Consulting,Website,0.325,Low,Contacted,2025-07-17 11:47:06.313684,Lead from Website - Consulting industry
+580,Emily,Miller,emily.miller@gmail.com,QuantumLeap,+1-933-533-5617,Manager,Education,Paid Ads,0.59,Medium,Qualified,2024-09-26 11:47:06.313684,Lead from Referral - Education industry
+581,Amanda,Brown,amanda.brown@yahoo.com,QuantumLeap,+1-422-774-2305,Data Scientist,Retail,Paid Ads,0.39,Low,Contacted,2025-09-01 11:47:06.313684,Lead from Cold Outreach - Retail industry
+582,Christopher,Anderson,christopher.anderson@yahoo.com,QuantumLeap,+1-846-639-5616,Senior Developer,Manufacturing,Website,0.596,Medium,New,2024-11-16 11:47:06.313684,Lead from Email Campaign - Manufacturing industry
+583,Emily,Lopez,emily.lopez@gmail.com,FutureTech,+1-217-805-8796,Senior Developer,Manufacturing,Event,0.568,Medium,New,2025-06-09 11:47:06.313684,Lead from Event - Manufacturing industry
+584,Amanda,Johnson,amanda.johnson@gmail.com,Digital Dynamics,+1-623-413-6962,Sales Director,Consulting,Event,0.275,Low,New,2025-02-09 11:47:06.313684,Lead from Email Campaign - Consulting industry
+585,John,Smith,john.smith@yahoo.com,SmartData,+1-976-656-4194,Product Manager,Finance,Referral,0.664,Medium,Qualified,2024-10-21 11:47:06.313684,Lead from Paid Ads - Finance industry
+586,Christopher,Rodriguez,christopher.rodriguez@yahoo.com,SmartData,+1-217-309-1315,Marketing Manager,Manufacturing,Social Media,0.236,Low,Contacted,2025-06-17 11:47:06.313684,Lead from Website - Manufacturing industry
+587,John,Wilson,john.wilson@gmail.com,AI Solutions,+1-285-854-9886,Director,Education,Event,0.252,Low,Converted,2025-03-15 11:47:06.313684,Lead from Email Campaign - Education industry
+588,Ashley,Wilson,ashley.wilson@hotmail.com,Digital Dynamics,+1-236-301-6123,Manager,Finance,Email Campaign,0.479,Medium,New,2025-02-14 11:47:06.313684,Lead from Email Campaign - Finance industry
+589,Robert,Smith,robert.smith@smartdata.com,SmartData,+1-996-968-8092,CTO,Retail,Paid Ads,0.797,High,Qualified,2024-10-24 11:47:06.313684,Lead from Social Media - Retail industry
+590,Jennifer,Hernandez,jennifer.hernandez@yahoo.com,TechCorp,+1-463-492-6874,Manager,Retail,Email Campaign,0.501,Medium,New,2025-04-23 11:47:06.313684,Lead from Cold Outreach - Retail industry
+591,Sarah,Wilson,sarah.wilson@gmail.com,TechCorp,+1-472-723-7139,Sales Director,Retail,Referral,0.289,Low,New,2025-08-01 11:47:06.314679,Lead from Social Media - Retail industry
+592,Christopher,Davis,christopher.davis@gmail.com,CyberCore,+1-738-479-6198,CEO,Technology,Cold Outreach,0.304,Low,Contacted,2025-05-10 11:47:06.314679,Lead from Referral - Technology industry
+593,Emily,Brown,emily.brown@gmail.com,QuantumLeap,+1-430-499-5212,VP Marketing,Consulting,Event,0.531,Medium,New,2025-03-06 11:47:06.314679,Lead from Cold Outreach - Consulting industry
+594,Daniel,Anderson,daniel.anderson@hotmail.com,QuantumLeap,+1-235-743-2229,CTO,Retail,Event,0.429,Medium,Qualified,2025-04-15 11:47:06.314679,Lead from Email Campaign - Retail industry
+595,Jennifer,Wilson,jennifer.wilson@yahoo.com,FutureTech,+1-544-823-2617,Manager,Manufacturing,Email Campaign,0.457,Medium,Qualified,2025-06-27 11:47:06.314679,Lead from Cold Outreach - Manufacturing industry
+596,Sarah,Garcia,sarah.garcia@gmail.com,CyberCore,+1-542-446-3274,CTO,Finance,Email Campaign,0.593,Medium,New,2025-03-10 11:47:06.314679,Lead from Social Media - Finance industry
+597,Sarah,Garcia,sarah.garcia@hotmail.com,SmartData,+1-206-769-9729,Sales Director,Manufacturing,Email Campaign,0.626,Medium,Converted,2025-03-24 11:47:06.314679,Lead from Social Media - Manufacturing industry
+598,Christopher,Rodriguez,christopher.rodriguez@gmail.com,Digital Dynamics,+1-851-440-6478,Product Manager,Education,Email Campaign,0.405,Medium,Qualified,2025-05-08 11:47:06.314679,Lead from Referral - Education industry
+599,John,Wilson,john.wilson@hotmail.com,CyberCore,+1-229-997-9047,CEO,Healthcare,Email Campaign,0.651,Medium,Qualified,2025-04-06 11:47:06.314679,Lead from Event - Healthcare industry
+600,Christopher,Brown,christopher.brown@datasoft.com,DataSoft,+1-757-214-7618,Director,Retail,Cold Outreach,0.404,Medium,Contacted,2025-03-31 11:47:06.314679,Lead from Website - Retail industry
+601,David,Jones,david.jones@gmail.com,CyberCore,+1-223-871-8697,Sales Director,Finance,Website,0.313,Low,Qualified,2025-01-27 11:47:06.314679,Lead from Cold Outreach - Finance industry
+602,Jennifer,Williams,jennifer.williams@hotmail.com,AI Solutions,+1-887-552-7805,Sales Director,Education,Email Campaign,0.598,Medium,Contacted,2025-05-24 11:47:06.314679,Lead from Event - Education industry
+603,William,Rodriguez,william.rodriguez@cloudsystems.com,CloudSystems,+1-237-522-7027,Product Manager,Manufacturing,Email Campaign,0.36,Low,Qualified,2025-01-17 11:47:06.314679,Lead from Email Campaign - Manufacturing industry
+604,Robert,Wilson,robert.wilson@yahoo.com,CyberCore,+1-370-881-8125,Sales Director,Finance,Website,0.55,Medium,Contacted,2025-02-06 11:47:06.314679,Lead from Email Campaign - Finance industry
+605,William,Davis,william.davis@hotmail.com,SmartData,+1-304-385-8428,Manager,Finance,Paid Ads,0.786,High,Contacted,2025-06-06 11:47:06.314679,Lead from Paid Ads - Finance industry
+606,James,Lopez,james.lopez@gmail.com,FutureTech,+1-983-335-6415,Product Manager,Retail,Website,0.217,Low,Contacted,2025-08-24 11:47:06.314679,Lead from Referral - Retail industry
+607,John,Jones,john.jones@digital dynamics.com,Digital Dynamics,+1-331-735-5301,Data Scientist,Healthcare,Website,0.587,Medium,Contacted,2025-08-12 11:47:06.314679,Lead from Referral - Healthcare industry
+608,David,Brown,david.brown@futuretech.com,FutureTech,+1-625-369-8453,Director,Education,Email Campaign,0.312,Low,Converted,2025-07-29 11:47:06.314679,Lead from Website - Education industry
+609,William,Lopez,william.lopez@hotmail.com,FutureTech,+1-380-770-4349,Product Manager,Technology,Referral,0.517,Medium,Contacted,2024-11-18 11:47:06.314679,Lead from Website - Technology industry
+610,Daniel,Rodriguez,daniel.rodriguez@hotmail.com,SmartData,+1-753-211-5410,Data Scientist,Manufacturing,Email Campaign,0.165,Low,Converted,2024-10-22 11:47:06.314679,Lead from Referral - Manufacturing industry
+611,Michael,Wilson,michael.wilson@gmail.com,TechCorp,+1-382-896-9383,Data Scientist,Consulting,Paid Ads,0.243,Low,Qualified,2024-10-19 11:47:06.314679,Lead from Paid Ads - Consulting industry
+612,William,Wilson,william.wilson@gmail.com,CloudSystems,+1-796-985-9012,Product Manager,Education,Referral,0.312,Low,Contacted,2024-10-30 11:47:06.314679,Lead from Paid Ads - Education industry
+613,David,Martinez,david.martinez@hotmail.com,QuantumLeap,+1-909-409-2853,Marketing Manager,Healthcare,Referral,0.206,Low,New,2024-11-11 11:47:06.314679,Lead from Social Media - Healthcare industry
+614,Daniel,Garcia,daniel.garcia@hotmail.com,FutureTech,+1-339-522-1220,Manager,Consulting,Referral,0.513,Medium,Qualified,2025-03-19 11:47:06.314679,Lead from Website - Consulting industry
+615,Emily,Wilson,emily.wilson@yahoo.com,QuantumLeap,+1-224-610-9209,Data Scientist,Consulting,Email Campaign,0.476,Medium,Qualified,2024-10-13 11:47:06.314679,Lead from Social Media - Consulting industry
+616,Michael,Garcia,michael.garcia@yahoo.com,FutureTech,+1-964-392-1332,Senior Developer,Finance,Paid Ads,0.802,High,Converted,2025-04-23 11:47:06.314679,Lead from Social Media - Finance industry
+617,Robert,Smith,robert.smith@hotmail.com,DataSoft,+1-358-225-1045,CEO,Retail,Social Media,0.26,Low,Contacted,2025-05-22 11:47:06.314679,Lead from Event - Retail industry
+618,Ashley,Hernandez,ashley.hernandez@gmail.com,CyberCore,+1-566-727-9599,Marketing Manager,Education,Paid Ads,0.367,Low,Qualified,2024-12-24 11:47:06.314679,Lead from Social Media - Education industry
+619,James,Miller,james.miller@hotmail.com,AI Solutions,+1-960-928-7515,Marketing Manager,Technology,Website,0.328,Low,New,2024-11-19 11:47:06.314679,Lead from Cold Outreach - Technology industry
+620,Sarah,Gonzalez,sarah.gonzalez@innovatelab.com,InnovateLab,+1-464-463-9938,VP Marketing,Healthcare,Website,0.427,Medium,Qualified,2025-01-31 11:47:06.314679,Lead from Paid Ads - Healthcare industry
+621,Jane,Hernandez,jane.hernandez@futuretech.com,FutureTech,+1-266-439-4100,CEO,Manufacturing,Cold Outreach,0.845,High,Converted,2024-10-22 11:47:06.314679,Lead from Referral - Manufacturing industry
+622,John,Wilson,john.wilson@yahoo.com,Digital Dynamics,+1-519-775-3554,Marketing Manager,Retail,Paid Ads,0.547,Medium,Converted,2025-08-17 11:47:06.314679,Lead from Cold Outreach - Retail industry
+623,Amanda,Wilson,amanda.wilson@hotmail.com,QuantumLeap,+1-939-818-3560,CEO,Retail,Event,0.256,Low,Contacted,2024-12-07 11:47:06.314679,Lead from Referral - Retail industry
+624,Michael,Brown,michael.brown@yahoo.com,AI Solutions,+1-612-769-1480,CEO,Manufacturing,Referral,0.181,Low,Qualified,2025-09-04 11:47:06.314679,Lead from Referral - Manufacturing industry
+625,Jennifer,Garcia,jennifer.garcia@yahoo.com,CloudSystems,+1-807-202-2286,Manager,Retail,Email Campaign,0.178,Low,Contacted,2025-06-01 11:47:06.314679,Lead from Email Campaign - Retail industry
+626,Sarah,Garcia,sarah.garcia@yahoo.com,TechCorp,+1-950-538-3374,VP Marketing,Finance,Event,0.618,Medium,Converted,2025-03-29 11:47:06.314679,Lead from Social Media - Finance industry
+627,Michael,Jones,michael.jones@hotmail.com,SmartData,+1-848-988-3402,Manager,Manufacturing,Event,0.309,Low,New,2025-03-07 11:47:06.314679,Lead from Paid Ads - Manufacturing industry
+628,Emily,Rodriguez,emily.rodriguez@gmail.com,CyberCore,+1-821-512-7530,CEO,Retail,Event,0.888,High,Converted,2024-12-02 11:47:06.314679,Lead from Paid Ads - Retail industry
+629,Jane,Garcia,jane.garcia@yahoo.com,AI Solutions,+1-285-371-4381,CTO,Technology,Social Media,0.494,Medium,Converted,2025-02-10 11:47:06.314679,Lead from Website - Technology industry
+630,Daniel,Williams,daniel.williams@techcorp.com,TechCorp,+1-739-484-6586,Manager,Manufacturing,Paid Ads,0.421,Medium,Qualified,2024-11-17 11:47:06.314679,Lead from Email Campaign - Manufacturing industry
+631,Daniel,Williams,daniel.williams@cloudsystems.com,CloudSystems,+1-340-762-3905,Director,Finance,Website,0.431,Medium,Qualified,2024-12-31 11:47:06.314679,Lead from Event - Finance industry
+632,David,Garcia,david.garcia@hotmail.com,CloudSystems,+1-258-507-7024,Manager,Healthcare,Email Campaign,0.598,Medium,Contacted,2025-04-17 11:47:06.314679,Lead from Email Campaign - Healthcare industry
+633,Sarah,Miller,sarah.miller@hotmail.com,FutureTech,+1-382-599-1831,Senior Developer,Manufacturing,Social Media,0.347,Low,Qualified,2024-12-15 11:47:06.314679,Lead from Cold Outreach - Manufacturing industry
+634,John,Anderson,john.anderson@yahoo.com,TechCorp,+1-409-592-8016,Director,Consulting,Event,0.411,Medium,Contacted,2024-10-04 11:47:06.314679,Lead from Referral - Consulting industry
+635,Amanda,Anderson,amanda.anderson@gmail.com,FutureTech,+1-235-734-4321,Manager,Education,Cold Outreach,0.429,Medium,Converted,2025-08-05 11:47:06.314679,Lead from Cold Outreach - Education industry
+636,Jessica,Wilson,jessica.wilson@cloudsystems.com,CloudSystems,+1-889-476-9833,VP Marketing,Manufacturing,Paid Ads,0.499,Medium,New,2025-06-19 11:47:06.314679,Lead from Social Media - Manufacturing industry
+637,Jane,Miller,jane.miller@yahoo.com,AI Solutions,+1-601-803-9812,Manager,Finance,Social Media,0.639,Medium,New,2025-06-06 11:47:06.314679,Lead from Cold Outreach - Finance industry
+638,Emily,Gonzalez,emily.gonzalez@yahoo.com,QuantumLeap,+1-736-814-5269,Product Manager,Education,Email Campaign,0.24,Low,Converted,2024-10-17 11:47:06.314679,Lead from Referral - Education industry
+639,David,Martinez,david.martinez@smartdata.com,SmartData,+1-364-750-1690,Manager,Technology,Email Campaign,0.589,Medium,New,2025-03-15 11:47:06.314679,Lead from Social Media - Technology industry
+640,Jennifer,Martinez,jennifer.martinez@gmail.com,FutureTech,+1-218-281-2480,Director,Finance,Event,0.45,Medium,New,2025-06-05 11:47:06.314679,Lead from Social Media - Finance industry
+641,John,Wilson,john.wilson@hotmail.com,SmartData,+1-837-541-5486,Director,Education,Website,0.551,Medium,Converted,2024-12-23 11:47:06.314679,Lead from Email Campaign - Education industry
+642,Ashley,Johnson,ashley.johnson@techcorp.com,TechCorp,+1-303-550-5153,VP Marketing,Education,Referral,0.717,High,Converted,2025-09-09 11:47:06.314679,Lead from Website - Education industry
+643,Amanda,Rodriguez,amanda.rodriguez@hotmail.com,CyberCore,+1-586-429-1363,Director,Consulting,Social Media,0.278,Low,Contacted,2024-11-13 11:47:06.314679,Lead from Paid Ads - Consulting industry
+644,Christopher,Hernandez,christopher.hernandez@hotmail.com,CloudSystems,+1-737-233-4726,CEO,Healthcare,Email Campaign,0.554,Medium,Contacted,2025-07-24 11:47:06.314679,Lead from Social Media - Healthcare industry
+645,David,Davis,david.davis@quantumleap.com,QuantumLeap,+1-547-229-9492,Sales Director,Education,Email Campaign,0.339,Low,Converted,2025-08-04 11:47:06.314679,Lead from Referral - Education industry
+646,Ashley,Rodriguez,ashley.rodriguez@yahoo.com,Digital Dynamics,+1-383-808-3015,CTO,Finance,Email Campaign,0.498,Medium,New,2025-09-08 11:47:06.314679,Lead from Event - Finance industry
+647,Ashley,Lopez,ashley.lopez@gmail.com,InnovateLab,+1-776-426-6971,Sales Director,Manufacturing,Event,0.414,Medium,Contacted,2025-07-13 11:47:06.314679,Lead from Cold Outreach - Manufacturing industry
+648,Daniel,Lopez,daniel.lopez@techcorp.com,TechCorp,+1-864-512-4090,Marketing Manager,Retail,Social Media,0.705,High,Contacted,2024-10-07 11:47:06.314679,Lead from Social Media - Retail industry
+649,Sarah,Lopez,sarah.lopez@cybercore.com,CyberCore,+1-982-421-7627,Manager,Manufacturing,Email Campaign,0.64,Medium,Converted,2025-05-03 11:47:06.314679,Lead from Cold Outreach - Manufacturing industry
+650,Jane,Brown,jane.brown@datasoft.com,DataSoft,+1-551-283-6777,CEO,Education,Referral,0.347,Low,Converted,2025-04-14 11:47:06.314679,Lead from Social Media - Education industry
+651,Christopher,Hernandez,christopher.hernandez@yahoo.com,AI Solutions,+1-883-760-6002,Product Manager,Technology,Event,0.633,Medium,Qualified,2025-01-15 11:47:06.314679,Lead from Event - Technology industry
+652,Jessica,Jones,jessica.jones@yahoo.com,TechCorp,+1-809-581-2962,Senior Developer,Retail,Cold Outreach,0.448,Medium,Converted,2025-03-21 11:47:06.314679,Lead from Email Campaign - Retail industry
+653,Christopher,Garcia,christopher.garcia@gmail.com,AI Solutions,+1-969-708-8540,CTO,Manufacturing,Email Campaign,0.74,High,Converted,2024-12-12 11:47:06.314679,Lead from Referral - Manufacturing industry
+654,Jane,Lopez,jane.lopez@yahoo.com,FutureTech,+1-416-534-9044,Data Scientist,Retail,Email Campaign,0.326,Low,Converted,2025-06-03 11:47:06.314679,Lead from Paid Ads - Retail industry
+655,Jessica,Davis,jessica.davis@gmail.com,CloudSystems,+1-578-786-8534,Senior Developer,Consulting,Email Campaign,0.364,Low,Converted,2024-11-09 11:47:06.314679,Lead from Cold Outreach - Consulting industry
+656,Daniel,Martinez,daniel.martinez@yahoo.com,InnovateLab,+1-438-635-2893,VP Marketing,Healthcare,Social Media,0.77,High,New,2025-08-30 11:47:06.314679,Lead from Social Media - Healthcare industry
+657,Sarah,Johnson,sarah.johnson@hotmail.com,DataSoft,+1-865-743-7279,Director,Education,Email Campaign,0.637,Medium,Contacted,2025-03-16 11:47:06.314679,Lead from Email Campaign - Education industry
+658,Jessica,Hernandez,jessica.hernandez@yahoo.com,DataSoft,+1-438-516-4238,CEO,Retail,Website,0.246,Low,Converted,2025-06-15 11:47:06.314679,Lead from Social Media - Retail industry
+659,Michael,Hernandez,michael.hernandez@yahoo.com,InnovateLab,+1-502-461-6917,Director,Manufacturing,Referral,0.4,Low,New,2025-01-14 11:47:06.314679,Lead from Referral - Manufacturing industry
+660,William,Wilson,william.wilson@gmail.com,TechCorp,+1-749-575-6613,Marketing Manager,Healthcare,Cold Outreach,0.491,Medium,Converted,2025-02-28 11:47:06.314679,Lead from Paid Ads - Healthcare industry
+661,Jane,Garcia,jane.garcia@yahoo.com,CloudSystems,+1-714-572-7244,Product Manager,Manufacturing,Social Media,0.551,Medium,Qualified,2025-02-18 11:47:06.314679,Lead from Email Campaign - Manufacturing industry
+662,Amanda,Wilson,amanda.wilson@innovatelab.com,InnovateLab,+1-777-438-2454,Sales Director,Consulting,Social Media,0.368,Low,Qualified,2025-03-09 11:47:06.314679,Lead from Paid Ads - Consulting industry
+663,Jessica,Anderson,jessica.anderson@yahoo.com,QuantumLeap,+1-426-355-2059,Manager,Education,Paid Ads,0.707,High,New,2025-05-01 11:47:06.314679,Lead from Event - Education industry
+664,Jennifer,Jones,jennifer.jones@hotmail.com,TechCorp,+1-515-574-3587,Manager,Education,Website,0.213,Low,New,2025-02-12 11:47:06.314679,Lead from Referral - Education industry
+665,Christopher,Miller,christopher.miller@gmail.com,CyberCore,+1-305-690-7350,Manager,Retail,Social Media,0.273,Low,Contacted,2024-11-24 11:47:06.314679,Lead from Cold Outreach - Retail industry
+666,Emily,Smith,emily.smith@yahoo.com,QuantumLeap,+1-987-296-5069,Sales Director,Consulting,Email Campaign,0.68,Medium,Converted,2024-12-24 11:47:06.314679,Lead from Website - Consulting industry
+667,Emily,Miller,emily.miller@gmail.com,SmartData,+1-476-449-6890,Marketing Manager,Consulting,Event,0.421,Medium,Converted,2024-12-14 11:47:06.314679,Lead from Paid Ads - Consulting industry
+668,Daniel,Miller,daniel.miller@digital dynamics.com,Digital Dynamics,+1-400-483-1943,Product Manager,Technology,Social Media,0.627,Medium,Qualified,2025-05-10 11:47:06.314679,Lead from Paid Ads - Technology industry
+669,John,Garcia,john.garcia@yahoo.com,QuantumLeap,+1-298-989-4203,VP Marketing,Consulting,Referral,0.451,Medium,New,2024-11-01 11:47:06.314679,Lead from Referral - Consulting industry
+670,John,Garcia,john.garcia@gmail.com,InnovateLab,+1-355-772-3522,Director,Consulting,Website,0.29,Low,Qualified,2025-09-05 11:47:06.314679,Lead from Paid Ads - Consulting industry
+671,Daniel,Lopez,daniel.lopez@hotmail.com,CyberCore,+1-997-604-4097,Director,Retail,Referral,0.224,Low,Qualified,2025-08-10 11:47:06.314679,Lead from Paid Ads - Retail industry
+672,John,Wilson,john.wilson@hotmail.com,SmartData,+1-711-512-1810,Sales Director,Consulting,Social Media,0.479,Medium,New,2025-05-11 11:47:06.314679,Lead from Website - Consulting industry
+673,Jane,Miller,jane.miller@gmail.com,QuantumLeap,+1-940-880-1143,Product Manager,Education,Social Media,0.51,Medium,Contacted,2025-08-10 11:47:06.314679,Lead from Website - Education industry
+674,Jessica,Jones,jessica.jones@techcorp.com,TechCorp,+1-404-977-5165,Marketing Manager,Education,Paid Ads,0.56,Medium,Qualified,2025-09-06 11:47:06.314679,Lead from Event - Education industry
+675,Christopher,Anderson,christopher.anderson@hotmail.com,FutureTech,+1-276-758-6205,Data Scientist,Manufacturing,Referral,0.33,Low,Contacted,2025-05-04 11:47:06.314679,Lead from Email Campaign - Manufacturing industry
+676,Daniel,Rodriguez,daniel.rodriguez@gmail.com,Digital Dynamics,+1-592-382-5314,VP Marketing,Education,Event,0.26,Low,Converted,2024-11-30 11:47:06.314679,Lead from Social Media - Education industry
+677,Robert,Smith,robert.smith@gmail.com,QuantumLeap,+1-897-218-6743,Product Manager,Consulting,Email Campaign,0.377,Low,Contacted,2025-07-07 11:47:06.314679,Lead from Paid Ads - Consulting industry
+678,James,Miller,james.miller@ai solutions.com,AI Solutions,+1-698-488-9404,VP Marketing,Technology,Email Campaign,0.989,High,Converted,2025-08-15 11:47:06.314679,Lead from Cold Outreach - Technology industry
+679,James,Johnson,james.johnson@hotmail.com,CloudSystems,+1-310-343-5674,Marketing Manager,Finance,Email Campaign,0.493,Medium,New,2025-07-31 11:47:06.314679,Lead from Email Campaign - Finance industry
+680,Jessica,Lopez,jessica.lopez@gmail.com,CloudSystems,+1-964-741-4030,Director,Technology,Email Campaign,0.466,Medium,New,2025-02-26 11:47:06.314679,Lead from Paid Ads - Technology industry
+681,Robert,Brown,robert.brown@datasoft.com,DataSoft,+1-864-937-2609,Product Manager,Manufacturing,Cold Outreach,0.499,Medium,Contacted,2025-06-22 11:47:06.314679,Lead from Paid Ads - Manufacturing industry
+682,William,Rodriguez,william.rodriguez@digital dynamics.com,Digital Dynamics,+1-718-993-4116,CEO,Education,Paid Ads,0.487,Medium,Contacted,2025-05-19 11:47:06.315677,Lead from Event - Education industry
+683,William,Miller,william.miller@hotmail.com,InnovateLab,+1-580-241-8590,Marketing Manager,Consulting,Paid Ads,0.682,Medium,Qualified,2025-06-10 11:47:06.315677,Lead from Email Campaign - Consulting industry
+684,Daniel,Lopez,daniel.lopez@yahoo.com,FutureTech,+1-882-729-2447,Sales Director,Education,Email Campaign,0.54,Medium,Contacted,2024-10-01 11:47:06.315677,Lead from Event - Education industry
+685,Jane,Brown,jane.brown@hotmail.com,CloudSystems,+1-928-690-7831,CEO,Finance,Paid Ads,0.42,Medium,Qualified,2025-02-24 11:47:06.315677,Lead from Social Media - Finance industry
+686,William,Lopez,william.lopez@yahoo.com,QuantumLeap,+1-614-288-2896,Marketing Manager,Consulting,Referral,0.354,Low,Converted,2025-01-05 11:47:06.315677,Lead from Referral - Consulting industry
+687,Jennifer,Anderson,jennifer.anderson@yahoo.com,Digital Dynamics,+1-245-229-5827,Product Manager,Manufacturing,Cold Outreach,0.405,Medium,Contacted,2025-01-06 11:47:06.315677,Lead from Paid Ads - Manufacturing industry
+688,Jessica,Davis,jessica.davis@smartdata.com,SmartData,+1-304-775-8276,Data Scientist,Finance,Social Media,0.639,Medium,New,2024-09-26 11:47:06.315677,Lead from Website - Finance industry
+689,Daniel,Hernandez,daniel.hernandez@yahoo.com,FutureTech,+1-382-254-7628,Marketing Manager,Manufacturing,Referral,0.291,Low,Contacted,2025-02-12 11:47:06.315677,Lead from Referral - Manufacturing industry
+690,James,Wilson,james.wilson@hotmail.com,FutureTech,+1-292-747-8597,VP Marketing,Technology,Referral,0.438,Medium,Qualified,2024-09-16 11:47:06.315677,Lead from Cold Outreach - Technology industry
+691,Daniel,Brown,daniel.brown@gmail.com,FutureTech,+1-529-647-5371,Manager,Manufacturing,Social Media,0.715,High,Qualified,2024-10-18 11:47:06.315677,Lead from Social Media - Manufacturing industry
+692,John,Johnson,john.johnson@yahoo.com,QuantumLeap,+1-201-923-8787,VP Marketing,Finance,Email Campaign,0.794,High,Qualified,2025-08-20 11:47:06.315677,Lead from Email Campaign - Finance industry
+693,Sarah,Gonzalez,sarah.gonzalez@hotmail.com,TechCorp,+1-876-314-1813,VP Marketing,Healthcare,Email Campaign,0.357,Low,Converted,2025-06-03 11:47:06.315677,Lead from Cold Outreach - Healthcare industry
+694,James,Garcia,james.garcia@ai solutions.com,AI Solutions,+1-399-688-6419,CTO,Retail,Event,0.444,Medium,New,2024-10-28 11:47:06.315677,Lead from Social Media - Retail industry
+695,Jennifer,Hernandez,jennifer.hernandez@hotmail.com,AI Solutions,+1-931-935-4862,CEO,Consulting,Referral,0.542,Medium,Converted,2025-03-04 11:47:06.315677,Lead from Email Campaign - Consulting industry
+696,Robert,Davis,robert.davis@ai solutions.com,AI Solutions,+1-935-386-2588,Marketing Manager,Manufacturing,Email Campaign,0.305,Low,New,2025-06-10 11:47:06.315677,Lead from Referral - Manufacturing industry
+697,Amanda,Wilson,amanda.wilson@hotmail.com,AI Solutions,+1-656-661-5095,Director,Consulting,Social Media,0.663,Medium,New,2025-03-11 11:47:06.315677,Lead from Social Media - Consulting industry
+698,Robert,Martinez,robert.martinez@gmail.com,CyberCore,+1-439-284-6079,Director,Retail,Email Campaign,0.318,Low,Contacted,2025-05-30 11:47:06.315677,Lead from Referral - Retail industry
+699,Robert,Anderson,robert.anderson@gmail.com,QuantumLeap,+1-647-445-6796,Senior Developer,Education,Cold Outreach,0.5,Medium,Qualified,2024-12-26 11:47:06.315677,Lead from Cold Outreach - Education industry
+700,Ashley,Garcia,ashley.garcia@gmail.com,FutureTech,+1-206-884-8779,Sales Director,Healthcare,Social Media,0.215,Low,Qualified,2025-07-27 11:47:06.315677,Lead from Email Campaign - Healthcare industry
+701,Sarah,Rodriguez,sarah.rodriguez@futuretech.com,FutureTech,+1-320-925-7070,Manager,Consulting,Event,0.649,Medium,New,2025-04-01 11:47:06.315677,Lead from Website - Consulting industry
+702,James,Brown,james.brown@smartdata.com,SmartData,+1-242-867-9920,CEO,Retail,Referral,0.61,Medium,Converted,2024-10-28 11:47:06.315677,Lead from Website - Retail industry
+703,Jennifer,Williams,jennifer.williams@cloudsystems.com,CloudSystems,+1-902-924-3090,Sales Director,Consulting,Paid Ads,0.587,Medium,Contacted,2025-01-16 11:47:06.315677,Lead from Referral - Consulting industry
+704,John,Lopez,john.lopez@hotmail.com,InnovateLab,+1-580-220-3750,CEO,Manufacturing,Referral,0.276,Low,Qualified,2025-04-21 11:47:06.315677,Lead from Cold Outreach - Manufacturing industry
+705,Ashley,Johnson,ashley.johnson@hotmail.com,QuantumLeap,+1-731-930-6484,Sales Director,Consulting,Email Campaign,0.337,Low,New,2024-12-02 11:47:06.315677,Lead from Email Campaign - Consulting industry
+706,Jane,Johnson,jane.johnson@cybercore.com,CyberCore,+1-574-987-4644,CTO,Technology,Cold Outreach,0.659,Medium,New,2025-01-11 11:47:06.315677,Lead from Event - Technology industry
+707,Sarah,Williams,sarah.williams@gmail.com,InnovateLab,+1-373-917-4899,Sales Director,Technology,Cold Outreach,0.411,Medium,New,2025-08-04 11:47:06.315677,Lead from Social Media - Technology industry
+708,Sarah,Williams,sarah.williams@hotmail.com,DataSoft,+1-509-289-3210,Director,Finance,Cold Outreach,0.406,Medium,Contacted,2025-03-13 11:47:06.315677,Lead from Email Campaign - Finance industry
+709,Jessica,Lopez,jessica.lopez@yahoo.com,Digital Dynamics,+1-318-499-6825,Manager,Healthcare,Website,0.639,Medium,New,2024-12-20 11:47:06.315677,Lead from Cold Outreach - Healthcare industry
+710,Amanda,Davis,amanda.davis@futuretech.com,FutureTech,+1-924-579-9997,Product Manager,Technology,Event,0.391,Low,New,2024-12-05 11:47:06.315677,Lead from Email Campaign - Technology industry
+711,Jennifer,Hernandez,jennifer.hernandez@gmail.com,AI Solutions,+1-731-474-2505,Manager,Manufacturing,Cold Outreach,0.651,Medium,Qualified,2025-04-26 11:47:06.315677,Lead from Referral - Manufacturing industry
+712,John,Martinez,john.martinez@ai solutions.com,AI Solutions,+1-426-658-9978,Marketing Manager,Manufacturing,Cold Outreach,0.375,Low,Qualified,2025-01-17 11:47:06.315677,Lead from Email Campaign - Manufacturing industry
+713,Emily,Miller,emily.miller@hotmail.com,TechCorp,+1-280-398-9936,Director,Technology,Event,0.628,Medium,New,2025-07-03 11:47:06.315677,Lead from Social Media - Technology industry
+714,Jessica,Miller,jessica.miller@gmail.com,DataSoft,+1-292-522-3308,Product Manager,Finance,Referral,0.572,Medium,Contacted,2024-11-20 11:47:06.315677,Lead from Referral - Finance industry
+715,Sarah,Rodriguez,sarah.rodriguez@gmail.com,FutureTech,+1-536-952-5757,Senior Developer,Education,Website,0.271,Low,Converted,2025-01-12 11:47:06.315677,Lead from Website - Education industry
+716,Robert,Johnson,robert.johnson@gmail.com,AI Solutions,+1-345-204-9599,Data Scientist,Technology,Email Campaign,0.415,Medium,Converted,2024-10-05 11:47:06.315677,Lead from Paid Ads - Technology industry
+717,Ashley,Davis,ashley.davis@innovatelab.com,InnovateLab,+1-327-708-8567,Data Scientist,Technology,Cold Outreach,0.771,High,New,2025-03-22 11:47:06.315677,Lead from Social Media - Technology industry
+718,Amanda,Davis,amanda.davis@cloudsystems.com,CloudSystems,+1-876-726-9013,CTO,Retail,Paid Ads,0.473,Medium,Converted,2025-08-26 11:47:06.315677,Lead from Event - Retail industry
+719,Sarah,Wilson,sarah.wilson@cloudsystems.com,CloudSystems,+1-510-572-4889,Director,Retail,Paid Ads,0.998,High,Contacted,2025-05-26 11:47:06.315677,Lead from Social Media - Retail industry
+720,Daniel,Smith,daniel.smith@gmail.com,Digital Dynamics,+1-909-754-9319,Data Scientist,Finance,Cold Outreach,0.427,Medium,New,2024-10-30 11:47:06.315677,Lead from Event - Finance industry
+721,Christopher,Williams,christopher.williams@yahoo.com,CloudSystems,+1-736-782-5656,Manager,Manufacturing,Email Campaign,0.319,Low,Qualified,2025-03-21 11:47:06.315677,Lead from Social Media - Manufacturing industry
+722,Amanda,Gonzalez,amanda.gonzalez@hotmail.com,Digital Dynamics,+1-517-690-4714,Data Scientist,Manufacturing,Event,0.251,Low,New,2025-08-16 11:47:06.315677,Lead from Email Campaign - Manufacturing industry
+723,James,Lopez,james.lopez@datasoft.com,DataSoft,+1-330-690-8379,CTO,Manufacturing,Event,0.405,Medium,Converted,2025-06-02 11:47:06.315677,Lead from Cold Outreach - Manufacturing industry
+724,Jessica,Johnson,jessica.johnson@quantumleap.com,QuantumLeap,+1-863-875-6326,CTO,Education,Cold Outreach,0.502,Medium,Contacted,2025-09-08 11:47:06.315677,Lead from Social Media - Education industry
+725,David,Rodriguez,david.rodriguez@yahoo.com,Digital Dynamics,+1-428-413-7204,Data Scientist,Manufacturing,Website,0.849,High,Qualified,2025-04-21 11:47:06.315677,Lead from Referral - Manufacturing industry
+726,John,Jones,john.jones@yahoo.com,CloudSystems,+1-981-232-7876,VP Marketing,Healthcare,Event,0.313,Low,Qualified,2024-10-18 11:47:06.315677,Lead from Website - Healthcare industry
+727,James,Anderson,james.anderson@gmail.com,Digital Dynamics,+1-932-933-1066,Marketing Manager,Education,Social Media,0.186,Low,New,2025-02-10 11:47:06.315677,Lead from Cold Outreach - Education industry
+728,Jennifer,Garcia,jennifer.garcia@hotmail.com,Digital Dynamics,+1-963-235-7082,Senior Developer,Manufacturing,Event,0.337,Low,New,2024-10-24 11:47:06.315677,Lead from Website - Manufacturing industry
+729,David,Lopez,david.lopez@ai solutions.com,AI Solutions,+1-362-788-4662,Data Scientist,Healthcare,Event,0.53,Medium,Contacted,2025-06-08 11:47:06.315677,Lead from Referral - Healthcare industry
+730,William,Johnson,william.johnson@hotmail.com,FutureTech,+1-447-804-4354,CEO,Manufacturing,Paid Ads,0.654,Medium,Converted,2025-01-16 11:47:06.315677,Lead from Event - Manufacturing industry
+731,Jennifer,Gonzalez,jennifer.gonzalez@cybercore.com,CyberCore,+1-454-518-3625,CTO,Consulting,Cold Outreach,0.541,Medium,Converted,2025-01-14 11:47:06.315677,Lead from Event - Consulting industry
+732,William,Jones,william.jones@gmail.com,DataSoft,+1-577-472-2477,Sales Director,Education,Paid Ads,0.364,Low,Converted,2025-03-03 11:47:06.315677,Lead from Email Campaign - Education industry
+733,Jessica,Brown,jessica.brown@gmail.com,InnovateLab,+1-508-449-3959,Product Manager,Finance,Cold Outreach,0.424,Medium,New,2025-02-06 11:47:06.315677,Lead from Paid Ads - Finance industry
+734,Jennifer,Wilson,jennifer.wilson@gmail.com,QuantumLeap,+1-383-638-4848,CEO,Consulting,Referral,0.549,Medium,Qualified,2025-02-21 11:47:06.315677,Lead from Referral - Consulting industry
+735,Jane,Davis,jane.davis@gmail.com,TechCorp,+1-509-289-9957,CEO,Education,Referral,0.416,Medium,Contacted,2025-05-07 11:47:06.315677,Lead from Referral - Education industry
+736,Robert,Martinez,robert.martinez@hotmail.com,QuantumLeap,+1-341-734-1775,Director,Education,Event,0.552,Medium,Converted,2025-02-11 11:47:06.315677,Lead from Email Campaign - Education industry
+737,Jane,Williams,jane.williams@quantumleap.com,QuantumLeap,+1-655-998-8152,VP Marketing,Healthcare,Social Media,0.355,Low,New,2025-06-04 11:47:06.315677,Lead from Referral - Healthcare industry
+738,James,Martinez,james.martinez@innovatelab.com,InnovateLab,+1-682-917-9992,CEO,Consulting,Event,0.44,Medium,Converted,2025-04-13 11:47:06.315677,Lead from Cold Outreach - Consulting industry
+739,Jennifer,Jones,jennifer.jones@cybercore.com,CyberCore,+1-467-572-9881,CEO,Consulting,Social Media,0.605,Medium,Contacted,2025-03-05 11:47:06.315677,Lead from Email Campaign - Consulting industry
+740,James,Garcia,james.garcia@yahoo.com,SmartData,+1-507-934-2224,Senior Developer,Healthcare,Referral,0.229,Low,Contacted,2025-04-04 11:47:06.315677,Lead from Social Media - Healthcare industry
+741,Sarah,Gonzalez,sarah.gonzalez@quantumleap.com,QuantumLeap,+1-777-535-9578,Marketing Manager,Finance,Email Campaign,0.474,Medium,New,2024-10-11 11:47:06.315677,Lead from Email Campaign - Finance industry
+742,James,Garcia,james.garcia@gmail.com,Digital Dynamics,+1-613-460-1415,Marketing Manager,Finance,Referral,0.491,Medium,Contacted,2024-12-19 11:47:06.315677,Lead from Email Campaign - Finance industry
+743,David,Lopez,david.lopez@hotmail.com,FutureTech,+1-996-831-5285,Product Manager,Education,Referral,0.619,Medium,Contacted,2025-04-07 11:47:06.315677,Lead from Paid Ads - Education industry
+744,William,Davis,william.davis@yahoo.com,CyberCore,+1-838-489-8491,Sales Director,Healthcare,Website,0.699,Medium,Qualified,2025-06-30 11:47:06.315677,Lead from Paid Ads - Healthcare industry
+745,John,Wilson,john.wilson@cloudsystems.com,CloudSystems,+1-266-394-8097,Marketing Manager,Retail,Referral,0.382,Low,Contacted,2025-04-25 11:47:06.315677,Lead from Referral - Retail industry
+746,Christopher,Martinez,christopher.martinez@yahoo.com,AI Solutions,+1-400-347-9722,CTO,Consulting,Email Campaign,0.449,Medium,Qualified,2024-10-03 11:47:06.315677,Lead from Social Media - Consulting industry
+747,Michael,Smith,michael.smith@gmail.com,DataSoft,+1-233-631-9965,Data Scientist,Education,Event,0.665,Medium,Converted,2025-04-06 11:47:06.315677,Lead from Referral - Education industry
+748,Daniel,Garcia,daniel.garcia@gmail.com,DataSoft,+1-744-995-8347,Sales Director,Education,Cold Outreach,0.551,Medium,Qualified,2025-01-12 11:47:06.315677,Lead from Social Media - Education industry
+749,Sarah,Johnson,sarah.johnson@gmail.com,FutureTech,+1-884-226-5158,Sales Director,Consulting,Website,0.434,Medium,New,2024-12-05 11:47:06.315677,Lead from Social Media - Consulting industry
+750,William,Johnson,william.johnson@hotmail.com,CloudSystems,+1-499-936-7403,Marketing Manager,Retail,Cold Outreach,0.468,Medium,Converted,2025-02-02 11:47:06.315677,Lead from Website - Retail industry
+751,John,Hernandez,john.hernandez@cybercore.com,CyberCore,+1-657-923-1803,CTO,Manufacturing,Paid Ads,0.388,Low,Converted,2024-12-16 11:47:06.315677,Lead from Social Media - Manufacturing industry
+752,James,Davis,james.davis@gmail.com,CyberCore,+1-997-657-1781,Director,Finance,Referral,0.451,Medium,Qualified,2024-09-25 11:47:06.315677,Lead from Paid Ads - Finance industry
+753,David,Martinez,david.martinez@yahoo.com,CloudSystems,+1-876-416-7150,Product Manager,Education,Website,0.392,Low,Converted,2025-04-24 11:47:06.315677,Lead from Event - Education industry
+754,Christopher,Williams,christopher.williams@digital dynamics.com,Digital Dynamics,+1-847-651-6174,Data Scientist,Manufacturing,Email Campaign,0.48,Medium,New,2025-03-04 11:47:06.315677,Lead from Event - Manufacturing industry
+755,Emily,Anderson,emily.anderson@cloudsystems.com,CloudSystems,+1-273-479-3815,CEO,Manufacturing,Cold Outreach,0.466,Medium,Converted,2025-01-15 11:47:06.315677,Lead from Referral - Manufacturing industry
+756,Jessica,Johnson,jessica.johnson@innovatelab.com,InnovateLab,+1-424-231-8044,CTO,Manufacturing,Cold Outreach,0.373,Low,Qualified,2024-10-02 11:47:06.315677,Lead from Cold Outreach - Manufacturing industry
+757,Emily,Smith,emily.smith@gmail.com,Digital Dynamics,+1-399-654-5222,Manager,Technology,Cold Outreach,0.766,High,Qualified,2024-11-02 11:47:06.315677,Lead from Referral - Technology industry
+758,Amanda,Brown,amanda.brown@yahoo.com,CloudSystems,+1-673-276-4325,CEO,Retail,Email Campaign,0.412,Medium,Qualified,2025-04-04 11:47:06.315677,Lead from Email Campaign - Retail industry
+759,William,Smith,william.smith@smartdata.com,SmartData,+1-253-897-8190,CTO,Consulting,Event,0.481,Medium,Contacted,2025-01-04 11:47:06.315677,Lead from Website - Consulting industry
+760,Michael,Johnson,michael.johnson@yahoo.com,QuantumLeap,+1-480-380-6972,VP Marketing,Technology,Cold Outreach,0.346,Low,Converted,2024-10-16 11:47:06.315677,Lead from Cold Outreach - Technology industry
+761,James,Anderson,james.anderson@hotmail.com,QuantumLeap,+1-465-323-1217,Product Manager,Finance,Email Campaign,0.59,Medium,Converted,2024-10-04 11:47:06.315677,Lead from Event - Finance industry
+762,Robert,Miller,robert.miller@gmail.com,SmartData,+1-357-773-9224,Manager,Finance,Paid Ads,0.407,Medium,New,2025-04-11 11:47:06.315677,Lead from Paid Ads - Finance industry
+763,James,Williams,james.williams@gmail.com,TechCorp,+1-367-693-4011,VP Marketing,Consulting,Paid Ads,0.312,Low,Converted,2024-09-10 11:47:06.315677,Lead from Referral - Consulting industry
+764,Daniel,Jones,daniel.jones@gmail.com,CloudSystems,+1-881-750-1525,Sales Director,Manufacturing,Website,0.345,Low,Qualified,2025-02-23 11:47:06.315677,Lead from Cold Outreach - Manufacturing industry
+765,David,Martinez,david.martinez@gmail.com,QuantumLeap,+1-585-958-8998,CTO,Finance,Referral,0.639,Medium,New,2024-11-02 11:47:06.315677,Lead from Email Campaign - Finance industry
+766,Michael,Rodriguez,michael.rodriguez@gmail.com,Digital Dynamics,+1-712-518-3006,Director,Finance,Referral,0.574,Medium,Contacted,2025-06-06 11:47:06.316673,Lead from Email Campaign - Finance industry
+767,Amanda,Garcia,amanda.garcia@futuretech.com,FutureTech,+1-472-355-6658,Sales Director,Healthcare,Referral,0.307,Low,Qualified,2025-01-26 11:47:06.316673,Lead from Referral - Healthcare industry
+768,Christopher,Garcia,christopher.garcia@gmail.com,SmartData,+1-963-437-7007,Manager,Retail,Social Media,0.657,Medium,Contacted,2024-10-16 11:47:06.316673,Lead from Social Media - Retail industry
+769,Emily,Miller,emily.miller@gmail.com,CloudSystems,+1-909-828-9545,Product Manager,Education,Email Campaign,0.454,Medium,Contacted,2025-02-25 11:47:06.316673,Lead from Cold Outreach - Education industry
+770,Amanda,Jones,amanda.jones@digital dynamics.com,Digital Dynamics,+1-954-961-3818,Marketing Manager,Finance,Email Campaign,0.647,Medium,New,2025-04-03 11:47:06.316673,Lead from Email Campaign - Finance industry
+771,Amanda,Miller,amanda.miller@hotmail.com,Digital Dynamics,+1-448-675-6317,Manager,Education,Email Campaign,0.287,Low,Converted,2025-02-08 11:47:06.316673,Lead from Paid Ads - Education industry
+772,Daniel,Smith,daniel.smith@quantumleap.com,QuantumLeap,+1-966-409-3318,VP Marketing,Education,Cold Outreach,0.699,Medium,Qualified,2025-01-01 11:47:06.316673,Lead from Paid Ads - Education industry
+773,Jane,Wilson,jane.wilson@techcorp.com,TechCorp,+1-794-499-4124,Manager,Technology,Website,0.602,Medium,Qualified,2025-03-14 11:47:06.316673,Lead from Social Media - Technology industry
+774,Christopher,Davis,christopher.davis@ai solutions.com,AI Solutions,+1-204-856-3380,CEO,Retail,Email Campaign,0.42,Medium,Qualified,2024-09-25 11:47:06.316673,Lead from Referral - Retail industry
+775,Jennifer,Johnson,jennifer.johnson@yahoo.com,InnovateLab,+1-658-700-4012,CTO,Retail,Paid Ads,0.23,Low,Qualified,2025-08-11 11:47:06.316673,Lead from Cold Outreach - Retail industry
+776,William,Smith,william.smith@gmail.com,AI Solutions,+1-367-626-9959,Product Manager,Retail,Website,0.383,Low,Contacted,2024-12-11 11:47:06.316673,Lead from Event - Retail industry
+777,James,Wilson,james.wilson@yahoo.com,QuantumLeap,+1-962-591-7115,VP Marketing,Finance,Social Media,0.734,High,Qualified,2025-06-08 11:47:06.316673,Lead from Website - Finance industry
+778,Jessica,Hernandez,jessica.hernandez@hotmail.com,FutureTech,+1-896-346-6729,Manager,Education,Referral,0.319,Low,Converted,2025-01-05 11:47:06.316673,Lead from Cold Outreach - Education industry
+779,Sarah,Rodriguez,sarah.rodriguez@yahoo.com,DataSoft,+1-451-557-7841,Director,Consulting,Website,0.225,Low,Contacted,2025-01-05 11:47:06.316673,Lead from Referral - Consulting industry
+780,David,Gonzalez,david.gonzalez@yahoo.com,SmartData,+1-624-476-4386,Senior Developer,Healthcare,Cold Outreach,0.335,Low,Qualified,2025-09-07 11:47:06.316673,Lead from Website - Healthcare industry
+781,Amanda,Hernandez,amanda.hernandez@hotmail.com,QuantumLeap,+1-402-279-3862,VP Marketing,Retail,Cold Outreach,0.318,Low,Converted,2025-03-20 11:47:06.316673,Lead from Referral - Retail industry
+782,Emily,Johnson,emily.johnson@yahoo.com,Digital Dynamics,+1-358-574-7789,Manager,Consulting,Social Media,0.426,Medium,Qualified,2024-09-12 11:47:06.316673,Lead from Email Campaign - Consulting industry
+783,Ashley,Davis,ashley.davis@gmail.com,TechCorp,+1-311-847-1367,Manager,Consulting,Paid Ads,0.281,Low,Qualified,2025-08-27 11:47:06.316673,Lead from Social Media - Consulting industry
+784,James,Lopez,james.lopez@gmail.com,CloudSystems,+1-243-255-6179,Sales Director,Consulting,Paid Ads,0.304,Low,Converted,2025-05-23 11:47:06.316673,Lead from Website - Consulting industry
+785,John,Miller,john.miller@cybercore.com,CyberCore,+1-336-220-4590,CTO,Technology,Website,0.44,Medium,New,2025-08-19 11:47:06.316673,Lead from Event - Technology industry
+786,Emily,Gonzalez,emily.gonzalez@hotmail.com,DataSoft,+1-667-503-4152,Director,Education,Email Campaign,0.497,Medium,Qualified,2024-09-12 11:47:06.316673,Lead from Social Media - Education industry
+787,Amanda,Gonzalez,amanda.gonzalez@digital dynamics.com,Digital Dynamics,+1-314-594-9050,Data Scientist,Consulting,Event,0.415,Medium,Qualified,2025-01-19 11:47:06.316673,Lead from Cold Outreach - Consulting industry
+788,Sarah,Miller,sarah.miller@gmail.com,CloudSystems,+1-320-641-4806,VP Marketing,Consulting,Website,0.295,Low,New,2025-04-26 11:47:06.316673,Lead from Paid Ads - Consulting industry
+789,Sarah,Smith,sarah.smith@yahoo.com,QuantumLeap,+1-403-848-5097,Product Manager,Education,Paid Ads,0.601,Medium,Converted,2025-07-13 11:47:06.316673,Lead from Cold Outreach - Education industry
+790,Sarah,Wilson,sarah.wilson@yahoo.com,AI Solutions,+1-392-742-4872,Sales Director,Retail,Event,0.679,Medium,Converted,2025-04-23 11:47:06.316673,Lead from Event - Retail industry
+791,Christopher,Johnson,christopher.johnson@gmail.com,InnovateLab,+1-802-616-8608,Senior Developer,Education,Email Campaign,0.527,Medium,New,2024-12-16 11:47:06.316673,Lead from Paid Ads - Education industry
+792,David,Gonzalez,david.gonzalez@cloudsystems.com,CloudSystems,+1-739-260-7301,Marketing Manager,Manufacturing,Email Campaign,0.748,High,Qualified,2025-02-04 11:47:06.316673,Lead from Event - Manufacturing industry
+793,David,Jones,david.jones@yahoo.com,DataSoft,+1-295-898-6805,Sales Director,Manufacturing,Email Campaign,0.573,Medium,Converted,2025-02-01 11:47:06.316673,Lead from Cold Outreach - Manufacturing industry
+794,Jessica,Smith,jessica.smith@hotmail.com,QuantumLeap,+1-442-666-5800,Product Manager,Healthcare,Referral,0.367,Low,Contacted,2025-02-18 11:47:06.316673,Lead from Website - Healthcare industry
+795,David,Smith,david.smith@gmail.com,CloudSystems,+1-959-228-2175,Manager,Technology,Cold Outreach,0.355,Low,Converted,2024-10-21 11:47:06.316673,Lead from Paid Ads - Technology industry
+796,Jennifer,Hernandez,jennifer.hernandez@cloudsystems.com,CloudSystems,+1-378-371-1411,Manager,Education,Paid Ads,0.427,Medium,Qualified,2024-10-16 11:47:06.316673,Lead from Referral - Education industry
+797,Christopher,Rodriguez,christopher.rodriguez@yahoo.com,FutureTech,+1-220-605-1365,Product Manager,Finance,Paid Ads,0.406,Medium,New,2025-07-24 11:47:06.316673,Lead from Referral - Finance industry
+798,Amanda,Miller,amanda.miller@ai solutions.com,AI Solutions,+1-471-381-6345,Manager,Consulting,Social Media,0.608,Medium,Qualified,2024-11-20 11:47:06.316673,Lead from Social Media - Consulting industry
+799,Jessica,Martinez,jessica.martinez@cybercore.com,CyberCore,+1-559-523-6729,Marketing Manager,Manufacturing,Email Campaign,0.488,Medium,New,2025-08-28 11:47:06.316673,Lead from Cold Outreach - Manufacturing industry
+800,Christopher,Jones,christopher.jones@gmail.com,Digital Dynamics,+1-328-360-3897,VP Marketing,Healthcare,Event,0.194,Low,Converted,2025-09-08 11:47:06.316673,Lead from Paid Ads - Healthcare industry
+801,Jennifer,Davis,jennifer.davis@gmail.com,Digital Dynamics,+1-475-796-6091,CTO,Manufacturing,Event,0.327,Low,Qualified,2025-01-16 11:47:06.316673,Lead from Email Campaign - Manufacturing industry
+802,Ashley,Lopez,ashley.lopez@yahoo.com,CloudSystems,+1-411-340-2635,Product Manager,Retail,Website,0.231,Low,Converted,2024-10-10 11:47:06.316673,Lead from Paid Ads - Retail industry
+803,Jane,Lopez,jane.lopez@innovatelab.com,InnovateLab,+1-853-438-6705,Data Scientist,Manufacturing,Event,0.483,Medium,Qualified,2025-01-03 11:47:06.316673,Lead from Event - Manufacturing industry
+804,Amanda,Martinez,amanda.martinez@hotmail.com,TechCorp,+1-816-815-6218,Marketing Manager,Healthcare,Social Media,0.606,Medium,New,2025-05-17 11:47:06.316673,Lead from Paid Ads - Healthcare industry
+805,Jennifer,Martinez,jennifer.martinez@yahoo.com,DataSoft,+1-725-740-6412,Data Scientist,Education,Event,0.261,Low,Contacted,2025-04-17 11:47:06.316673,Lead from Referral - Education industry
+806,Sarah,Williams,sarah.williams@yahoo.com,QuantumLeap,+1-596-735-5294,Marketing Manager,Consulting,Referral,0.674,Medium,Qualified,2025-04-23 11:47:06.316673,Lead from Social Media - Consulting industry
+807,Emily,Smith,emily.smith@gmail.com,CyberCore,+1-499-806-4701,Director,Consulting,Event,0.399,Low,Contacted,2024-09-15 11:47:06.316673,Lead from Cold Outreach - Consulting industry
+808,Robert,Johnson,robert.johnson@yahoo.com,DataSoft,+1-827-944-2617,Director,Consulting,Referral,0.508,Medium,Converted,2025-04-25 11:47:06.316673,Lead from Event - Consulting industry
+809,Amanda,Hernandez,amanda.hernandez@hotmail.com,CyberCore,+1-893-627-1372,Data Scientist,Healthcare,Event,0.291,Low,Qualified,2025-08-06 11:47:06.316673,Lead from Website - Healthcare industry
+810,Jennifer,Johnson,jennifer.johnson@gmail.com,TechCorp,+1-487-601-4385,Senior Developer,Healthcare,Email Campaign,0.406,Medium,Converted,2024-12-09 11:47:06.316673,Lead from Cold Outreach - Healthcare industry
+811,Amanda,Lopez,amanda.lopez@futuretech.com,FutureTech,+1-222-818-8543,Manager,Consulting,Referral,0.774,High,Converted,2025-08-02 11:47:06.316673,Lead from Referral - Consulting industry
+812,Emily,Jones,emily.jones@hotmail.com,SmartData,+1-406-278-3752,VP Marketing,Technology,Website,0.732,High,Contacted,2025-07-08 11:47:06.317670,Lead from Paid Ads - Technology industry
+813,William,Martinez,william.martinez@datasoft.com,DataSoft,+1-989-282-4542,Marketing Manager,Retail,Cold Outreach,0.514,Medium,New,2025-06-16 11:47:06.317670,Lead from Social Media - Retail industry
+814,John,Lopez,john.lopez@hotmail.com,InnovateLab,+1-222-952-9772,CTO,Healthcare,Email Campaign,0.374,Low,New,2024-11-02 11:47:06.317670,Lead from Website - Healthcare industry
+815,John,Anderson,john.anderson@techcorp.com,TechCorp,+1-759-339-4104,Sales Director,Healthcare,Paid Ads,0.526,Medium,New,2025-04-14 11:47:06.317670,Lead from Cold Outreach - Healthcare industry
+816,Daniel,Garcia,daniel.garcia@yahoo.com,FutureTech,+1-601-206-3326,Sales Director,Manufacturing,Event,0.471,Medium,Qualified,2025-07-17 11:47:06.317670,Lead from Paid Ads - Manufacturing industry
+817,James,Rodriguez,james.rodriguez@gmail.com,DataSoft,+1-744-402-9107,Sales Director,Manufacturing,Email Campaign,0.707,High,Qualified,2025-03-25 11:47:06.317670,Lead from Social Media - Manufacturing industry
+818,Emily,Garcia,emily.garcia@gmail.com,Digital Dynamics,+1-801-416-7245,CTO,Technology,Referral,0.412,Medium,New,2024-11-05 11:47:06.317670,Lead from Website - Technology industry
+819,Emily,Rodriguez,emily.rodriguez@yahoo.com,InnovateLab,+1-993-897-6289,Data Scientist,Healthcare,Social Media,0.305,Low,Converted,2025-08-24 11:47:06.317670,Lead from Cold Outreach - Healthcare industry
+820,Jane,Brown,jane.brown@hotmail.com,QuantumLeap,+1-232-695-9343,CEO,Healthcare,Event,0.36,Low,Contacted,2025-02-10 11:47:06.317670,Lead from Website - Healthcare industry
+821,Jane,Lopez,jane.lopez@gmail.com,FutureTech,+1-762-554-9261,Manager,Healthcare,Event,0.257,Low,Contacted,2025-03-14 11:47:06.317670,Lead from Website - Healthcare industry
+822,Robert,Williams,robert.williams@yahoo.com,Digital Dynamics,+1-337-707-6404,VP Marketing,Healthcare,Website,0.514,Medium,Converted,2025-02-03 11:47:06.317670,Lead from Email Campaign - Healthcare industry
+823,Daniel,Anderson,daniel.anderson@datasoft.com,DataSoft,+1-741-633-5201,Manager,Technology,Referral,0.42,Medium,Converted,2024-09-29 11:47:06.317670,Lead from Social Media - Technology industry
+824,Michael,Brown,michael.brown@gmail.com,AI Solutions,+1-861-362-9726,Sales Director,Manufacturing,Referral,0.725,High,Contacted,2025-05-16 11:47:06.317670,Lead from Cold Outreach - Manufacturing industry
+825,David,Brown,david.brown@hotmail.com,InnovateLab,+1-548-643-5287,Director,Consulting,Paid Ads,0.432,Medium,Converted,2024-10-13 11:47:06.317670,Lead from Referral - Consulting industry
+826,David,Hernandez,david.hernandez@ai solutions.com,AI Solutions,+1-993-843-2762,Director,Finance,Referral,0.729,High,Qualified,2025-01-19 11:47:06.317670,Lead from Cold Outreach - Finance industry
+827,Sarah,Johnson,sarah.johnson@hotmail.com,SmartData,+1-587-679-1350,Sales Director,Consulting,Email Campaign,0.196,Low,Converted,2025-04-11 11:47:06.317670,Lead from Website - Consulting industry
+828,Amanda,Davis,amanda.davis@yahoo.com,CyberCore,+1-261-215-2231,CTO,Education,Social Media,0.541,Medium,New,2025-06-12 11:47:06.317670,Lead from Cold Outreach - Education industry
+829,Michael,Gonzalez,michael.gonzalez@cybercore.com,CyberCore,+1-362-721-4974,Director,Manufacturing,Email Campaign,0.576,Medium,Contacted,2025-08-10 11:47:06.317670,Lead from Paid Ads - Manufacturing industry
+830,Robert,Williams,robert.williams@smartdata.com,SmartData,+1-541-224-3834,Data Scientist,Technology,Event,0.695,Medium,Converted,2024-10-05 11:47:06.317670,Lead from Website - Technology industry
+831,Sarah,Anderson,sarah.anderson@hotmail.com,QuantumLeap,+1-653-603-5592,CEO,Technology,Website,0.487,Medium,New,2024-11-12 11:47:06.317670,Lead from Event - Technology industry
+832,Daniel,Williams,daniel.williams@cybercore.com,CyberCore,+1-739-781-4322,VP Marketing,Education,Paid Ads,0.674,Medium,Converted,2024-11-06 11:47:06.317670,Lead from Website - Education industry
+833,William,Smith,william.smith@cybercore.com,CyberCore,+1-408-790-6850,Manager,Finance,Social Media,0.479,Medium,Qualified,2024-10-06 11:47:06.317670,Lead from Cold Outreach - Finance industry
+834,Emily,Brown,emily.brown@smartdata.com,SmartData,+1-708-872-8452,VP Marketing,Healthcare,Email Campaign,0.58,Medium,Qualified,2024-09-10 11:47:06.317670,Lead from Email Campaign - Healthcare industry
+835,David,Davis,david.davis@hotmail.com,InnovateLab,+1-750-476-5704,VP Marketing,Technology,Social Media,0.317,Low,Contacted,2025-08-18 11:47:06.317670,Lead from Website - Technology industry
+836,William,Williams,william.williams@yahoo.com,AI Solutions,+1-810-225-5750,Senior Developer,Healthcare,Event,0.256,Low,New,2024-11-04 11:47:06.317670,Lead from Cold Outreach - Healthcare industry
+837,Jane,Wilson,jane.wilson@ai solutions.com,AI Solutions,+1-303-442-6565,CTO,Finance,Cold Outreach,0.886,High,New,2024-11-13 11:47:06.317670,Lead from Social Media - Finance industry
+838,Ashley,Rodriguez,ashley.rodriguez@yahoo.com,CloudSystems,+1-462-229-2776,Sales Director,Consulting,Event,0.31,Low,Converted,2024-11-13 11:47:06.317670,Lead from Social Media - Consulting industry
+839,Daniel,Miller,daniel.miller@yahoo.com,CloudSystems,+1-797-740-6911,Data Scientist,Manufacturing,Referral,0.273,Low,Contacted,2025-01-09 11:47:06.317670,Lead from Paid Ads - Manufacturing industry
+840,William,Miller,william.miller@futuretech.com,FutureTech,+1-398-946-4044,Manager,Healthcare,Paid Ads,0.56,Medium,Converted,2025-01-31 11:47:06.317670,Lead from Event - Healthcare industry
+841,Christopher,Wilson,christopher.wilson@datasoft.com,DataSoft,+1-320-359-1766,Manager,Retail,Referral,0.751,High,New,2025-01-14 11:47:06.317670,Lead from Referral - Retail industry
+842,Daniel,Brown,daniel.brown@yahoo.com,CloudSystems,+1-695-933-4534,Manager,Consulting,Paid Ads,0.343,Low,Qualified,2025-05-01 11:47:06.317670,Lead from Event - Consulting industry
+843,Daniel,Miller,daniel.miller@hotmail.com,TechCorp,+1-804-971-4990,CTO,Technology,Referral,0.93,High,Contacted,2024-09-20 11:47:06.317670,Lead from Referral - Technology industry
+844,Michael,Smith,michael.smith@futuretech.com,FutureTech,+1-468-973-2867,Sales Director,Consulting,Event,0.416,Medium,Converted,2025-02-25 11:47:06.317670,Lead from Social Media - Consulting industry
+845,Jane,Lopez,jane.lopez@gmail.com,DataSoft,+1-815-729-6991,Data Scientist,Finance,Event,0.695,Medium,New,2025-06-25 11:47:06.317670,Lead from Email Campaign - Finance industry
+846,William,Lopez,william.lopez@datasoft.com,DataSoft,+1-458-802-4011,CEO,Education,Email Campaign,0.537,Medium,Converted,2025-05-03 11:47:06.317670,Lead from Paid Ads - Education industry
+847,Daniel,Wilson,daniel.wilson@datasoft.com,DataSoft,+1-778-683-4827,Senior Developer,Healthcare,Event,0.455,Medium,Contacted,2024-12-01 11:47:06.317670,Lead from Referral - Healthcare industry
+848,John,Garcia,john.garcia@gmail.com,QuantumLeap,+1-208-520-1068,Product Manager,Manufacturing,Website,0.507,Medium,Qualified,2025-08-31 11:47:06.317670,Lead from Social Media - Manufacturing industry
+849,Sarah,Lopez,sarah.lopez@ai solutions.com,AI Solutions,+1-776-777-6746,CTO,Education,Website,0.337,Low,Qualified,2025-02-04 11:47:06.317670,Lead from Paid Ads - Education industry
+850,David,Jones,david.jones@yahoo.com,SmartData,+1-225-648-2676,Senior Developer,Consulting,Cold Outreach,0.388,Low,Contacted,2025-05-08 11:47:06.317670,Lead from Referral - Consulting industry
+851,Sarah,Williams,sarah.williams@gmail.com,DataSoft,+1-229-757-8591,VP Marketing,Technology,Paid Ads,0.463,Medium,New,2025-04-09 11:47:06.317670,Lead from Cold Outreach - Technology industry
+852,Jennifer,Brown,jennifer.brown@innovatelab.com,InnovateLab,+1-262-480-2469,VP Marketing,Technology,Website,0.688,Medium,Qualified,2024-11-25 11:47:06.317670,Lead from Email Campaign - Technology industry
+853,Jane,Rodriguez,jane.rodriguez@gmail.com,CloudSystems,+1-571-683-9595,CTO,Manufacturing,Social Media,0.441,Medium,New,2024-12-19 11:47:06.317670,Lead from Social Media - Manufacturing industry
+854,Jennifer,Johnson,jennifer.johnson@yahoo.com,SmartData,+1-945-802-7082,Senior Developer,Manufacturing,Email Campaign,0.498,Medium,New,2025-03-10 11:47:06.317670,Lead from Website - Manufacturing industry
+855,James,Anderson,james.anderson@gmail.com,InnovateLab,+1-870-416-6093,Manager,Retail,Cold Outreach,0.572,Medium,Contacted,2025-04-04 11:47:06.317670,Lead from Referral - Retail industry
+856,Jessica,Smith,jessica.smith@hotmail.com,TechCorp,+1-794-907-2027,CEO,Education,Website,0.392,Low,New,2024-11-25 11:47:06.317670,Lead from Event - Education industry
+857,Jane,Anderson,jane.anderson@gmail.com,DataSoft,+1-446-650-4167,Marketing Manager,Consulting,Event,0.452,Medium,New,2025-02-16 11:47:06.317670,Lead from Event - Consulting industry
+858,William,Martinez,william.martinez@gmail.com,QuantumLeap,+1-320-975-9907,Senior Developer,Manufacturing,Social Media,0.719,High,New,2025-01-08 11:47:06.317670,Lead from Social Media - Manufacturing industry
+859,Daniel,Gonzalez,daniel.gonzalez@gmail.com,AI Solutions,+1-677-396-5618,Senior Developer,Healthcare,Email Campaign,0.444,Medium,New,2025-01-20 11:47:06.317670,Lead from Event - Healthcare industry
+860,John,Gonzalez,john.gonzalez@innovatelab.com,InnovateLab,+1-229-955-5301,CTO,Manufacturing,Paid Ads,0.487,Medium,Contacted,2025-06-23 11:47:06.317670,Lead from Paid Ads - Manufacturing industry
+861,David,Miller,david.miller@yahoo.com,CloudSystems,+1-770-537-6483,VP Marketing,Education,Event,0.585,Medium,Contacted,2025-08-31 11:47:06.317670,Lead from Cold Outreach - Education industry
+862,Ashley,Anderson,ashley.anderson@yahoo.com,TechCorp,+1-969-668-6368,CEO,Retail,Paid Ads,0.398,Low,Qualified,2025-04-30 11:47:06.317670,Lead from Paid Ads - Retail industry
+863,David,Garcia,david.garcia@yahoo.com,QuantumLeap,+1-932-383-1800,Data Scientist,Finance,Email Campaign,0.842,High,Qualified,2024-11-28 11:47:06.317670,Lead from Event - Finance industry
+864,Sarah,Gonzalez,sarah.gonzalez@yahoo.com,CloudSystems,+1-994-311-5900,Data Scientist,Consulting,Paid Ads,0.644,Medium,Qualified,2025-06-06 11:47:06.317670,Lead from Social Media - Consulting industry
+865,Jennifer,Jones,jennifer.jones@yahoo.com,TechCorp,+1-812-857-4034,Director,Finance,Paid Ads,0.443,Medium,Converted,2025-05-04 11:47:06.317670,Lead from Cold Outreach - Finance industry
+866,James,Lopez,james.lopez@hotmail.com,AI Solutions,+1-295-954-6640,Marketing Manager,Healthcare,Referral,0.366,Low,New,2025-01-04 11:47:06.317670,Lead from Referral - Healthcare industry
+867,James,Hernandez,james.hernandez@gmail.com,InnovateLab,+1-334-495-8473,VP Marketing,Manufacturing,Website,0.605,Medium,Contacted,2025-06-11 11:47:06.317670,Lead from Paid Ads - Manufacturing industry
+868,William,Williams,william.williams@yahoo.com,TechCorp,+1-679-865-6169,Senior Developer,Retail,Cold Outreach,0.582,Medium,Qualified,2025-08-30 11:47:06.317670,Lead from Paid Ads - Retail industry
+869,Robert,Garcia,robert.garcia@hotmail.com,AI Solutions,+1-669-290-5846,CTO,Technology,Referral,0.723,High,New,2024-12-31 11:47:06.317670,Lead from Email Campaign - Technology industry
+870,Emily,Brown,emily.brown@gmail.com,InnovateLab,+1-519-909-2848,CTO,Manufacturing,Event,0.404,Medium,Qualified,2025-08-20 11:47:06.317670,Lead from Paid Ads - Manufacturing industry
+871,Daniel,Lopez,daniel.lopez@hotmail.com,FutureTech,+1-749-418-5763,CTO,Manufacturing,Email Campaign,0.436,Medium,Contacted,2024-10-11 11:47:06.317670,Lead from Social Media - Manufacturing industry
+872,Christopher,Jones,christopher.jones@hotmail.com,CloudSystems,+1-570-513-3703,Manager,Finance,Referral,0.482,Medium,New,2024-10-26 11:47:06.317670,Lead from Email Campaign - Finance industry
+873,Daniel,Lopez,daniel.lopez@digital dynamics.com,Digital Dynamics,+1-521-603-7566,CEO,Technology,Email Campaign,0.583,Medium,Converted,2024-10-24 11:47:06.317670,Lead from Email Campaign - Technology industry
+874,Amanda,Hernandez,amanda.hernandez@gmail.com,AI Solutions,+1-944-926-6241,VP Marketing,Finance,Paid Ads,0.42,Medium,Qualified,2025-02-14 11:47:06.317670,Lead from Website - Finance industry
+875,James,Davis,james.davis@gmail.com,AI Solutions,+1-646-668-1520,Director,Consulting,Referral,0.642,Medium,Qualified,2025-01-27 11:47:06.317670,Lead from Referral - Consulting industry
+876,Jessica,Smith,jessica.smith@ai solutions.com,AI Solutions,+1-383-991-6404,Product Manager,Consulting,Email Campaign,0.582,Medium,Converted,2025-08-03 11:47:06.317670,Lead from Website - Consulting industry
+877,Jane,Garcia,jane.garcia@yahoo.com,QuantumLeap,+1-720-801-7053,Data Scientist,Technology,Referral,0.593,Medium,New,2025-09-09 11:47:06.317670,Lead from Event - Technology industry
+878,Daniel,Anderson,daniel.anderson@hotmail.com,QuantumLeap,+1-678-535-9786,Marketing Manager,Technology,Website,0.723,High,Converted,2025-07-30 11:47:06.317670,Lead from Event - Technology industry
+879,Emily,Martinez,emily.martinez@yahoo.com,FutureTech,+1-906-831-8248,Senior Developer,Finance,Paid Ads,0.308,Low,Qualified,2024-11-11 11:47:06.317670,Lead from Event - Finance industry
+880,Daniel,Lopez,daniel.lopez@techcorp.com,TechCorp,+1-922-277-2341,Director,Consulting,Cold Outreach,0.584,Medium,New,2025-07-17 11:47:06.317670,Lead from Website - Consulting industry
+881,John,Wilson,john.wilson@hotmail.com,CyberCore,+1-948-316-2108,Senior Developer,Healthcare,Paid Ads,0.656,Medium,Qualified,2025-01-13 11:47:06.317670,Lead from Email Campaign - Healthcare industry
+882,Emily,Smith,emily.smith@hotmail.com,QuantumLeap,+1-837-915-7161,Marketing Manager,Healthcare,Event,0.259,Low,Qualified,2025-08-23 11:47:06.317670,Lead from Referral - Healthcare industry
+883,Sarah,Wilson,sarah.wilson@yahoo.com,TechCorp,+1-355-808-6001,VP Marketing,Healthcare,Event,0.626,Medium,Contacted,2025-01-09 11:47:06.317670,Lead from Email Campaign - Healthcare industry
+884,Emily,Miller,emily.miller@futuretech.com,FutureTech,+1-967-674-8672,CTO,Finance,Paid Ads,0.685,Medium,Contacted,2025-02-14 11:47:06.317670,Lead from Referral - Finance industry
+885,James,Garcia,james.garcia@gmail.com,FutureTech,+1-911-283-2920,VP Marketing,Finance,Email Campaign,0.561,Medium,Qualified,2025-01-15 11:47:06.317670,Lead from Email Campaign - Finance industry
+886,David,Williams,david.williams@gmail.com,QuantumLeap,+1-297-233-8214,CTO,Manufacturing,Website,0.466,Medium,Qualified,2025-06-16 11:47:06.317670,Lead from Email Campaign - Manufacturing industry
+887,Sarah,Gonzalez,sarah.gonzalez@gmail.com,CyberCore,+1-705-983-7100,Manager,Consulting,Event,0.284,Low,Contacted,2025-05-17 11:47:06.317670,Lead from Email Campaign - Consulting industry
+888,Ashley,Lopez,ashley.lopez@hotmail.com,CloudSystems,+1-646-977-2984,Product Manager,Healthcare,Referral,0.193,Low,Qualified,2025-04-25 11:47:06.317670,Lead from Social Media - Healthcare industry
+889,James,Garcia,james.garcia@hotmail.com,FutureTech,+1-821-276-8254,Manager,Education,Email Campaign,0.59,Medium,Contacted,2025-05-23 11:47:06.317670,Lead from Referral - Education industry
+890,Ashley,Johnson,ashley.johnson@gmail.com,QuantumLeap,+1-778-465-1672,Senior Developer,Retail,Referral,0.27,Low,Qualified,2025-07-18 11:47:06.317670,Lead from Paid Ads - Retail industry
+891,Amanda,Johnson,amanda.johnson@gmail.com,Digital Dynamics,+1-835-994-2570,Sales Director,Healthcare,Website,0.35,Low,New,2025-09-07 11:47:06.317670,Lead from Paid Ads - Healthcare industry
+892,David,Wilson,david.wilson@hotmail.com,AI Solutions,+1-764-398-7296,Manager,Consulting,Social Media,0.851,High,Qualified,2024-09-22 11:47:06.318668,Lead from Event - Consulting industry
+893,Ashley,Williams,ashley.williams@hotmail.com,Digital Dynamics,+1-864-877-8474,VP Marketing,Healthcare,Paid Ads,0.432,Medium,Converted,2025-05-19 11:47:06.318668,Lead from Social Media - Healthcare industry
+894,Christopher,Johnson,christopher.johnson@gmail.com,CloudSystems,+1-687-401-1778,Director,Consulting,Referral,0.499,Medium,New,2024-11-14 11:47:06.318668,Lead from Paid Ads - Consulting industry
+895,Ashley,Brown,ashley.brown@gmail.com,AI Solutions,+1-657-460-5760,VP Marketing,Technology,Cold Outreach,0.433,Medium,New,2025-04-19 11:47:06.318668,Lead from Social Media - Technology industry
+896,Jane,Garcia,jane.garcia@yahoo.com,CloudSystems,+1-436-988-4770,VP Marketing,Manufacturing,Cold Outreach,0.652,Medium,Qualified,2025-02-02 11:47:06.318668,Lead from Email Campaign - Manufacturing industry
+897,James,Garcia,james.garcia@digital dynamics.com,Digital Dynamics,+1-991-912-8805,Senior Developer,Retail,Website,0.312,Low,New,2024-12-20 11:47:06.318668,Lead from Event - Retail industry
+898,Michael,Johnson,michael.johnson@quantumleap.com,QuantumLeap,+1-884-345-2639,CTO,Education,Social Media,0.685,Medium,Contacted,2025-08-28 11:47:06.318668,Lead from Event - Education industry
+899,Jennifer,Martinez,jennifer.martinez@yahoo.com,SmartData,+1-243-563-5978,Senior Developer,Retail,Email Campaign,0.242,Low,New,2025-04-27 11:47:06.318668,Lead from Cold Outreach - Retail industry
+900,Michael,Rodriguez,michael.rodriguez@yahoo.com,FutureTech,+1-999-486-7135,Data Scientist,Finance,Referral,0.876,High,New,2025-08-29 11:47:06.318668,Lead from Email Campaign - Finance industry
+901,David,Garcia,david.garcia@gmail.com,QuantumLeap,+1-978-974-7293,Marketing Manager,Manufacturing,Cold Outreach,0.527,Medium,Contacted,2024-09-28 11:47:06.318668,Lead from Paid Ads - Manufacturing industry
+902,Daniel,Rodriguez,daniel.rodriguez@smartdata.com,SmartData,+1-802-657-9558,Sales Director,Manufacturing,Referral,0.377,Low,New,2025-07-03 11:47:06.318668,Lead from Paid Ads - Manufacturing industry
+903,Jane,Anderson,jane.anderson@hotmail.com,QuantumLeap,+1-339-599-4244,Manager,Education,Event,0.424,Medium,Qualified,2025-03-08 11:47:06.318668,Lead from Paid Ads - Education industry
+904,Michael,Williams,michael.williams@gmail.com,Digital Dynamics,+1-956-331-2556,CEO,Manufacturing,Paid Ads,0.533,Medium,Qualified,2025-02-06 11:47:06.318668,Lead from Cold Outreach - Manufacturing industry
+905,Robert,Williams,robert.williams@futuretech.com,FutureTech,+1-371-959-4244,Senior Developer,Healthcare,Referral,0.428,Medium,Qualified,2025-05-22 11:47:06.318668,Lead from Paid Ads - Healthcare industry
+906,Daniel,Gonzalez,daniel.gonzalez@gmail.com,QuantumLeap,+1-403-626-7414,Product Manager,Healthcare,Email Campaign,0.366,Low,Qualified,2025-07-16 11:47:06.318668,Lead from Paid Ads - Healthcare industry
+907,Emily,Lopez,emily.lopez@smartdata.com,SmartData,+1-931-235-9722,CEO,Retail,Website,0.771,High,Qualified,2024-12-14 11:47:06.318668,Lead from Social Media - Retail industry
+908,Christopher,Hernandez,christopher.hernandez@yahoo.com,SmartData,+1-227-295-5871,VP Marketing,Technology,Cold Outreach,0.529,Medium,Contacted,2025-04-02 11:47:06.318668,Lead from Social Media - Technology industry
+909,Emily,Martinez,emily.martinez@techcorp.com,TechCorp,+1-818-249-8793,Product Manager,Healthcare,Paid Ads,0.735,High,New,2025-08-22 11:47:06.318668,Lead from Paid Ads - Healthcare industry
+910,Jennifer,Wilson,jennifer.wilson@gmail.com,Digital Dynamics,+1-694-976-9388,Senior Developer,Manufacturing,Social Media,0.498,Medium,Qualified,2025-08-03 11:47:06.318668,Lead from Paid Ads - Manufacturing industry
+911,Daniel,Hernandez,daniel.hernandez@yahoo.com,InnovateLab,+1-576-538-4013,Director,Technology,Referral,0.628,Medium,Converted,2025-03-01 11:47:06.318668,Lead from Event - Technology industry
+912,William,Davis,william.davis@hotmail.com,TechCorp,+1-323-351-8890,CTO,Finance,Email Campaign,0.705,High,Converted,2025-05-07 11:47:06.318668,Lead from Paid Ads - Finance industry
+913,Amanda,Rodriguez,amanda.rodriguez@gmail.com,SmartData,+1-700-412-3844,CTO,Retail,Referral,0.715,High,Converted,2024-09-21 11:47:06.318668,Lead from Website - Retail industry
+914,Sarah,Gonzalez,sarah.gonzalez@gmail.com,TechCorp,+1-284-780-5829,Marketing Manager,Technology,Email Campaign,0.385,Low,New,2025-02-16 11:47:06.318668,Lead from Social Media - Technology industry
+915,Jessica,Hernandez,jessica.hernandez@yahoo.com,SmartData,+1-590-969-8619,Marketing Manager,Technology,Website,0.669,Medium,Converted,2025-01-27 11:47:06.318668,Lead from Cold Outreach - Technology industry
+916,Sarah,Jones,sarah.jones@gmail.com,CloudSystems,+1-776-289-6274,Director,Technology,Cold Outreach,0.878,High,Qualified,2025-07-21 11:47:06.318668,Lead from Cold Outreach - Technology industry
+917,David,Anderson,david.anderson@gmail.com,CyberCore,+1-894-636-4150,Senior Developer,Healthcare,Email Campaign,0.573,Medium,New,2025-08-19 11:47:06.318668,Lead from Email Campaign - Healthcare industry
+918,Robert,Hernandez,robert.hernandez@cloudsystems.com,CloudSystems,+1-305-957-6502,VP Marketing,Education,Event,0.574,Medium,Qualified,2024-09-29 11:47:06.318668,Lead from Referral - Education industry
+919,Amanda,Jones,amanda.jones@hotmail.com,FutureTech,+1-842-768-3488,Director,Education,Event,0.674,Medium,Contacted,2025-02-01 11:47:06.318668,Lead from Social Media - Education industry
+920,Jennifer,Williams,jennifer.williams@datasoft.com,DataSoft,+1-374-849-1306,Sales Director,Healthcare,Social Media,0.934,High,Qualified,2025-03-27 11:47:06.318668,Lead from Email Campaign - Healthcare industry
+921,Jessica,Miller,jessica.miller@yahoo.com,InnovateLab,+1-961-460-7159,VP Marketing,Consulting,Social Media,0.509,Medium,Qualified,2025-08-02 11:47:06.318668,Lead from Social Media - Consulting industry
+922,James,Garcia,james.garcia@gmail.com,CloudSystems,+1-636-235-8610,Sales Director,Healthcare,Paid Ads,0.544,Medium,Qualified,2024-10-21 11:47:06.318668,Lead from Social Media - Healthcare industry
+923,James,Miller,james.miller@quantumleap.com,QuantumLeap,+1-938-361-1681,Senior Developer,Education,Social Media,0.63,Medium,Qualified,2025-04-23 11:47:06.318668,Lead from Referral - Education industry
+924,Jennifer,Hernandez,jennifer.hernandez@yahoo.com,AI Solutions,+1-666-572-9329,CEO,Education,Paid Ads,0.234,Low,Contacted,2024-11-20 11:47:06.318668,Lead from Paid Ads - Education industry
+925,Christopher,Lopez,christopher.lopez@gmail.com,TechCorp,+1-682-623-7060,CEO,Manufacturing,Cold Outreach,0.587,Medium,Converted,2025-04-21 11:47:06.318668,Lead from Paid Ads - Manufacturing industry
+926,Michael,Martinez,michael.martinez@yahoo.com,SmartData,+1-380-813-9826,CEO,Technology,Website,0.344,Low,New,2024-12-07 11:47:06.318668,Lead from Email Campaign - Technology industry
+927,Jane,Jones,jane.jones@datasoft.com,DataSoft,+1-855-556-1677,Director,Retail,Cold Outreach,0.648,Medium,New,2025-04-25 11:47:06.318668,Lead from Website - Retail industry
+928,Robert,Anderson,robert.anderson@yahoo.com,TechCorp,+1-289-313-8086,CEO,Retail,Email Campaign,0.228,Low,Contacted,2024-11-05 11:47:06.318668,Lead from Email Campaign - Retail industry
+929,Jessica,Davis,jessica.davis@gmail.com,DataSoft,+1-506-906-5598,Product Manager,Finance,Website,0.378,Low,Contacted,2025-01-21 11:47:06.318668,Lead from Cold Outreach - Finance industry
+930,Emily,Lopez,emily.lopez@gmail.com,InnovateLab,+1-656-829-4914,Data Scientist,Healthcare,Referral,0.364,Low,Contacted,2025-04-24 11:47:06.318668,Lead from Social Media - Healthcare industry
+931,Michael,Brown,michael.brown@yahoo.com,AI Solutions,+1-288-763-1920,CEO,Manufacturing,Cold Outreach,0.34,Low,Qualified,2025-02-16 11:47:06.318668,Lead from Cold Outreach - Manufacturing industry
+932,Jessica,Davis,jessica.davis@yahoo.com,InnovateLab,+1-798-462-8167,VP Marketing,Technology,Website,0.7,Medium,Contacted,2025-05-04 11:47:06.318668,Lead from Social Media - Technology industry
+933,Michael,Davis,michael.davis@hotmail.com,FutureTech,+1-682-984-7765,Manager,Healthcare,Event,0.384,Low,Qualified,2025-02-20 11:47:06.318668,Lead from Event - Healthcare industry
+934,Jane,Miller,jane.miller@yahoo.com,FutureTech,+1-702-360-5852,Senior Developer,Healthcare,Website,0.25,Low,Converted,2024-11-14 11:47:06.318668,Lead from Referral - Healthcare industry
+935,William,Davis,william.davis@digital dynamics.com,Digital Dynamics,+1-461-500-2605,Manager,Manufacturing,Website,0.425,Medium,Contacted,2025-05-17 11:47:06.318668,Lead from Event - Manufacturing industry
+936,Sarah,Garcia,sarah.garcia@gmail.com,FutureTech,+1-881-522-9634,VP Marketing,Healthcare,Email Campaign,0.461,Medium,New,2025-07-08 11:47:06.318668,Lead from Website - Healthcare industry
+937,Michael,Johnson,michael.johnson@gmail.com,DataSoft,+1-725-523-4986,Product Manager,Healthcare,Cold Outreach,0.457,Medium,Qualified,2025-03-18 11:47:06.318668,Lead from Paid Ads - Healthcare industry
+938,Sarah,Johnson,sarah.johnson@hotmail.com,SmartData,+1-304-988-7708,Manager,Consulting,Referral,0.466,Medium,New,2025-02-16 11:47:06.318668,Lead from Social Media - Consulting industry
+939,Jennifer,Davis,jennifer.davis@yahoo.com,AI Solutions,+1-283-472-9721,Data Scientist,Finance,Paid Ads,0.699,Medium,Contacted,2024-10-14 11:47:06.318668,Lead from Social Media - Finance industry
+940,Jessica,Martinez,jessica.martinez@smartdata.com,SmartData,+1-918-467-7273,Product Manager,Manufacturing,Social Media,0.749,High,Converted,2024-10-25 11:47:06.318668,Lead from Email Campaign - Manufacturing industry
+941,Christopher,Johnson,christopher.johnson@yahoo.com,CloudSystems,+1-612-297-3026,VP Marketing,Consulting,Social Media,0.53,Medium,Converted,2025-02-13 11:47:06.318668,Lead from Website - Consulting industry
+942,Robert,Garcia,robert.garcia@yahoo.com,CyberCore,+1-861-471-6645,CEO,Manufacturing,Paid Ads,0.409,Medium,Qualified,2025-01-15 11:47:06.318668,Lead from Event - Manufacturing industry
+943,William,Davis,william.davis@gmail.com,DataSoft,+1-448-254-3184,VP Marketing,Healthcare,Website,0.367,Low,New,2025-02-19 11:47:06.318668,Lead from Referral - Healthcare industry
+944,Emily,Garcia,emily.garcia@yahoo.com,Digital Dynamics,+1-304-555-3270,Director,Technology,Social Media,0.884,High,Qualified,2025-04-28 11:47:06.318668,Lead from Event - Technology industry
+945,Jessica,Anderson,jessica.anderson@digital dynamics.com,Digital Dynamics,+1-516-395-5904,Marketing Manager,Healthcare,Paid Ads,0.552,Medium,Contacted,2025-02-27 11:47:06.318668,Lead from Website - Healthcare industry
+946,Emily,Rodriguez,emily.rodriguez@cloudsystems.com,CloudSystems,+1-777-430-3549,Senior Developer,Manufacturing,Event,0.603,Medium,Qualified,2025-02-05 11:47:06.318668,Lead from Email Campaign - Manufacturing industry
+947,Jessica,Anderson,jessica.anderson@futuretech.com,FutureTech,+1-706-507-8041,CTO,Consulting,Email Campaign,0.446,Medium,Converted,2025-09-04 11:47:06.318668,Lead from Social Media - Consulting industry
+948,Christopher,Martinez,christopher.martinez@yahoo.com,TechCorp,+1-258-828-3900,CEO,Healthcare,Email Campaign,0.345,Low,Converted,2025-09-02 11:47:06.318668,Lead from Website - Healthcare industry
+949,William,Gonzalez,william.gonzalez@gmail.com,SmartData,+1-702-814-3536,Sales Director,Consulting,Website,0.27,Low,New,2025-01-03 11:47:06.318668,Lead from Referral - Consulting industry
+950,James,Williams,james.williams@yahoo.com,FutureTech,+1-948-874-4796,Senior Developer,Retail,Cold Outreach,0.438,Medium,New,2024-12-06 11:47:06.318668,Lead from Social Media - Retail industry
+951,David,Lopez,david.lopez@gmail.com,TechCorp,+1-747-733-3752,VP Marketing,Retail,Cold Outreach,0.345,Low,Converted,2025-08-17 11:47:06.318668,Lead from Website - Retail industry
+952,Robert,Smith,robert.smith@techcorp.com,TechCorp,+1-226-473-6172,VP Marketing,Technology,Event,0.572,Medium,Contacted,2024-11-06 11:47:06.318668,Lead from Event - Technology industry
+953,Jane,Jones,jane.jones@yahoo.com,SmartData,+1-998-848-6543,Director,Consulting,Social Media,0.642,Medium,Converted,2025-01-27 11:47:06.318668,Lead from Event - Consulting industry
+954,Sarah,Brown,sarah.brown@gmail.com,AI Solutions,+1-724-694-3223,Sales Director,Manufacturing,Social Media,0.235,Low,Qualified,2024-10-04 11:47:06.318668,Lead from Social Media - Manufacturing industry
+955,James,Garcia,james.garcia@yahoo.com,CyberCore,+1-976-573-1495,VP Marketing,Finance,Social Media,0.421,Medium,Converted,2025-03-02 11:47:06.318668,Lead from Cold Outreach - Finance industry
+956,Sarah,Hernandez,sarah.hernandez@hotmail.com,AI Solutions,+1-875-676-9347,Data Scientist,Manufacturing,Paid Ads,0.478,Medium,Converted,2025-03-26 11:47:06.318668,Lead from Social Media - Manufacturing industry
+957,James,Hernandez,james.hernandez@yahoo.com,CyberCore,+1-467-479-4761,Sales Director,Technology,Social Media,0.565,Medium,Contacted,2024-11-04 11:47:06.318668,Lead from Website - Technology industry
+958,Sarah,Davis,sarah.davis@cybercore.com,CyberCore,+1-730-420-9649,CEO,Education,Website,0.809,High,New,2025-08-02 11:47:06.318668,Lead from Email Campaign - Education industry
+959,Emily,Brown,emily.brown@yahoo.com,Digital Dynamics,+1-890-813-5756,Data Scientist,Retail,Website,0.207,Low,Contacted,2025-01-18 11:47:06.318668,Lead from Referral - Retail industry
+960,Sarah,Wilson,sarah.wilson@hotmail.com,AI Solutions,+1-609-460-7162,Manager,Technology,Event,0.772,High,New,2024-10-17 11:47:06.318668,Lead from Event - Technology industry
+961,Michael,Lopez,michael.lopez@yahoo.com,SmartData,+1-597-782-2339,CTO,Finance,Event,0.361,Low,New,2025-04-07 11:47:06.318668,Lead from Referral - Finance industry
+962,David,Lopez,david.lopez@hotmail.com,FutureTech,+1-775-800-4734,Product Manager,Consulting,Email Campaign,0.377,Low,Contacted,2024-09-16 11:47:06.318668,Lead from Email Campaign - Consulting industry
+963,David,Hernandez,david.hernandez@gmail.com,CyberCore,+1-759-466-2922,Senior Developer,Finance,Paid Ads,0.332,Low,New,2025-05-14 11:47:06.318668,Lead from Referral - Finance industry
+964,Jessica,Lopez,jessica.lopez@hotmail.com,Digital Dynamics,+1-744-472-7383,Data Scientist,Finance,Website,0.27,Low,Contacted,2024-11-09 11:47:06.318668,Lead from Paid Ads - Finance industry
+965,William,Gonzalez,william.gonzalez@gmail.com,QuantumLeap,+1-395-423-6458,CEO,Technology,Event,0.765,High,Qualified,2024-09-24 11:47:06.318668,Lead from Paid Ads - Technology industry
+966,Ashley,Johnson,ashley.johnson@yahoo.com,InnovateLab,+1-582-434-8648,Sales Director,Retail,Event,0.302,Low,Contacted,2024-12-20 11:47:06.318668,Lead from Website - Retail industry
+967,Jane,Gonzalez,jane.gonzalez@yahoo.com,Digital Dynamics,+1-329-238-6353,CTO,Education,Website,0.552,Medium,New,2024-09-13 11:47:06.318668,Lead from Event - Education industry
+968,David,Jones,david.jones@yahoo.com,CyberCore,+1-336-402-4926,Data Scientist,Consulting,Website,0.343,Low,Contacted,2025-07-03 11:47:06.318668,Lead from Event - Consulting industry
+969,Jennifer,Anderson,jennifer.anderson@hotmail.com,CyberCore,+1-599-711-9020,Marketing Manager,Healthcare,Event,0.718,High,Converted,2025-07-08 11:47:06.318668,Lead from Cold Outreach - Healthcare industry
+970,Christopher,Rodriguez,christopher.rodriguez@gmail.com,TechCorp,+1-964-342-5307,Data Scientist,Manufacturing,Website,0.357,Low,Contacted,2025-04-26 11:47:06.318668,Lead from Social Media - Manufacturing industry
+971,Amanda,Brown,amanda.brown@gmail.com,AI Solutions,+1-469-820-9225,CEO,Finance,Event,0.493,Medium,Contacted,2024-12-04 11:47:06.318668,Lead from Event - Finance industry
+972,Michael,Gonzalez,michael.gonzalez@digital dynamics.com,Digital Dynamics,+1-843-937-5390,Marketing Manager,Consulting,Paid Ads,0.419,Medium,Contacted,2024-12-18 11:47:06.318668,Lead from Paid Ads - Consulting industry
+973,William,Miller,william.miller@gmail.com,Digital Dynamics,+1-812-717-1971,Marketing Manager,Technology,Event,0.37,Low,Converted,2025-04-27 11:47:06.318668,Lead from Referral - Technology industry
+974,Jennifer,Wilson,jennifer.wilson@yahoo.com,AI Solutions,+1-727-228-9109,Senior Developer,Technology,Cold Outreach,0.678,Medium,Converted,2025-05-31 11:47:06.318668,Lead from Event - Technology industry
+975,Jane,Gonzalez,jane.gonzalez@yahoo.com,QuantumLeap,+1-702-301-8766,Manager,Retail,Paid Ads,0.431,Medium,New,2025-05-11 11:47:06.318668,Lead from Event - Retail industry
+976,Jane,Johnson,jane.johnson@gmail.com,FutureTech,+1-578-580-1449,Product Manager,Retail,Referral,0.176,Low,Qualified,2025-03-13 11:47:06.318668,Lead from Paid Ads - Retail industry
+977,Sarah,Jones,sarah.jones@yahoo.com,AI Solutions,+1-654-350-9982,Marketing Manager,Finance,Referral,0.826,High,Converted,2025-03-14 11:47:06.319665,Lead from Cold Outreach - Finance industry
+978,Daniel,Williams,daniel.williams@hotmail.com,Digital Dynamics,+1-518-974-4484,VP Marketing,Education,Cold Outreach,0.397,Low,Contacted,2024-10-17 11:47:06.319665,Lead from Referral - Education industry
+979,Michael,Jones,michael.jones@yahoo.com,Digital Dynamics,+1-678-723-6998,Senior Developer,Healthcare,Event,0.277,Low,New,2024-11-18 11:47:06.319665,Lead from Email Campaign - Healthcare industry
+980,James,Brown,james.brown@gmail.com,CyberCore,+1-699-292-2919,Manager,Consulting,Paid Ads,0.227,Low,Qualified,2024-10-02 11:47:06.319665,Lead from Email Campaign - Consulting industry
+981,James,Davis,james.davis@hotmail.com,FutureTech,+1-966-792-8495,CTO,Manufacturing,Website,0.282,Low,Qualified,2025-08-22 11:47:06.319665,Lead from Social Media - Manufacturing industry
+982,John,Garcia,john.garcia@datasoft.com,DataSoft,+1-420-271-1178,Senior Developer,Retail,Website,0.592,Medium,New,2025-01-27 11:47:06.319665,Lead from Social Media - Retail industry
+983,Jane,Miller,jane.miller@yahoo.com,FutureTech,+1-362-733-3893,Manager,Healthcare,Referral,0.592,Medium,Contacted,2025-06-28 11:47:06.319665,Lead from Email Campaign - Healthcare industry
+984,Amanda,Garcia,amanda.garcia@gmail.com,InnovateLab,+1-400-811-6067,VP Marketing,Consulting,Website,0.379,Low,Converted,2025-05-05 11:47:06.319665,Lead from Social Media - Consulting industry
+985,Emily,Garcia,emily.garcia@gmail.com,QuantumLeap,+1-391-951-6668,Director,Manufacturing,Email Campaign,0.963,High,Qualified,2025-01-29 11:47:06.319665,Lead from Cold Outreach - Manufacturing industry
+986,William,Wilson,william.wilson@yahoo.com,CyberCore,+1-379-873-6150,VP Marketing,Technology,Event,0.458,Medium,Qualified,2024-12-22 11:47:06.319665,Lead from Referral - Technology industry
+987,David,Smith,david.smith@hotmail.com,InnovateLab,+1-516-934-9241,Director,Education,Cold Outreach,0.411,Medium,Qualified,2025-04-18 11:47:06.319665,Lead from Website - Education industry
+988,Sarah,Johnson,sarah.johnson@gmail.com,CyberCore,+1-983-353-8530,Senior Developer,Technology,Social Media,0.36,Low,Converted,2024-12-17 11:47:06.319665,Lead from Email Campaign - Technology industry
+989,Jane,Garcia,jane.garcia@gmail.com,Digital Dynamics,+1-872-882-1654,Manager,Healthcare,Paid Ads,0.401,Medium,New,2025-06-30 11:47:06.319665,Lead from Website - Healthcare industry
+990,Jennifer,Smith,jennifer.smith@yahoo.com,QuantumLeap,+1-278-418-9314,Manager,Consulting,Referral,0.612,Medium,Contacted,2025-08-01 11:47:06.319665,Lead from Referral - Consulting industry
+991,Robert,Lopez,robert.lopez@yahoo.com,InnovateLab,+1-825-909-2824,Director,Retail,Event,0.772,High,Qualified,2025-08-06 11:47:06.319665,Lead from Website - Retail industry
+992,Ashley,Smith,ashley.smith@hotmail.com,InnovateLab,+1-405-805-7237,Senior Developer,Retail,Event,0.548,Medium,Converted,2024-12-20 11:47:06.319665,Lead from Cold Outreach - Retail industry
+993,Michael,Davis,michael.davis@yahoo.com,SmartData,+1-724-674-9148,Director,Technology,Paid Ads,0.309,Low,Converted,2024-10-06 11:47:06.319665,Lead from Website - Technology industry
+994,James,Hernandez,james.hernandez@yahoo.com,CloudSystems,+1-838-495-4661,Product Manager,Manufacturing,Website,0.25,Low,New,2024-12-31 11:47:06.319665,Lead from Social Media - Manufacturing industry
+995,Jennifer,Williams,jennifer.williams@hotmail.com,DataSoft,+1-585-842-3307,CTO,Finance,Website,0.309,Low,Converted,2025-06-17 11:47:06.319665,Lead from Email Campaign - Finance industry
+996,Jane,Jones,jane.jones@hotmail.com,CyberCore,+1-217-464-7537,Manager,Retail,Social Media,0.29,Low,New,2024-09-11 11:47:06.319665,Lead from Email Campaign - Retail industry
+997,Ashley,Rodriguez,ashley.rodriguez@gmail.com,CyberCore,+1-451-300-8075,CTO,Consulting,Referral,0.331,Low,Converted,2024-11-04 11:47:06.319665,Lead from Cold Outreach - Consulting industry
+998,David,Lopez,david.lopez@gmail.com,QuantumLeap,+1-727-445-3217,Senior Developer,Healthcare,Social Media,0.271,Low,Converted,2025-01-27 11:47:06.319665,Lead from Event - Healthcare industry
+999,Christopher,Garcia,christopher.garcia@gmail.com,DataSoft,+1-648-615-1234,Product Manager,Retail,Event,0.53,Medium,New,2025-06-21 11:47:06.319665,Lead from Social Media - Retail industry
+1000,Daniel,Brown,daniel.brown@smartdata.com,SmartData,+1-516-732-1485,Senior Developer,Finance,Cold Outreach,0.466,Medium,Qualified,2025-05-06 11:47:06.319665,Lead from Referral - Finance industry

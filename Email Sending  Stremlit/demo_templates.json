@@ -1,0 +1,14 @@
+{
+  "newsletter": {
+    "subject": "Weekly Update from {company}",
+    "content": "\n            <h2>Hello {name}!</h2>\n            <p>Thank you for your interest in {company}.</p>\n            <p>Here's what's new this week:</p>\n            <ul>\n                <li>New features and updates</li>\n                <li>Industry insights and trends</li>\n                <li>Upcoming events and webinars</li>\n            </ul>\n            <p>Best regards,<br>The {company} Team</p>\n            "
+  },
+  "promotional": {
+    "subject": "Special Offer for {name} - Limited Time!",
+    "content": "\n            <h2>Hi {name}!</h2>\n            <p>We have an exclusive offer for you at {company}!</p>\n            <div style=\"background-color: #f0f0f0; padding: 20px; margin: 20px 0; text-align: center; border-radius: 8px;\">\n                <h3>\ud83c\udf89 Special Discount</h3>\n                <p>Get 20% off your first order!</p>\n                <a href=\"#\" style=\"background-color: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;\">Claim Offer</a>\n            </div>\n            <p>Don't miss out on this limited-time deal.</p>\n            <p>Best regards,<br>The {company} Team</p>\n            "
+  },
+  "follow_up": {
+    "subject": "Following up on our conversation",
+    "content": "\n            <h2>Hi {name}!</h2>\n            <p>I wanted to follow up on our recent conversation about {company}.</p>\n            <p>Do you have any questions I can help with?</p>\n            <p>I'd love to schedule a brief call to discuss how we can help your business grow.</p>\n            <p>Best regards,<br>The {company} Team</p>\n            "
+  }
+}
