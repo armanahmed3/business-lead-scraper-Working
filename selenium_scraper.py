@@ -279,6 +279,12 @@ class SeleniumScraper:
         tile_size: float = 0.1
     ) -> List[Dict]:
         """Scrape business leads from Google Maps with enhanced extraction."""
+        
+        # Check if driver is available
+        if not self.driver:
+            self.logger.error("Chrome WebDriver not available - cannot scrape")
+            return []
+        
         all_leads = []
         
         # Temporarily disable robots.txt for testing purposes

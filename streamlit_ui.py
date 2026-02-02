@@ -1465,31 +1465,56 @@ def google_maps_scraping():
             status_text.markdown("### 🔄 Initializing Advanced Scraper...")
             
             # Initialize scraper with error handling
-            scraper = SeleniumScraper(
-                config=config,
-                headless=not st.checkbox("Debug Mode (Show Browser)", value=False),
-                guest_mode=True,
-                delay=delay
-            )
+            scraper = None
+            unique_leads = []
+            leads = []
             
-            status_text.markdown(f"### 🔍 Searching for **{query}** in **{location}**...")
-            progress_bar.progress(10)
-            
-            # Perform scraping
-            # Note: The scraper collects leads. Deduplication ensures uniqueness.
-            leads = scraper.scrape_google_maps(
-                query=query,
-                location=location,
-                max_results=max_leads
-            )
-            
-            scraper.close()
-            status_text.markdown("### ⚙️ Processing and Deduplicating Data...")
-            progress_bar.progress(75)
-            
-            # Deduplicate
-            deduplicator = Deduplicator(config)
-            unique_leads = deduplicator.deduplicate(leads)
+            try:
+                scraper = SeleniumScraper(
+                    config=config,
+                    headless=not st.checkbox("Debug Mode (Show Browser)", value=False),
+                    guest_mode=True,
+                    delay=delay
+                )
+                
+                # Check if scraper is properly initialized
+                if not hasattr(scraper, 'chrome_available') or not scraper.chrome_available:
+                    status_text.markdown("### ⚠️ Chrome Not Available - Real Scraper Required")
+                    st.error("🚫 **Chrome browser is required for real lead generation**\n\n"
+                           "Demo mode has been disabled to ensure only real, unique leads are generated.\n\n"
+                           "**To get real leads:**\n"
+                           "- Install Google Chrome browser\n"
+                           "- Run this application locally\n"
+                           "- Ensure Chrome WebDriver is available\n\n"
+                           "**No demo/sample data will be generated - only real business leads!**")
+                    return
+                
+                status_text.markdown(f"### 🔍 Searching for **{query}** in **{location}**...")
+                progress_bar.progress(10)
+                
+                # Perform scraping
+                # Note: The scraper collects leads. Deduplication ensures uniqueness.
+                leads = scraper.scrape_google_maps(
+                    query=query,
+                    location=location,
+                    max_results=max_leads
+                )
+                
+                scraper.close()
+                status_text.markdown("### ⚙️ Processing and Deduplicating Data...")
+                progress_bar.progress(75)
+                
+                # Deduplicate
+                deduplicator = Deduplicator(config)
+                unique_leads = deduplicator.deduplicate(leads)
+                
+            except Exception as e:
+                status_text.markdown("### ⚠️ Scraper Initialization Failed")
+                st.error(f"Failed to initialize scraper: {str(e)}")
+                st.info("🚫 **Real Chrome browser is required for lead generation**\n\n"
+                       "Please install Google Chrome and ensure Chrome WebDriver is available.\n\n"
+                       "**No demo data will be generated - only real business leads!**")
+                return
             
             # Verify count - if we have duplicates, we might have fewer than requested
             # In a real "exact count" scenario, we'd loop. 
@@ -1548,57 +1573,18 @@ def google_maps_scraping():
             import traceback
             st.code(traceback.format_exc())
 
-            # SaaS Usage Tracking
-            found_count = len(unique_leads)
-            new_total = st.session_state.usage_count + found_count
-            db.update_settings(st.session_state.username, {'usage_count': new_total})
-            st.session_state.usage_count = new_total
-            
-            status_text.markdown("### 💾 Preparing Download...")
-            progress_bar.progress(90)
-            
-            # Use temporary directory for export to avoid disk usage issues on Cloud
-            with tempfile.TemporaryDirectory() as temp_dir:
-                exporter = DataExporter(config, output_dir=temp_dir)
-                timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-                
-                clean_query = "".join(x for x in query if x.isalnum() or x in " -_").strip().replace(" ", "_")
-                clean_loc = "".join(x for x in location if x.isalnum() or x in " -_").strip().replace(" ", "_")
-                base_filename = f"Leads_{clean_query}_{clean_loc}_{timestamp}"
-                
-                exported_files = exporter.export(
-                    data=unique_leads,
-                    formats=formats,
-                    filename=base_filename
-                )
-                
-                # Store results in session state for persistence across reruns
-                st.session_state.scrape_results = unique_leads
-                results_list = []
-                for file_path in exported_files:
-                    if file_path.startswith("http") or file_path.startswith("ERROR"):
-                        results_list.append(('Open', file_path, '', ''))
-                    else:
-                        path_obj = Path(file_path)
-                        with open(file_path, 'rb') as f:
-                            results_list.append(('Download', f.read(), path_obj.suffix.upper(), path_obj.name))
-                st.session_state.exported_files_data = results_list
-
-                progress_bar.progress(100)
-                status_text.markdown("### ✅ Generation Complete!")
-                st.rerun() # Force UI refresh to show persistent buttons
-        
-        except Exception as e:
-            st.error(f"System Error: {str(e)}")
-            import traceback
-            st.code(traceback.format_exc())
+        # SaaS Usage Tracking - only if successful
+        if 'unique_leads' in locals():
+            if unique_leads:
+                found_count = len(unique_leads)
+                new_total = st.session_state.usage_count + found_count
+                db.update_settings(st.session_state.username, {'usage_count': new_total})
+                st.session_state.usage_count = new_total
 
     # --- RESULTS DISPLAY (Survives Reruns) ---
     if st.session_state.get('scrape_results'):
         unique_leads = st.session_state.scrape_results
         exported_files_data = st.session_state.exported_files_data
-        
-        st.success(f"Successfully generated {len(unique_leads)} unique leads")
         
         df = pd.DataFrame(unique_leads)
         preview_cols = ['name', 'phone', 'email', 'website', 'address']
