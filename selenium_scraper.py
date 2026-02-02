@@ -7,12 +7,18 @@ UPDATED NOVEMBER 2025 - Working selectors for current Google Maps.
 import time
 import random
 import logging
+import subprocess
+import sys
+import platform
+try:
+    import winreg
+except ImportError:
+    winreg = None
 from typing import List, Dict, Optional, Tuple
 from datetime import datetime
 from urllib.parse import quote_plus, urljoin
 import re
 import os
-import platform
 try:
     from bs4 import BeautifulSoup
 except ImportError:
@@ -36,6 +42,93 @@ from robots_checker import RobotsChecker
 from utils import sleep_random
 
 
+def is_running_in_cloud_environment():
+    """Detect if running in cloud deployment environment like Streamlit Cloud, Heroku, etc."""
+    cloud_indicators = [
+        'STREAMLIT_RUNTIME_ENV',
+        'DYNO',
+        'CONTAINER_ID',
+        'KUBERNETES_SERVICE_HOST',
+        'CLOUD_RUN_JOB',
+        'FUNCTION_NAME',
+    ]
+    
+    for indicator in cloud_indicators:
+        if os.environ.get(indicator):
+            return True
+    
+    hostname = os.uname().nodename if hasattr(os, 'uname') else ''
+    if any(cloud_name in hostname.lower() for cloud_name in ['heroku', 'aws', 'amazonaws', 'cloud']):
+        return True
+    
+    try:
+        result = subprocess.run(['uname', '-a'], capture_output=True, timeout=5)
+        if result.returncode != 0:
+            return True
+    except:
+        pass
+    
+    return False
+
+
+def is_chrome_available():
+    """Check if Chrome/Chromium is available on the system."""
+    
+    try:
+        system = platform.system()
+        
+        if system == "Windows":
+            if winreg is not None:
+                try:
+                    reg_path = r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe"
+                    with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, reg_path) as key:
+                        install_path = winreg.QueryValue(key, "")
+                        if install_path and os.path.exists(install_path):
+                            return True
+                except:
+                    pass
+                
+                common_paths = [
+                    r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+                    r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+                    os.path.expanduser(r"~\AppData\Local\Google\Chrome\Application\chrome.exe")
+                ]
+                
+                for path in common_paths:
+                    if os.path.exists(path):
+                        return True
+                        
+        elif system == "Darwin":
+            result = subprocess.run(['which', 'google-chrome'], 
+                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
+                                    timeout=5)
+            if result.returncode == 0:
+                return True
+                                    
+        else:
+            result = subprocess.run(['which', 'google-chrome'], 
+                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
+                                    timeout=5)
+            if result.returncode == 0:
+                return True
+                
+            result = subprocess.run(['which', 'chromium-browser'], 
+                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
+                                    timeout=5)
+            if result.returncode == 0:
+                return True
+                
+            result = subprocess.run(['which', 'chrome'], 
+                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
+                                    timeout=5)
+            if result.returncode == 0:
+                return True
+                
+        return False
+    except:
+        return False
+
+
 class SeleniumScraper:
     """Selenium-based scraper for extracting business leads from Google Maps."""
     
@@ -57,6 +150,25 @@ class SeleniumScraper:
         """Set up Chrome WebDriver with appropriate options."""
         self.logger.info("Setting up Chrome WebDriver...")
         
+        # Check if running in cloud environment first
+        if is_running_in_cloud_environment():
+            self.logger.error("Chrome not available in cloud environment")
+            self.chrome_available = False
+            self.driver = None
+            self.wait = None
+            return
+        
+        # Check if Chrome is available on system
+        chrome_available = is_chrome_available()
+        if not chrome_available:
+            self.logger.error("Chrome/Chromium not found on system.")
+            print("⚠️  Warning: Chrome/Chromium not found on system.")
+            print("   This may cause issues in deployment environments.")
+            self.chrome_available = False
+            self.driver = None
+            self.wait = None
+            return
+        
         options = webdriver.ChromeOptions()
         
         if self.guest_mode and not self.profile:
@@ -64,6 +176,7 @@ class SeleniumScraper:
             options.add_argument('--guest')
         elif self.profile:
             self.logger.info(f"Launching Chrome with profile: {self.profile}")
+            
             system = platform.system()
             if system == 'Windows':
                 user_data_dir = os.path.join(
@@ -80,74 +193,57 @@ class SeleniumScraper:
             options.add_argument(f'--user-data-dir={user_data_dir}')
             options.add_argument(f'--profile-directory={self.profile}')
         
-        options.add_argument('--disable-blink-features=AutomationControlled')
-        options.add_argument('--disable-dev-shm-usage')
+        # Essential options for Linux/Docker environments
         options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
         options.add_argument('--disable-gpu')
-        options.add_argument('--window-size=1920,1080')
-        options.add_argument('--lang=en-US')
         options.add_argument('--disable-extensions')
         options.add_argument('--disable-plugins-discovery')
+        options.add_argument('--disable-background-timer-throttling')
+        options.add_argument('--disable-backgrounding-occluded-windows')
+        options.add_argument('--disable-renderer-backgrounding')
+        options.add_argument('--disable-features=TranslateUI')
+        options.add_argument('--disable-ipc-flooding-protection')
+        options.add_argument('--disable-background-networking')
+        options.add_argument('--disable-default-apps')
+        options.add_argument('--disable-features=VizDisplayCompositor')
+        options.add_argument('--disable-setuid-sandbox')
+        options.add_argument('--disable-accelerated-2d-canvas')
+        options.add_argument('--no-first-run')
+        options.add_argument('--no-zygote')
+        options.add_argument('--disable-logging')
+        options.add_argument('--disable-permissions-api')
+        options.add_argument('--disable-web-security')
+        options.add_argument('--allow-running-insecure-content')
+        options.add_argument('--disable-site-isolation-trials')
+        
+        # Anti-detection options
         options.add_argument('--disable-blink-features=AutomationControlled')
+        options.add_argument('--disable-features=UserAgentClientHint')
+        options.add_argument('--disable-features=Translate')
+        
+        # Headless operation
+        if self.headless:
+            options.add_argument('--headless=new')
+        options.add_argument('--window-size=1920,1080')
+        options.add_argument('--lang=en-US')
+        
+        # Experimental options
         options.add_experimental_option('excludeSwitches', ['enable-automation'])
         options.add_experimental_option('useAutomationExtension', False)
         options.add_experimental_option("prefs", {
-            "profile.default_content_setting_values.notifications": 2
+            "profile.default_content_setting_values.notifications": 2,
+            "profile.default_content_settings.popups": 0,
+            "profile.managed_default_content_settings.images": 2
         })
         
-        if self.headless:
-            options.add_argument('--headless=new')
-        
-        # Additional stealth options
-        options.add_argument('--disable-features=UserAgentClientHint')
-        options.add_argument('--disable-features=VizDisplayCompositor')
-        options.add_argument('--disable-features=Translate')
-        
-        # Environment detection for binary location
-        is_streamlit_cloud = os.environ.get('STREAMLIT_RUNTIME_ENV', '') != '' or 'SH_APP_ID' in os.environ
-        
-        if is_streamlit_cloud:
-            self.logger.info("Streamlit Cloud detected. Configuring for system Chromium...")
-            # Streamlit Cloud's chromium path
-            chrome_paths = ['/usr/bin/chromium', '/usr/bin/chromium-browser']
-            for path in chrome_paths:
-                if os.path.exists(path):
-                    options.binary_location = path
-                    self.logger.info(f"Fixed binary location to: {path}")
-                    break
-        
         try:
-            # TRY 1: Native Selenium 4.x Manager (Safest for Cloud)
-            # This will use system chromium-driver if available or download the correct one
-            self.logger.info("Attempting native driver initialization...")
-            self.driver = webdriver.Chrome(options=options)
+            chrome_driver_path = ChromeDriverManager().install()
+            service = Service(chrome_driver_path)
+            service.log_path = "NUL" if os.name == "nt" else "/dev/null"
             
-        except Exception as e1:
-            self.logger.warning(f"Native initialization failed: {e1}. Falling back to webdriver-manager...")
-            try:
-                # TRY 2: webdriver-manager as fallback
-                from webdriver_manager.chrome import ChromeDriverManager
-                from selenium.webdriver.chrome.service import Service
-                
-                service = Service(ChromeDriverManager().install())
-                self.driver = webdriver.Chrome(service=service, options=options)
-            except Exception as e2:
-                self.logger.error(f"Failed to initialize Chrome WebDriver with fallback: {e2}")
-                # Try one last deep fallback for Linux system path
-                if not is_streamlit_cloud:
-                    raise
-                
-                try:
-                    self.logger.info("Final attempt: forcing system driver path...")
-                    from selenium.webdriver.chrome.service import Service
-                    # Common paths for chromium-driver in debian/ubuntu
-                    driver_service = Service('/usr/bin/chromedriver')
-                    self.driver = webdriver.Chrome(service=driver_service, options=options)
-                except Exception as e3:
-                    self.logger.error(f"Critical failure: All driver initialization methods failed. {e3}")
-                    raise
-        
-        try:
+            self.driver = webdriver.Chrome(service=service, options=options)
+            
             self.driver.set_page_load_timeout(
                 self.config.selenium['page_load_timeout']
             )
