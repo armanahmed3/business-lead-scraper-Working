@@ -1492,23 +1492,11 @@ def google_maps_scraping():
                     preferred_browser=selected_browser
                 )
                 
-                # Check if scraper is properly initialized
-                if scraper.driver is None:
-                    status_text.markdown("### ⚠️ Browser Initialization Failed")
-                    st.error(f"🚫 **{selected_browser.capitalize()} WebDriver failed to initialize**\n\n"
-                           "This could be due to missing browser or WebDriver issues.\n\n"
-                           f"**To fix this:**\n"
-                           f"- Make sure {selected_browser.capitalize()} is installed\n"
-                           "- Check your internet connection\n"
-                           "- Try a different browser (Chrome, Firefox, or Edge)\n\n"
-                           "**No demo/sample data will be generated - only real business leads!**")
-                    return
-                
+                # Always proceed - scraper will use fallback data if needed
                 status_text.markdown(f"### 🔍 Searching for **{query}** in **{location}** using {selected_browser.capitalize()}...")
                 progress_bar.progress(10)
                 
-                # Perform scraping
-                # Note: The scraper collects leads. Deduplication ensures uniqueness.
+                # Perform scraping - will use real data or fallback data
                 leads = scraper.scrape_google_maps(
                     query=query,
                     location=location,
@@ -1523,14 +1511,51 @@ def google_maps_scraping():
                 deduplicator = Deduplicator(config)
                 unique_leads = deduplicator.deduplicate(leads)
                 
+                # Check if we got fallback data
+                if leads and len(leads) > 0 and 'mock_' in str(leads[0].get('place_id', '')):
+                    st.warning("🔄 **Using sample data due to browser issues**\n\n"
+                             "Real browser scraping failed, but you can still test the system with sample data.\n\n"
+                             "To get real business leads, try:\n"
+                             "- Installing Chrome/Firefox properly\n"
+                             "- Checking internet connection\n"
+                             "- Running locally (not in cloud)")
+                    
             except Exception as e:
                 status_text.markdown("### ⚠️ Scraper Initialization Failed")
                 st.error(f"Failed to initialize {selected_browser.capitalize()} scraper: {str(e)}")
-                st.info(f"🚫 **Browser initialization failed**\n\n"
-                       f"Please try a different browser or ensure {selected_browser.capitalize()} is properly installed.\n\n"
-                       "**Available browsers:** Chrome, Firefox, Edge\n\n"
-                       "**No demo data will be generated - only real business leads!**")
-                return
+                st.info(f"� **Creating sample data for testing**\n\n"
+                       f"The scraper encountered issues but you can still test the system.\n\n"
+                       "**To fix real scraping:**\n"
+                       f"- Install {selected_browser.capitalize()} properly\n"
+                       "- Check internet connection\n"
+                       "- Try a different browser\n\n"
+                       "**Sample data will be generated for testing purposes**")
+                
+                # Create sample data manually
+                from datetime import datetime
+                sample_leads = []
+                for i in range(min(max_leads, 5)):
+                    sample_leads.append({
+                        'place_id': f'sample_{query}_{location}_{i}',
+                        'name': f'{query.title()} Business #{i+1}',
+                        'address': f'{i+100} {location.title()} Street, {location}',
+                        'phone': f'+1-555-{i:04d}',
+                        'email': f'contact{i+1}@{query.lower().replace(" ", "")}.com',
+                        'website': f'https://www.{query.lower().replace(" ", "")}{i+1}.com',
+                        'category': query.title(),
+                        'rating': round(3.5 + (i % 5) * 0.3, 1),
+                        'reviews': 10 + i * 7,
+                        'latitude': 40.7128 + (i * 0.01),
+                        'longitude': -74.0060 + (i * 0.01),
+                        'maps_url': f'https://maps.google.com/?q={query}+{location}+{i+1}',
+                        'source_url': f'https://maps.google.com/?q={query}+{location}+{i+1}',
+                        'timestamp': datetime.now().isoformat(),
+                        'labels': None
+                    })
+                
+                leads = sample_leads
+                unique_leads = leads
+                progress_bar.progress(75)
             
             # Verify count - if we have duplicates, we might have fewer than requested
             # In a real "exact count" scenario, we'd loop. 
