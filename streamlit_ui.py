@@ -1493,15 +1493,14 @@ def google_maps_scraping():
                 )
                 
                 # Check if scraper is properly initialized
-                if not hasattr(scraper, 'browser_available') or not scraper.browser_available:
-                    status_text.markdown("### ⚠️ Browser Not Available")
-                    st.error(f"🚫 **{selected_browser.capitalize()} browser is required for real lead generation**\n\n"
-                           "Demo mode has been disabled to ensure only real, unique leads are generated.\n\n"
-                           f"**To get real leads with {selected_browser.capitalize()}:**\n"
-                           f"- Install {selected_browser.capitalize()} browser\n"
-                           "- Run this application locally\n"
-                           "- Ensure WebDriver is available\n\n"
-                           "**Alternative browsers available:** Chrome, Firefox, Edge\n\n"
+                if scraper.driver is None:
+                    status_text.markdown("### ⚠️ Browser Initialization Failed")
+                    st.error(f"🚫 **{selected_browser.capitalize()} WebDriver failed to initialize**\n\n"
+                           "This could be due to missing browser or WebDriver issues.\n\n"
+                           f"**To fix this:**\n"
+                           f"- Make sure {selected_browser.capitalize()} is installed\n"
+                           "- Check your internet connection\n"
+                           "- Try a different browser (Chrome, Firefox, or Edge)\n\n"
                            "**No demo/sample data will be generated - only real business leads!**")
                     return
                 
@@ -1527,8 +1526,8 @@ def google_maps_scraping():
             except Exception as e:
                 status_text.markdown("### ⚠️ Scraper Initialization Failed")
                 st.error(f"Failed to initialize {selected_browser.capitalize()} scraper: {str(e)}")
-                st.info(f"🚫 **Real browser is required for lead generation**\n\n"
-                       f"Please install {selected_browser.capitalize()} and ensure WebDriver is available.\n\n"
+                st.info(f"🚫 **Browser initialization failed**\n\n"
+                       f"Please try a different browser or ensure {selected_browser.capitalize()} is properly installed.\n\n"
                        "**Available browsers:** Chrome, Firefox, Edge\n\n"
                        "**No demo data will be generated - only real business leads!**")
                 return

@@ -111,6 +111,7 @@ class SeleniumScraper:
         self.driver = None
         self.wait = None
         self.browser_type = None
+        self.browser_available = False  # Initialize as False
         
         self._setup_driver(preferred_browser)
     
@@ -142,9 +143,14 @@ class SeleniumScraper:
                 # Default to Chrome if unknown browser
                 self.browser_type = 'chrome'
                 self._setup_chrome_driver()
-                
-            self.browser_available = True
-            self.logger.info(f"✓ {self.browser_type.capitalize()} WebDriver initialized successfully")
+            
+            # If driver was successfully created, mark browser as available
+            if self.driver is not None:
+                self.browser_available = True
+                self.logger.info(f"✓ {self.browser_type.capitalize()} WebDriver initialized successfully")
+            else:
+                self.browser_available = False
+                self.logger.error(f"❌ {self.browser_type.capitalize()} WebDriver initialization failed")
             
         except Exception as e:
             self.logger.error(f"Failed to initialize {self.browser_type} WebDriver: {e}")
@@ -157,10 +163,11 @@ class SeleniumScraper:
                 try:
                     self.browser_type = 'chrome'
                     self._setup_chrome_driver()
-                    self.browser_available = True
-                    self.logger.info(f"✓ Chrome WebDriver initialized successfully (fallback)")
-                    print(f"✅ Successfully initialized Chrome as fallback")
-                    return
+                    if self.driver is not None:
+                        self.browser_available = True
+                        self.logger.info(f"✓ Chrome WebDriver initialized successfully (fallback)")
+                        print(f"✅ Successfully initialized Chrome as fallback")
+                        return
                 except Exception as fallback_error:
                     self.logger.warning(f"Fallback to Chrome failed: {fallback_error}")
             
