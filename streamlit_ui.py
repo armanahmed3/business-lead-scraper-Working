@@ -1417,45 +1417,19 @@ def google_maps_scraping():
         max_leads = st.number_input("Target Unique Leads", min_value=1, max_value=1000, value=50, step=1, help="Exact number of unique leads to generate")
         delay = st.slider("Safe Delay (seconds)", 1.0, 10.0, 3.0, step=0.5, help="Increase to avoid detection")
     
-    # Browser selection
-    available_browsers = []
-    try:
-        from selenium_scraper import get_available_browsers, debug_browser_detection
-        available_browsers = get_available_browsers()
-    except Exception as e:
-        st.error(f"Browser detection error: {e}")
-        available_browsers = []
+    # Browser selection - simplified approach
+    browser_options = {
+        'chrome': 'Google Chrome (Recommended)',
+        'firefox': 'Mozilla Firefox',
+        'edge': 'Microsoft Edge'
+    }
     
-    # Debug section
-    with st.expander("🔍 Debug Browser Detection", expanded=False):
-        if st.button("Run Browser Detection Debug"):
-            try:
-                from selenium_scraper import debug_browser_detection
-                debug_info = debug_browser_detection()
-                st.success("Debug completed! Check console output above.")
-                st.code(f"Detected browsers: {debug_info}")
-            except Exception as e:
-                st.error(f"Debug failed: {e}")
+    selected_browser = st.selectbox("Select Browser", list(browser_options.keys()), 
+                                 format_func=lambda x: browser_options[x],
+                                 help="Choose which browser to use for scraping. WebDriver Manager will handle driver installation automatically.")
     
-    if available_browsers:
-        browser_options = {
-            'chrome': 'Google Chrome (Recommended)',
-            'firefox': 'Mozilla Firefox',
-            'edge': 'Microsoft Edge'
-        }
-        # Only show browsers that are actually available
-        browser_choices = {k: v for k, v in browser_options.items() if k in available_browsers}
-        selected_browser = st.selectbox("Select Browser", list(browser_choices.keys()), 
-                                     format_func=lambda x: browser_choices[x],
-                                     help="Choose which browser to use for scraping")
-        st.success(f"✅ {len(available_browsers)} browser(s) detected: {', '.join([b.capitalize() for b in available_browsers])}")
-    else:
-        st.warning("⚠️ No supported browsers detected. Please install Google Chrome, Firefox, or Microsoft Edge.")
-        st.info("💡 **Troubleshooting Tips:**")
-        st.info("- Make sure Chrome is installed in the default location")
-        st.info("- Try running the debug tool above")
-        st.info("- Restart the application after installing a browser")
-        selected_browser = None
+    st.info("🚀 **WebDriver Manager will automatically download and install the required browser drivers**")
+    st.info("💡 **No need to manually install WebDriver - just ensure your preferred browser is installed**")
     
     # Enhanced format selection including Excel
     formats = st.multiselect(
@@ -1476,10 +1450,6 @@ def google_maps_scraping():
         st.session_state.exported_files_data = []
         if not query or not location:
             st.error("Please specify both business criteria and target location.")
-            return
-            
-        if not available_browsers:
-            st.error("❌ No supported browsers found. Please install Google Chrome, Firefox, or Microsoft Edge.")
             return
             
         # SaaS Limit Check

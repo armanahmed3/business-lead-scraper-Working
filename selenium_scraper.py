@@ -75,252 +75,25 @@ def is_running_in_cloud_environment():
     return False
 
 
+def get_available_browsers():
+    """Get list of available browsers on the system - simplified approach."""
+    # Always return Chrome as available - let WebDriver manager handle the rest
+    return ['chrome', 'firefox', 'edge']
+
+
 def is_chrome_available():
-    """Check if Chrome/Chromium is available on the system."""
-    
-    try:
-        system = platform.system()
-        
-        if system == "Windows":
-            # Enhanced Windows detection
-            chrome_paths = [
-                # Registry-based detection
-                None,  # Will be filled by registry check
-                # Common installation paths
-                r"C:\Program Files\Google\Chrome\Application\chrome.exe",
-                r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
-                os.path.expanduser(r"~\AppData\Local\Google\Chrome\Application\chrome.exe"),
-                os.path.expanduser(r"~\AppData\Local\Chromium\Application\chrome.exe"),
-                # Alternative paths
-                r"C:\Program Files\Google\Chrome\chrome.exe",
-                r"C:\Program Files (x86)\Google\Chrome\chrome.exe",
-                r"C:\Users\%USERNAME%\AppData\Local\Google\Chrome\Application\chrome.exe",
-            ]
-            
-            # Try registry first
-            if winreg is not None:
-                try:
-                    reg_paths = [
-                        r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe",
-                        r"SOFTWARE\Google\Chrome"
-                    ]
-                    
-                    for reg_path in reg_paths:
-                        try:
-                            with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, reg_path) as key:
-                                install_path = winreg.QueryValue(key, "")
-                                if install_path and os.path.exists(install_path):
-                                    print(f"✓ Chrome found via registry: {install_path}")
-                                    return True
-                        except (FileNotFoundError, OSError):
-                            continue
-                            
-                    # Try user-specific registry
-                    try:
-                        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"SOFTWARE\Google\Chrome") as key:
-                            install_path = winreg.QueryValue(key, "InstallPath")
-                            if install_path:
-                                chrome_exe = os.path.join(install_path, "chrome.exe")
-                                if os.path.exists(chrome_exe):
-                                    print(f"✓ Chrome found via user registry: {chrome_exe}")
-                                    return True
-                    except (FileNotFoundError, OSError):
-                        pass
-                except Exception as e:
-                    print(f"Registry check failed: {e}")
-            
-            # Check common paths
-            for path in chrome_paths[1:]:  # Skip the None placeholder
-                if path and "%USERNAME%" in path:
-                    path = os.path.expandvars(path)
-                if path and os.path.exists(path):
-                    print(f"✓ Chrome found at: {path}")
-                    return True
-                        
-        elif system == "Darwin":  # macOS
-            mac_paths = [
-                "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-                "/Applications/Chromium.app/Contents/MacOS/Chromium",
-                os.path.expanduser("~/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"),
-            ]
-            
-            for path in mac_paths:
-                if os.path.exists(path):
-                    print(f"✓ Chrome found at: {path}")
-                    return True
-                    
-            # Try which command
-            for cmd in ['google-chrome', 'chrome', 'chromium']:
-                try:
-                    result = subprocess.run(['which', cmd], 
-                                            stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
-                                            timeout=5)
-                    if result.returncode == 0:
-                        print(f"✓ Chrome found via which: {cmd}")
-                        return True
-                except:
-                    continue
-                                    
-        else:  # Linux
-            linux_paths = [
-                "/usr/bin/google-chrome",
-                "/usr/bin/chromium-browser",
-                "/usr/bin/chromium",
-                "/usr/local/bin/google-chrome",
-                "/usr/local/bin/chromium-browser",
-                "/snap/bin/google-chrome",
-                "/opt/google/chrome/google-chrome",
-            ]
-            
-            for path in linux_paths:
-                if os.path.exists(path):
-                    print(f"✓ Chrome found at: {path}")
-                    return True
-                    
-            # Try which command
-            for cmd in ['google-chrome', 'chrome', 'chromium-browser', 'chromium']:
-                try:
-                    result = subprocess.run(['which', cmd], 
-                                            stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
-                                            timeout=5)
-                    if result.returncode == 0:
-                        print(f"✓ Chrome found via which: {cmd}")
-                        return True
-                except:
-                    continue
-                
-        print("❌ Chrome not found in any standard location")
-        return False
-        
-    except Exception as e:
-        print(f"Chrome detection error: {e}")
-        return False
+    """Simplified Chrome check - always return True to let WebDriver manager handle it."""
+    return True
 
 
 def is_firefox_available():
-    """Check if Firefox is available on the system."""
-    
-    try:
-        system = platform.system()
-        
-        if system == "Windows":
-            common_paths = [
-                r"C:\Program Files\Mozilla Firefox\firefox.exe",
-                r"C:\Program Files (x86)\Mozilla Firefox\firefox.exe",
-                os.path.expanduser(r"~\AppData\Local\Mozilla Firefox\firefox.exe")
-            ]
-            
-            for path in common_paths:
-                if os.path.exists(path):
-                    return True
-                    
-        elif system == "Darwin":
-            result = subprocess.run(['which', 'firefox'], 
-                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
-                                    timeout=5)
-            if result.returncode == 0:
-                return True
-        else:
-            result = subprocess.run(['which', 'firefox'], 
-                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
-                                    timeout=5)
-            if result.returncode == 0:
-                return True
-                
-        return False
-    except:
-        return False
+    """Simplified Firefox check - always return True to let WebDriver manager handle it."""
+    return True
 
 
 def is_edge_available():
-    """Check if Microsoft Edge is available on the system."""
-    
-    try:
-        system = platform.system()
-        
-        if system == "Windows":
-            common_paths = [
-                r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
-                r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
-                os.path.expanduser(r"~\AppData\Local\Microsoft\Edge\Application\msedge.exe")
-            ]
-            
-            for path in common_paths:
-                if os.path.exists(path):
-                    return True
-                    
-        elif system == "Darwin":
-            result = subprocess.run(['which', 'microsoft-edge'], 
-                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
-                                    timeout=5)
-            if result.returncode == 0:
-                return True
-        else:
-            result = subprocess.run(['which', 'microsoft-edge'], 
-                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
-                                    timeout=5)
-            if result.returncode == 0:
-                return True
-                
-        return False
-    except:
-        return False
-
-
-def debug_browser_detection():
-    """Debug function to help diagnose browser detection issues."""
-    print("🔍 DEBUG: Browser Detection Status")
-    print("=" * 50)
-    
-    system = platform.system()
-    print(f"Operating System: {system}")
-    
-    # Check Chrome
-    print("\n🌐 Chrome Detection:")
-    chrome_found = is_chrome_available()
-    print(f"Chrome Available: {chrome_found}")
-    
-    if system == "Windows":
-        print("\n📁 Checking common Chrome paths:")
-        paths_to_check = [
-            r"C:\Program Files\Google\Chrome\Application\chrome.exe",
-            r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
-            os.path.expanduser(r"~\AppData\Local\Google\Chrome\Application\chrome.exe"),
-        ]
-        
-        for path in paths_to_check:
-            exists = os.path.exists(path)
-            print(f"  {'✓' if exists else '✗'} {path}")
-    
-    # Check Firefox
-    print("\n🦊 Firefox Detection:")
-    firefox_found = is_firefox_available()
-    print(f"Firefox Available: {firefox_found}")
-    
-    # Check Edge
-    print("\n📱 Edge Detection:")
-    edge_found = is_edge_available()
-    print(f"Edge Available: {edge_found}")
-    
-    # Summary
-    available_browsers = get_available_browsers()
-    print(f"\n📋 Available Browsers: {', '.join(available_browsers)}")
-    
-    return available_browsers
-
-
-def get_available_browsers():
-    """Get list of available browsers on the system."""
-    available = []
-    
-    if is_chrome_available():
-        available.append('chrome')
-    if is_firefox_available():
-        available.append('firefox')
-    if is_edge_available():
-        available.append('edge')
-        
-    return available
+    """Simplified Edge check - always return True to let WebDriver manager handle it."""
+    return True
 
 
 class SeleniumScraper:
@@ -342,8 +115,8 @@ class SeleniumScraper:
         self._setup_driver(preferred_browser)
     
     def _setup_driver(self, preferred_browser=None):
-        """Set up WebDriver with appropriate browser - supports Chrome, Firefox, Edge."""
-        self.logger.info("Setting up WebDriver with multi-browser support...")
+        """Set up WebDriver with simplified approach - let WebDriver manager handle everything."""
+        self.logger.info("Setting up WebDriver with simplified approach...")
         
         # Check if running in cloud environment first
         if is_running_in_cloud_environment():
@@ -353,38 +126,11 @@ class SeleniumScraper:
             self.wait = None
             return
         
-        # Get available browsers
-        available_browsers = get_available_browsers()
-        
-        if not available_browsers:
-            self.logger.error("No supported browsers found on system")
-            print("⚠️  Warning: No supported browsers (Chrome, Firefox, Edge) found on system.")
-            print("   Please install one of the following browsers:")
-            print("   - Google Chrome")
-            print("   - Mozilla Firefox") 
-            print("   - Microsoft Edge")
-            self.browser_available = False
-            self.driver = None
-            self.wait = None
-            return
-        
-        # Select browser to use
-        if preferred_browser and preferred_browser in available_browsers:
-            self.browser_type = preferred_browser
-        else:
-            # Auto-select best available browser (Chrome > Firefox > Edge)
-            if 'chrome' in available_browsers:
-                self.browser_type = 'chrome'
-            elif 'firefox' in available_browsers:
-                self.browser_type = 'firefox'
-            elif 'edge' in available_browsers:
-                self.browser_type = 'edge'
-            else:
-                self.browser_type = available_browsers[0]
-        
+        # Use preferred browser or default to Chrome
+        self.browser_type = preferred_browser or 'chrome'
         self.logger.info(f"Using browser: {self.browser_type}")
         
-        # Setup the selected browser
+        # Setup the selected browser - let WebDriver manager handle installation
         try:
             if self.browser_type == 'chrome':
                 self._setup_chrome_driver()
@@ -393,7 +139,9 @@ class SeleniumScraper:
             elif self.browser_type == 'edge':
                 self._setup_edge_driver()
             else:
-                raise ValueError(f"Unsupported browser: {self.browser_type}")
+                # Default to Chrome if unknown browser
+                self.browser_type = 'chrome'
+                self._setup_chrome_driver()
                 
             self.browser_available = True
             self.logger.info(f"✓ {self.browser_type.capitalize()} WebDriver initialized successfully")
@@ -401,34 +149,28 @@ class SeleniumScraper:
         except Exception as e:
             self.logger.error(f"Failed to initialize {self.browser_type} WebDriver: {e}")
             print(f"\n🚨 {self.browser_type.capitalize()} WebDriver Error: {e}")
-            print(f"   Trying alternative browsers...")
+            print(f"   This is normal if {self.browser_type} is not installed.")
+            print(f"   WebDriver Manager will attempt to download the required driver.")
             
-            # Try fallback browsers
-            available_browsers.remove(self.browser_type)
-            for browser in available_browsers:
+            # Try Chrome as fallback
+            if self.browser_type != 'chrome':
                 try:
-                    self.browser_type = browser
-                    if browser == 'chrome':
-                        self._setup_chrome_driver()
-                    elif browser == 'firefox':
-                        self._setup_firefox_driver()
-                    elif browser == 'edge':
-                        self._setup_edge_driver()
-                    
+                    self.browser_type = 'chrome'
+                    self._setup_chrome_driver()
                     self.browser_available = True
-                    self.logger.info(f"✓ {browser.capitalize()} WebDriver initialized successfully (fallback)")
-                    print(f"✅ Successfully initialized {browser.capitalize()} as fallback")
+                    self.logger.info(f"✓ Chrome WebDriver initialized successfully (fallback)")
+                    print(f"✅ Successfully initialized Chrome as fallback")
                     return
                 except Exception as fallback_error:
-                    self.logger.warning(f"Fallback to {browser} failed: {fallback_error}")
-                    continue
+                    self.logger.warning(f"Fallback to Chrome failed: {fallback_error}")
             
             # All browsers failed
             self.browser_available = False
             self.driver = None
             self.wait = None
-            print(f"\n❌ All browser initialization attempts failed")
-            print("   Please install a supported browser and ensure WebDriver is available")
+            print(f"\n❌ Browser initialization failed")
+            print(f"   Please install a supported browser (Chrome, Firefox, or Edge)")
+            print(f"   The WebDriver manager will attempt to download drivers automatically")
     
     def _setup_chrome_driver(self):
         """Setup Chrome WebDriver."""
