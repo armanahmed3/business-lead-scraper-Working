@@ -1,0 +1,65 @@
+# Business Lead Scraper Configuration
+
+scraping:
+  default_delay: 3.0
+  delay_randomization: 1.5
+  max_scroll_attempts: 5
+  scroll_delay: 4.0
+  request_timeout: 45
+  retry_attempts: 2
+  backoff_multiplier: 3
+  max_leads_per_session: 100
+
+selenium:
+  page_load_timeout: 60
+  implicit_wait: 0
+  window_size: "1920,1080"
+  chrome_options:
+    - "--disable-blink-features=AutomationControlled"
+    - "--disable-dev-shm-usage"
+    - "--no-sandbox"
+    - "--disable-gpu"
+  user_agent: ""
+
+geographic:
+  tile_mode: false
+  tile_size: 0.1
+  tile_overlap: 0.01
+  max_tiles: 100
+
+export:
+  output_dir: "./data"
+  formats:
+    - "csv"
+    - "json"
+    - "sqlite"
+  csv_delimiter: ","
+  csv_encoding: "utf-8"
+  json_indent: 2
+  sqlite_table_name: "leads"
+
+deduplication:
+  fuzzy_threshold: 0.85
+  dedupe_fields:
+    - "name"
+    - "address"
+    - "phone"
+  prefer_place_id: true
+
+logging:
+  level: "INFO"
+  file: "./logs/scraper.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  console: true
+
+robots:
+  enabled: false  # Set to false to bypass robots.txt (for testing)
+  user_agent: "*"
+  cache_enabled: true
+  cache_duration: 3600
+
+enrichment:
+  osm_enabled: false
+  overpass_url: "https://overpass-api.de/api/interpreter"
+  nominatim_url: "https://nominatim.openstreetmap.org"
+  osm_delay: 1.0

@@ -1,0 +1,63 @@
+2026-02-01 23:03:30,210 - INFO - Starting Real Leads Scraper with Social Media Extraction
+2026-02-01 23:05:53,852 - INFO - ====== WebDriver manager ======
+2026-02-01 23:05:55,899 - INFO - Get LATEST chromedriver version for google-chrome
+2026-02-01 23:05:56,030 - INFO - Get LATEST chromedriver version for google-chrome
+2026-02-01 23:05:56,122 - INFO - Get LATEST chromedriver version for google-chrome
+2026-02-01 23:05:56,663 - INFO - WebDriver version 144.0.7559.109 selected
+2026-02-01 23:05:56,669 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/144.0.7559.109/win32/chromedriver-win32.zip
+2026-02-01 23:05:56,670 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/144.0.7559.109/win32/chromedriver-win32.zip
+2026-02-01 23:05:56,875 - INFO - Driver downloading response is 200
+2026-02-01 23:06:01,759 - INFO - Get LATEST chromedriver version for google-chrome
+2026-02-01 23:06:02,147 - INFO - Driver has been saved in cache [C:\Users\dell\.wdm\drivers\chromedriver\win64\144.0.7559.109]
+2026-02-01 23:06:03,500 - INFO - Chrome driver initialized successfully
+2026-02-01 23:06:03,500 - INFO - Searching for: restaurants in New York 10
+2026-02-01 23:06:03,501 - INFO - Starting Google Maps search for: restaurants in New York 10
+2026-02-01 23:06:15,550 - ERROR - Error during scraping: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x4d8543
+	0x4d8584
+	0x2cb4e0
+	0x31594a
+	0x315beb
+	0x357bb2
+	0x338264
+	0x3553a1
+	0x337fb6
+	0x3096f9
+	0x30a4b4
+	0x72d034
+	0x7282c9
+	0x746460
+	0x4f1a68
+	0x4f988d
+	0x4e0df8
+	0x4e0fc2
+	0x4cab3a
+	0x76c7fcc9
+	0x77cb82ae
+	0x77cb827e
+
+2026-02-01 23:06:15,556 - INFO - Using fallback scraping method for cloud environment
+2026-02-01 23:06:15,556 - INFO - Removed 0 duplicate leads
+2026-02-01 23:06:15,558 - INFO - Filtering for real leads with social media...
+2026-02-01 23:06:15,558 - INFO - Found 4 real leads with social media links
+2026-02-01 23:06:15,559 - INFO - Removed duplicates: 0 duplicates found
+2026-02-01 23:06:15,559 - INFO - After deduplication: 4 unique real leads
+2026-02-01 23:06:15,573 - INFO - Results saved to real_leads_20260201_230615.csv
+2026-02-01 23:06:15,576 - INFO - Results saved to real_leads_20260201_230615.json
+2026-02-01 23:06:15,594 - INFO - Closing browser...
+2026-02-02 11:21:03,121 - WARNING - Error extracting lead from https://restraunts-dubai.com: HTTPSConnectionPool(host='restraunts-dubai.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000019F8E9CCB50>: Failed to resolve 'restraunts-dubai.com' ([Errno 11001] getaddrinfo failed)"))
+2026-02-02 11:21:03,217 - WARNING - Error extracting lead from https://restraunts-dubai.com: HTTPSConnectionPool(host='restraunts-dubai.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000019F8C815450>: Failed to resolve 'restraunts-dubai.com' ([Errno 11001] getaddrinfo failed)"))
+2026-02-02 11:21:04,472 - WARNING - Error extracting lead from https://www.dubai-restraunts.com: HTTPSConnectionPool(host='www.dubai-restraunts.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000019F8EAFED50>: Failed to resolve 'www.dubai-restraunts.com' ([Errno 11001] getaddrinfo failed)"))
+2026-02-02 11:21:04,473 - WARNING - Error extracting lead from https://www.dubai-restraunts.com: HTTPSConnectionPool(host='www.dubai-restraunts.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000019F8EB04850>: Failed to resolve 'www.dubai-restraunts.com' ([Errno 11001] getaddrinfo failed)"))
+2026-02-02 11:21:05,638 - WARNING - Error extracting lead from https://restrauntsdubai.com: HTTPSConnectionPool(host='restrauntsdubai.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000019F8EB07190>: Failed to resolve 'restrauntsdubai.com' ([Errno 11001] getaddrinfo failed)"))
+2026-02-02 11:21:05,638 - WARNING - Error extracting lead from https://restrauntsdubai.com: HTTPSConnectionPool(host='restrauntsdubai.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000019F8EB07E90>: Failed to resolve 'restrauntsdubai.com' ([Errno 11001] getaddrinfo failed)"))
+2026-02-02 11:21:09,798 - WARNING - Error enriching lead Restraunts Dubai: HTTPSConnectionPool(host='www.restrauntsdubai.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000019F8EB06FD0>: Failed to resolve 'www.restrauntsdubai.com' ([Errno 11001] getaddrinfo failed)"))
+2026-02-02 11:21:09,799 - WARNING - Error enriching lead Restraunts Dubai: HTTPSConnectionPool(host='www.restrauntsdubai.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000019F8EB04B10>: Failed to resolve 'www.restrauntsdubai.com' ([Errno 11001] getaddrinfo failed)"))
+2026-02-02 11:21:11,339 - WARNING - Error enriching lead Restraunts Dubai: HTTPSConnectionPool(host='www.restrauntsdubai.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000019F8EAFE010>: Failed to resolve 'www.restrauntsdubai.com' ([Errno 11001] getaddrinfo failed)"))
+2026-02-02 11:21:11,399 - WARNING - Error enriching lead Restraunts Dubai: HTTPSConnectionPool(host='www.restrauntsdubai.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000019F8EAFD010>: Failed to resolve 'www.restrauntsdubai.com' ([Errno 11001] getaddrinfo failed)"))
+2026-02-02 11:21:13,005 - WARNING - Error enriching lead Restraunts Dubai: HTTPSConnectionPool(host='www.restrauntsdubai.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000019F8EB08A10>: Failed to resolve 'www.restrauntsdubai.com' ([Errno 11001] getaddrinfo failed)"))
+2026-02-02 11:21:13,270 - WARNING - Error enriching lead Restraunts Dubai: HTTPSConnectionPool(host='www.restrauntsdubai.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000019F8EB0A2D0>: Failed to resolve 'www.restrauntsdubai.com' ([Errno 11001] getaddrinfo failed)"))
+2026-02-02 11:21:14,908 - INFO - Removed 2 duplicates from 3 leads
+2026-02-02 11:21:15,344 - INFO - Removed 2 duplicates from 3 leads

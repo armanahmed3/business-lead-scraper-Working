@@ -1,0 +1,41 @@
+# Core dependencies
+selenium==4.27.0
+webdriver-manager
+
+# Web UI
+flask==3.1.0
+flask-cors==5.0.0
+streamlit
+
+# Data processing
+pandas>=2.3.3
+requests==2.32.3
+urllib3==2.2.3
+openpyxl
+xlsxwriter
+
+# Configuration
+pyyaml==6.0.2
+python-dotenv==1.0.1
+
+# Testing
+pytest==8.3.3
+pytest-cov==6.0.0
+pytest-mock==3.14.0
+
+# Utilities
+tqdm==4.66.5
+colorama==0.4.6
+beautifulsoup4
+extra-streamlit-components
+st-gsheets-connection
+gspread
+oauth2client
+plotly
+google-generativeai
+openai
+fpdf2
+
+# Visualization
+seaborn
+matplotlib
