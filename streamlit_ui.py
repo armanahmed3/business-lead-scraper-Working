@@ -1501,7 +1501,7 @@ def google_maps_scraping():
                            f"- Install {selected_browser.capitalize()} browser\n"
                            "- Run this application locally\n"
                            "- Ensure WebDriver is available\n\n"
-                           "**Alternative browsers available:** " + ", ".join([b.capitalize() for b in available_browsers if b != selected_browser]) + "\n\n"
+                           "**Alternative browsers available:** Chrome, Firefox, Edge\n\n"
                            "**No demo/sample data will be generated - only real business leads!**")
                     return
                 
@@ -1529,7 +1529,7 @@ def google_maps_scraping():
                 st.error(f"Failed to initialize {selected_browser.capitalize()} scraper: {str(e)}")
                 st.info(f"🚫 **Real browser is required for lead generation**\n\n"
                        f"Please install {selected_browser.capitalize()} and ensure WebDriver is available.\n\n"
-                       "**Available browsers:** " + ", ".join([b.capitalize() for b in available_browsers]) + "\n\n"
+                       "**Available browsers:** Chrome, Firefox, Edge\n\n"
                        "**No demo data will be generated - only real business leads!**")
                 return
             
